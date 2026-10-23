@@ -1,0 +1,186 @@
+{
+  "name": "sharp",
+  "version": "0.35.5",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, spawnSync",
+      "evidence": [
+        {
+          "file": "dist/libvips.cjs",
+          "line": 6,
+          "excerpt": "const { spawnSync } = require('node:child_process');"
+        },
+        {
+          "file": "dist/libvips.mjs",
+          "line": 6,
+          "excerpt": "import { spawnSync } from 'node:child_process';"
+        },
+        {
+          "file": "dist/libvips.cjs",
+          "line": 96,
+          "excerpt": "const translated = spawnSync('sysctl sysctl.proc_translated', spawnSyncOptions).stdout;"
+        },
+        {
+          "file": "dist/libvips.cjs",
+          "line": 120,
+          "excerpt": "spawnSync(`node-gyp rebuild --directory=src ${isEmscripten() ? '--nodedir=emscripten' : ''}`, {"
+        },
+        {
+          "file": "dist/libvips.cjs",
+          "line": 127,
+          "excerpt": "const globalLibvipsVersion = spawnSync('pkg-config --modversion vips-cpp', {"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "CC, MALLOC_ARENA_MAX, PKG_CONFIG_PATH, SHARP_FORCE_GLOBAL_LIBVIPS, SHARP_IGNORE_GLOBAL_LIBVIPS, npm_config_arch (+3 more)",
+      "evidence": [
+        {
+          "file": "dist/libvips.cjs",
+          "line": 90,
+          "excerpt": "const { CC } = process.env;"
+        },
+        {
+          "file": "dist/libvips.mjs",
+          "line": 90,
+          "excerpt": "const { CC } = process.env;"
+        },
+        {
+          "file": "dist/utility.cjs",
+          "line": 164,
+          "excerpt": "if (!process.env.MALLOC_ARENA_MAX && detectLibc.familySync() === detectLibc.GLIBC && !sharp._isUsingJemalloc(…"
+        },
+        {
+          "file": "dist/utility.mjs",
+          "line": 164,
+          "excerpt": "if (!process.env.MALLOC_ARENA_MAX && detectLibc.familySync() === detectLibc.GLIBC && !sharp._isUsingJemalloc(…"
+        },
+        {
+          "file": "dist/libvips.cjs",
+          "line": 47,
+          "excerpt": "const { npm_config_arch, npm_config_platform, npm_config_libc } = process.env;"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "require(expression)",
+      "evidence": [
+        {
+          "file": "dist/libvips.cjs",
+          "line": 54,
+          "excerpt": "return require(`@img/sharp-libvips-dev-${buildPlatformArch()}/include`);"
+        },
+        {
+          "file": "dist/libvips.cjs",
+          "line": 72,
+          "excerpt": "return require(`@img/sharp-libvips-dev-${buildPlatformArch()}/lib`);"
+        },
+        {
+          "file": "dist/libvips.cjs",
+          "line": 75,
+          "excerpt": "return require(`@img/sharp-libvips-${buildPlatformArch()}/lib`);"
+        },
+        {
+          "file": "dist/libvips.mjs",
+          "line": 54,
+          "excerpt": "return require(`@img/sharp-libvips-dev-${buildPlatformArch()}/include`);"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "dist/sharp.mjs",
+          "line": 8,
+          "excerpt": "import { createRequire } from \"node:module\""
+        },
+        {
+          "file": "dist/utility.mjs",
+          "line": 7,
+          "excerpt": "import { createRequire } from \"node:module\";"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "CC",
+    "MALLOC_ARENA_MAX",
+    "PKG_CONFIG_PATH",
+    "SHARP_FORCE_GLOBAL_LIBVIPS",
+    "SHARP_IGNORE_GLOBAL_LIBVIPS",
+    "npm_config_arch",
+    "npm_config_libc",
+    "npm_config_platform",
+    "npm_package_config_libvips"
+  ],
+  "endpoints": [
+    "sharp.pixelplumbing.com"
+  ],
+  "installScripts": {},
+  "files": 47,
+  "unpackedSize": 962168,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, spawnSync"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "lovell/sharp",
+      "commit": "51a990faa26ade5586a4934ac9673c98d8893326",
+      "workflow": ".github/workflows/ci.yml@refs/tags/v0.35.5",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 19,
+      "differs": [],
+      "builtOnly": [
+        "dist/channel.cjs",
+        "dist/channel.mjs",
+        "dist/colour.cjs",
+        "dist/colour.mjs",
+        "dist/composite.cjs",
+        "dist/composite.mjs",
+        "dist/constructor.cjs",
+        "dist/constructor.mjs",
+        "dist/index.cjs",
+        "dist/index.d.cts",
+        "dist/index.d.mts",
+        "dist/index.mjs",
+        "dist/input.cjs",
+        "dist/input.mjs",
+        "dist/is.cjs",
+        "dist/is.mjs",
+        "dist/libvips.cjs",
+        "dist/libvips.mjs",
+        "dist/operation.cjs",
+        "dist/operation.mjs",
+        "dist/output.cjs",
+        "dist/output.mjs",
+        "dist/resize.cjs",
+        "dist/resize.mjs",
+        "dist/sharp.cjs",
+        "dist/sharp.mjs",
+        "dist/utility.cjs",
+        "dist/utility.mjs"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "lovell/sharp",
+      "ref": "51a990faa26ade5586a4934ac9673c98d8893326"
+    }
+  },
+  "score": 99,
+  "grade": "A"
+}

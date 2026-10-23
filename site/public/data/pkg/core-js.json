@@ -134,8 +134,7 @@
       "status": "mismatch",
       "identical": 3106,
       "differs": [],
-      "builtOnly": [],
-      "onlyInPackage": [
+      "builtOnly": [
         "es/index.js",
         "features/aggregate-error.js",
         "features/array-buffer/constructor.js",
@@ -661,7 +660,6 @@
         "features/string/virtual/trim-start.js",
         "features/string/virtual/trim.js",
         "features/structured-clone.js",
-        "features/suppressed-error.js",
         "features/symbol/async-dispose.js",
         "features/symbol/async-iterator.js",
         "features/symbol/custom-matcher.js",
@@ -723,7 +721,6 @@
         "features/typed-array/keys.js",
         "features/typed-array/last-index-of.js",
         "features/typed-array/map.js",
-        "features/typed-array/methods.js",
         "features/typed-array/of.js",
         "features/typed-array/reduce-right.js",
         "features/typed-array/reduce.js",
@@ -770,6 +767,10 @@
         "features/weak-set/of.js",
         "full/index.js",
         "stable/index.js"
+      ],
+      "onlyInPackage": [
+        "features/suppressed-error.js",
+        "features/typed-array/methods.js"
       ],
       "note": "compared against tag v3.51.0 (no commit recorded; tags can move); package found in repo directory packages/core-js/",
       "repo": "zloirock/core-js",

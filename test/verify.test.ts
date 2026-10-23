@@ -147,3 +147,50 @@ describe('scoreReport', () => {
     expect(s.grade).toBe('F');
   });
 });
+
+describe('compareToSource: monorepo build output', () => {
+  const pj = (o: object) => JSON.stringify(o);
+  const repo = toBuffers({
+    'package.json': pj({ name: 'root', scripts: { build: 'node scripts/build-entries.js' } }),
+    'packages/corelib/package.json': pj({ name: 'corelib', files: ['features', 'modules', 'index.js'] }),
+    'packages/corelib/index.js': 'module.exports = 1;',
+    'packages/corelib/modules/es.array.at.js': 'at();',
+    'packages/corelib/internals/helper.js': 'h();',
+  });
+
+  it('excuses generated entry points whose names exist under a source folder', () => {
+    const pkg = toBuffers({
+      'package.json': pj({ name: 'corelib', files: ['features', 'modules', 'index.js'] }),
+      'index.js': 'module.exports = 1;',
+      'modules/es.array.at.js': 'at();',
+      'features/array/at.js': 'require("../../modules/es.array.at");',
+      'internals-built/helper.js': 'h();',
+    });
+    const r = compareToSource(pkg, repo, { name: 'corelib' });
+    expect(r.onlyInPackage).toEqual([]);
+    expect(r.builtOnly).toEqual(expect.arrayContaining(['features/array/at.js', 'internals-built/helper.js']));
+    expect(r.status).toBe('match');
+  });
+
+  it('still flags unexplained code and files an install hook runs', () => {
+    const pkg = toBuffers({
+      'package.json': pj({ name: 'corelib', scripts: { postinstall: 'node features/setup.js' } }),
+      'index.js': 'module.exports = 1;',
+      'payload.js': 'evil()',
+      'features/setup.js': 'evil()',
+    });
+    const repoHook = new Map(repo);
+    repoHook.set('packages/corelib/package.json', Buffer.from(pj({ name: 'corelib', files: ['features'], scripts: { postinstall: 'node features/setup.js' } })));
+    repoHook.set('packages/corelib/src/setup.ts', Buffer.from('setup()'));
+    const r = compareToSource(pkg, repoHook, { name: 'corelib' });
+    expect(r.onlyInPackage).toEqual(expect.arrayContaining(['payload.js', 'features/setup.js']));
+    expect(r.status).toBe('mismatch');
+  });
+
+  it('does not excuse anything without a build script', () => {
+    const noBuild = new Map(repo);
+    noBuild.set('package.json', Buffer.from(pj({ name: 'root' })));
+    const r = compareToSource(toBuffers({ 'features/array/at.js': 'x' }), noBuild, { name: 'corelib' });
+    expect(r.onlyInPackage).toEqual(['features/array/at.js']);
+  });
+});
