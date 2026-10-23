@@ -1,0 +1,165 @@
+{
+  "name": "mocha",
+  "version": "12.0.3",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, spawn",
+      "evidence": [
+        {
+          "file": "bin/mocha.js",
+          "line": 12,
+          "excerpt": "import { spawn } from \"node:child_process\";"
+        },
+        {
+          "file": "bin/mocha.js",
+          "line": 122,
+          "excerpt": "const proc = spawn(process.execPath, args, {"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "CI, GITHUB_STEP_SUMMARY, MOCHA_COLORS, MOCHA_OPTIONS",
+      "evidence": [
+        {
+          "file": "lib/utils.cjs",
+          "line": 749,
+          "excerpt": "return !!process.env.CI;"
+        },
+        {
+          "file": "lib/reporters/github-actions.js",
+          "line": 128,
+          "excerpt": "var summaryFile = process.env.GITHUB_STEP_SUMMARY;"
+        },
+        {
+          "file": "lib/reporters/base.js",
+          "line": 149,
+          "excerpt": "(supportsColor.stdout || process.env.MOCHA_COLORS !== undefined);"
+        },
+        {
+          "file": "lib/cli/options.cjs",
+          "line": 148,
+          "excerpt": "const envConfig = parse(process.env.MOCHA_OPTIONS || \"\");"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "eval, import(), require(expression)",
+      "evidence": [
+        {
+          "file": "lib/nodejs/worker.cjs",
+          "line": 89,
+          "excerpt": "argv = eval(\"(\" + serializedOptions + \")\");"
+        },
+        {
+          "file": "lib/nodejs/esm-utils.cjs",
+          "line": 37,
+          "excerpt": "exports.doImport = async (file) => import(file);"
+        },
+        {
+          "file": "lib/cli/config.cjs",
+          "line": 58,
+          "excerpt": "return require(cwdFilepath);"
+        },
+        {
+          "file": "lib/cli/config.cjs",
+          "line": 63,
+          "excerpt": "return require(filepath);"
+        },
+        {
+          "file": "lib/cli/run-helpers.cjs",
+          "line": 289,
+          "excerpt": "map[pluginId] = require(foundId);"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "lib/nodejs/file-unloader.js",
+          "line": 7,
+          "excerpt": "import { createRequire } from \"node:module\";"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "bin/mocha.js",
+          "line": 13,
+          "excerpt": "import fs from \"node:fs\";"
+        },
+        {
+          "file": "lib/cli/config.cjs",
+          "line": 10,
+          "excerpt": "const fs = require(\"node:fs\");"
+        },
+        {
+          "file": "lib/cli/init.js",
+          "line": 8,
+          "excerpt": "import fs from \"node:fs\";"
+        },
+        {
+          "file": "lib/cli/lookup-files.js",
+          "line": 7,
+          "excerpt": "import fs from \"node:fs\";"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "CI",
+    "GITHUB_STEP_SUMMARY",
+    "MOCHA_COLORS",
+    "MOCHA_OPTIONS"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 74,
+  "unpackedSize": 1443342,
+  "risk": 12,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "eval"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, spawn"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "mochajs/mocha",
+      "commit": "51a0cc5530d8e29272406384723e8871245821f1",
+      "workflow": ".github/workflows/release-please.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 72,
+      "differs": [],
+      "builtOnly": [
+        "mocha.js",
+        "mocha.js.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "mochajs/mocha",
+      "ref": "51a0cc5530d8e29272406384723e8871245821f1"
+    }
+  },
+  "score": 94,
+  "grade": "A"
+}

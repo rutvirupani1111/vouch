@@ -1,0 +1,69 @@
+{
+  "name": "node-fetch",
+  "version": "3.3.2",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "http, https, net",
+      "evidence": [
+        {
+          "file": "src/headers.js",
+          "line": 8,
+          "excerpt": "import http from 'node:http';"
+        },
+        {
+          "file": "src/index.js",
+          "line": 9,
+          "excerpt": "import http from 'node:http';"
+        },
+        {
+          "file": "src/index.js",
+          "line": 10,
+          "excerpt": "import https from 'node:https';"
+        },
+        {
+          "file": "src/utils/referrer.js",
+          "line": 1,
+          "excerpt": "import {isIP} from 'node:net';"
+        },
+        {
+          "file": "src/utils/referrer.js",
+          "line": 109,
+          "excerpt": "const hostIPVersion = isIP(hostIp);"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 17,
+  "unpackedSize": 107319,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "http, https, net"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 17,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "node-fetch/node-fetch",
+      "ref": "8b3320d2a7c07bce4afc6b2bf6c3bbddda85b01f"
+    }
+  },
+  "score": 84,
+  "grade": "B"
+}

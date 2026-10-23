@@ -1,0 +1,30 @@
+{
+  "name": "strip-ansi",
+  "version": "7.2.0",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 5,
+  "unpackedSize": 4276,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "chalk/strip-ansi",
+      "ref": "38ff9f2282540422031ed523f0060c7bb575e20f"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

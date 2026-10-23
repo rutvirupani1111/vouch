@@ -1,0 +1,329 @@
+{
+  "name": "vite",
+  "version": "8.3.5",
+  "capabilities": [
+    {
+      "id": "obfuscation",
+      "detail": "high-entropy-strings",
+      "evidence": [
+        {
+          "file": "dist/node/chunks/dist.js",
+          "line": 539,
+          "excerpt": "… #__PURE__ */ decodeTrieDict(\"!}.&u%}'&}*'~!6*)%&,~!J~!J~%L~y<~!R,~~%Lu~~#GD~~#|)1#%}^%}2%+#.##%##%}&%##%'#%…"
+        }
+      ]
+    },
+    {
+      "id": "child_process",
+      "detail": "Worker, child_process, exec, execSync, spawn, worker_threads",
+      "evidence": [
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 17,
+          "excerpt": "import childProcess, { exec, execFile, execSync, spawn } from \"node:child_process\";"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 2492,
+          "excerpt": "exec(\"net use\", { windowsHide: true }, (error, stdout) => {"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 14438,
+          "excerpt": "if (process.platform === \"win32\") currentChildProcess = childProcess.exec(launchCommand, {"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 15669,
+          "excerpt": "exec(command, options, (error, stdout) => {"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 14224,
+          "excerpt": "const editor = getEditorFromMacProcesses(childProcess.execSync(\"ps x -o comm=\", { stdio: ["
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "WebSocket, dns, fetch, http, http2, https (+1 more)",
+      "evidence": [
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 18,
+          "excerpt": "import { promises } from \"node:dns\";"
+        },
+        {
+          "file": "dist/client/bundledDevClient.mjs",
+          "line": 1199,
+          "excerpt": "fetch(new URL(`${base$1}__open-in-editor?file=${encodeURIComponent(file)}`, import.meta.url));"
+        },
+        {
+          "file": "dist/client/client.mjs",
+          "line": 928,
+          "excerpt": "fetch(new URL(`${base$1}__open-in-editor?file=${encodeURIComponent(file)}`, import.meta.url));"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 33738,
+          "excerpt": "const response = await fetch(url);"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 31,
+          "excerpt": "import { STATUS_CODES, createServer, get } from \"node:http\";"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed), BROWSER, BROWSER_ARGS, CHOKIDAR_INTERVAL, CHOKIDAR_PRINT_FSEVENTS_REQUIRE_ERROR, CHOKIDAR_USEPOLLING (+23 more)",
+      "evidence": [
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 14851,
+          "excerpt": "var is_wsl_default = process$1.env.__IS_WSL_TEST__ ? isWsl : isWsl();"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 25235,
+          "excerpt": "if (process.env.__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS && Array.isArray(server.allowedHosts)) {"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 25236,
+          "excerpt": "const rawAdditionalHosts = process.env.__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS;"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 1902,
+          "excerpt": "let value = process.env[key];"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 6080,
+          "excerpt": "if (processEnv[key] && processEnv[key] !== value) value = processEnv[key];"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function, eval, import(), require(expression)",
+      "evidence": [
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 7283,
+          "excerpt": "return (0, eval)(A);"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 3023,
+          "excerpt": "return new Function(`"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 15854,
+          "excerpt": "new Function(\"\\\"use strict\\\";\\nthrow new Error(1)\")();"
+        },
+        {
+          "file": "dist/client/bundledDevClient.mjs",
+          "line": 403,
+          "excerpt": "await import("
+        },
+        {
+          "file": "dist/client/bundledDevClient.mjs",
+          "line": 1298,
+          "excerpt": "const importPromise = import("
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "bin/vite.js",
+          "line": 2,
+          "excerpt": "import module from 'node:module'"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 1,
+          "excerpt": "import { Module, builtinModules, createRequire } from \"node:module\";"
+        }
+      ]
+    },
+    {
+      "id": "native_binary",
+      "detail": "embedded WebAssembly",
+      "evidence": [
+        {
+          "file": "dist/node/chunks/build.js",
+          "line": 1399,
+          "excerpt": "…bAssembly.Module(Buffer.from(\"AGFzbQEAAAABCAJgAX8AYAAAAwQDAQAABQMBAAEGGgV+AUIAC34BQgALfgFCAAt+AUIAC34BQgALBy…"
+        },
+        {
+          "file": "dist/node/chunks/build.js",
+          "line": 1451,
+          "excerpt": "…bAssembly.Module(Buffer.from(\"AGFzbQEAAAABCAJgAX8AYAAAAwUEAQAAAAUDAQABBhoFfwFBAAt/AUEAC38BQQALfwFBAAt/AUEACw…"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 7313,
+          "excerpt": "return A = \"AGFzbQEAAAABKwhgAAF/YAF/AX9gAABgAn9/AX9gBH9/f38AYAN/f38Bf2ABfwBgA39/fwADPj0CAgEEBAAAAAAAAAAAAAAAA…"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": ".npmrc, .yarnrc, fs",
+      "evidence": [
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 6,
+          "excerpt": "import * as fs$1 from \"node:fs\";"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 7,
+          "excerpt": "import fs, { closeSync, existsSync, openSync, readFileSync, readSync, statSync } from \"node:fs\";"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 8,
+          "excerpt": "import fsp, { constants } from \"node:fs/promises\";"
+        },
+        {
+          "file": "dist/node/cli.js",
+          "line": 2,
+          "excerpt": "import fs from \"node:fs\";"
+        },
+        {
+          "file": "dist/node/chunks/node.js",
+          "line": 25180,
+          "excerpt": "\".npmrc\","
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)",
+    "BROWSER",
+    "BROWSER_ARGS",
+    "CHOKIDAR_INTERVAL",
+    "CHOKIDAR_PRINT_FSEVENTS_REQUIRE_ERROR",
+    "CHOKIDAR_USEPOLLING",
+    "CI",
+    "DEBUG",
+    "DEBUG_DISABLE_SOURCE_MAP",
+    "DEBUG_VITE_SOURCEMAP_COMBINE_FILTER",
+    "EDITOR",
+    "FORCE_FETCH_PATH",
+    "LAUNCH_EDITOR",
+    "NODE_ENV",
+    "SYSTEMROOT",
+    "VISUAL",
+    "VITE_CONFIG_NATIVE_IGNORE_WARNING",
+    "VITE_DEBUG_FILTER",
+    "VITE_DEPRECATION_TRACE",
+    "VITE_USER_NODE_ENV",
+    "VP_RUN_NODE_CLIENT_PATH",
+    "WS_NO_BUFFER_UTIL",
+    "WS_NO_UTF_8_VALIDATE",
+    "__IS_WSL_TEST__",
+    "__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS",
+    "npm_config_user_agent",
+    "windir"
+  ],
+  "endpoints": [
+    "foo.com",
+    "ibm.com",
+    "vite.dev"
+  ],
+  "installScripts": {},
+  "files": 37,
+  "unpackedSize": 2383283,
+  "risk": 77,
+  "findings": [
+    {
+      "id": "credential-files",
+      "severity": "high",
+      "title": "Reads credential files",
+      "detail": ".npmrc, .yarnrc"
+    },
+    {
+      "id": "env-dump",
+      "severity": "high",
+      "title": "Reads the whole environment",
+      "detail": "Enumerates process.env instead of named variables and has network access."
+    },
+    {
+      "id": "encoded-blob",
+      "severity": "medium",
+      "title": "Large encoded blob",
+      "detail": "high-entropy-strings"
+    },
+    {
+      "id": "native-binary",
+      "severity": "medium",
+      "title": "Ships native binaries",
+      "detail": "embedded WebAssembly"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function, eval"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, exec, execSync, spawn"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "WebSocket, dns, fetch, http, http2, https (+1 more)"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "vitejs/vite",
+      "commit": "981f07fa4580fb88b333c4450431e4715d2a0b82",
+      "workflow": ".github/workflows/publish.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 21,
+      "differs": [],
+      "builtOnly": [
+        "dist/client/bundledDevClient.mjs",
+        "dist/client/client.mjs",
+        "dist/client/env.mjs",
+        "dist/node/chunks/build.js",
+        "dist/node/chunks/dist.js",
+        "dist/node/chunks/lib.js",
+        "dist/node/chunks/moduleRunnerTransport.d.ts",
+        "dist/node/chunks/node.js",
+        "dist/node/chunks/postcss-import.js",
+        "dist/node/cli.js",
+        "dist/node/index.d.ts",
+        "dist/node/index.js",
+        "dist/node/internal.d.ts",
+        "dist/node/internal.js",
+        "dist/node/module-runner.d.ts",
+        "dist/node/module-runner.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/vite/",
+      "repo": "vitejs/vite",
+      "ref": "981f07fa4580fb88b333c4450431e4715d2a0b82"
+    }
+  },
+  "score": 62,
+  "grade": "C"
+}

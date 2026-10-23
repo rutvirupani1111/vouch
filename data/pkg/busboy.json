@@ -1,0 +1,76 @@
+{
+  "name": "busboy",
+  "version": "1.6.0",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, spawnSync",
+      "evidence": [
+        {
+          "file": "test/test.js",
+          "line": 3,
+          "excerpt": "const { spawnSync } = require('child_process');"
+        },
+        {
+          "file": "test/test.js",
+          "line": 12,
+          "excerpt": "const result = spawnSync(`${process.argv0} ${path}`, {"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "require(expression)",
+      "evidence": [
+        {
+          "file": "test/test-types-multipart-charsets.js",
+          "line": 6,
+          "excerpt": "const { mustCall } = require(`${__dirname}/common.js`);"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "test/test.js",
+          "line": 4,
+          "excerpt": "const { readdirSync } = require('fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 22,
+  "unpackedSize": 124397,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, spawnSync"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 22,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against tag v1.6.0 (no commit recorded; tags can move)",
+      "repo": "mscdex/busboy",
+      "ref": "v1.6.0"
+    }
+  },
+  "score": 84,
+  "grade": "B"
+}

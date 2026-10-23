@@ -1,0 +1,146 @@
+{
+  "name": "superagent",
+  "version": "10.4.1",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "XMLHttpRequest, http, http2, https, net, tls",
+      "evidence": [
+        {
+          "file": "lib/node/index.js",
+          "line": 12,
+          "excerpt": "const http = require('node:http');"
+        },
+        {
+          "file": "lib/node/http2wrapper.js",
+          "line": 3,
+          "excerpt": "const http2 = require('http2');"
+        },
+        {
+          "file": "lib/node/http2wrapper.js",
+          "line": 53,
+          "excerpt": "const session = http2.connect(`${protocol}//${normalizedHost}:${port}`, sessionOptions);"
+        },
+        {
+          "file": "lib/node/index.js",
+          "line": 11,
+          "excerpt": "const https = require('node:https');"
+        },
+        {
+          "file": "lib/node/agent.js",
+          "line": 7,
+          "excerpt": "const net = require('node:net');"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "HTTP2_TEST, NODE_TLS_REJECT_UNAUTHORIZED",
+      "evidence": [
+        {
+          "file": "lib/node/index.js",
+          "line": 313,
+          "excerpt": "this._enableHttp2 = Boolean(process.env.HTTP2_TEST); // internal only"
+        },
+        {
+          "file": "lib/node/index.js",
+          "line": 944,
+          "excerpt": "…s._disableTLSCerts === 'boolean' ? !this._disableTLSCerts : process.env.NODE_TLS_REJECT_UNAUTHORIZED !== '0';"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function",
+      "evidence": [
+        {
+          "file": "dist/superagent.js",
+          "line": 441,
+          "excerpt": "bound = Function('binder', 'return function (' + joiny(boundArgs, ',') + '){ return binder.apply(this,argumen…"
+        },
+        {
+          "file": "dist/superagent.min.js",
+          "line": 1,
+          "excerpt": "…,a=0;a<n;a++)i[a]=\"$\"+a;if(r=Function(\"binder\",\"return function (\"+function(t,e){for(var r=\"\",o=0;o<t.length…"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/node/index.js",
+          "line": 13,
+          "excerpt": "const fs = require('node:fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "HTTP2_TEST",
+    "NODE_TLS_REJECT_UNAUTHORIZED"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 21,
+  "unpackedSize": 606369,
+  "risk": 12,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "XMLHttpRequest, http, http2, https, net, tls"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "13 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/superagent.js",
+        "dist/superagent.min.js",
+        "lib/agent-base.js",
+        "lib/client.js",
+        "lib/node/agent.js",
+        "lib/node/decompress.js",
+        "lib/node/http2wrapper.js",
+        "lib/node/index.js",
+        "lib/node/parsers/image.js",
+        "lib/node/parsers/index.js",
+        "lib/node/parsers/json.js",
+        "lib/node/parsers/text.js",
+        "lib/node/parsers/urlencoded.js",
+        "lib/node/response.js",
+        "lib/node/unzip.js",
+        "lib/request-base.js",
+        "lib/response-base.js",
+        "lib/utils.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "ladjs/superagent",
+      "ref": "d73b68f942c96cb8f61fe1d53600ceadc6d381b6"
+    }
+  },
+  "score": 79,
+  "grade": "B"
+}

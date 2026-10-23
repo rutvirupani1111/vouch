@@ -1,0 +1,33 @@
+{
+  "name": "bcryptjs",
+  "version": "3.0.3",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 11,
+  "unpackedSize": 112292,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 9,
+      "differs": [],
+      "builtOnly": [
+        "umd/index.js",
+        "umd/types.d.ts"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "dcodeIO/bcrypt.js",
+      "ref": "1211e9a2213e0b3ee232a204b3ce899beebce31a"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

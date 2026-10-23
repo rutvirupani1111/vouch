@@ -1,0 +1,82 @@
+{
+  "name": "koa",
+  "version": "3.2.1",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "http, net",
+      "evidence": [
+        {
+          "file": "lib/application.js",
+          "line": 11,
+          "excerpt": "const http = require('node:http')"
+        },
+        {
+          "file": "lib/application.js",
+          "line": 115,
+          "excerpt": "const server = http.createServer(this.callback())"
+        },
+        {
+          "file": "lib/request.js",
+          "line": 8,
+          "excerpt": "const net = require('net')"
+        },
+        {
+          "file": "lib/request.js",
+          "line": 494,
+          "excerpt": "if (net.isIP(hostname)) return []"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "lib/application.js",
+          "line": 79,
+          "excerpt": "this.env = options.env || process.env.NODE_ENV || 'development'"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 11,
+  "unpackedSize": 65032,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "http, net"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "koajs/koa",
+      "commit": "0885f138793445dd3a0f1dee0404932a45eab27f",
+      "workflow": ".github/workflows/npm-publish.yml@refs/heads/master",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 10,
+      "differs": [],
+      "builtOnly": [
+        "dist/koa.mjs"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "koajs/koa",
+      "ref": "0885f138793445dd3a0f1dee0404932a45eab27f"
+    }
+  },
+  "score": 99,
+  "grade": "A"
+}

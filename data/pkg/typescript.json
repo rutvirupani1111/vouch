@@ -1,0 +1,140 @@
+{
+  "name": "typescript",
+  "version": "7.0.2",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, execFileSync, spawn",
+      "evidence": [
+        {
+          "file": "dist/api/async/client.js",
+          "line": 33,
+          "excerpt": "const { spawn } = await import(\"node:child_process\");"
+        },
+        {
+          "file": "dist/api/syncChannel.js",
+          "line": 12,
+          "excerpt": "import { spawn, } from \"node:child_process\";"
+        },
+        {
+          "file": "lib/tsc.js",
+          "line": 4,
+          "excerpt": "import { execFileSync } from \"node:child_process\";"
+        },
+        {
+          "file": "lib/tsc.js",
+          "line": 19,
+          "excerpt": "execFileSync(exe, process.argv.slice(2), { stdio: \"inherit\" });"
+        },
+        {
+          "file": "dist/api/async/client.js",
+          "line": 56,
+          "excerpt": "this.process = spawn(resolveExePath(options), args, {"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "net",
+      "evidence": [
+        {
+          "file": "dist/api/async/client.js",
+          "line": 74,
+          "excerpt": "const { createConnection } = await import(\"node:net\");"
+        },
+        {
+          "file": "dist/api/async/client.js",
+          "line": 76,
+          "excerpt": "this.socket = createConnection(options.pipe, () => {"
+        },
+        {
+          "file": "vendor/vscode-jsonrpc/lib/node/main.js",
+          "line": 60,
+          "excerpt": "const net_1 = require(\"net\");"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "XDG_RUNTIME_DIR",
+      "evidence": [
+        {
+          "file": "vendor/vscode-jsonrpc/lib/node/main.js",
+          "line": 191,
+          "excerpt": "const XDG_RUNTIME_DIR = process.env['XDG_RUNTIME_DIR'];"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "lib/getExePath.js",
+          "line": 2,
+          "excerpt": "import module from \"node:module\";"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/api/syncChannel.js",
+          "line": 13,
+          "excerpt": "import { closeSync, openSync, readSync, writeSync, } from \"node:fs\";"
+        },
+        {
+          "file": "lib/getExePath.js",
+          "line": 1,
+          "excerpt": "import fs from \"node:fs\";"
+        },
+        {
+          "file": "vendor/vscode-jsonrpc/lib/node/main.js",
+          "line": 58,
+          "excerpt": "const fs = __importStar(require(\"fs\"));"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "XDG_RUNTIME_DIR"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 416,
+  "unpackedSize": 2497498,
+  "risk": 6,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, execFileSync, spawn"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "net"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "unknown",
+      "identical": 0,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "repo": "microsoft/TypeScript",
+      "note": "commit 2bd066d87f5bafd315be9f40889d0a60b9e58e0b not found on GitHub"
+    }
+  },
+  "score": 67,
+  "grade": "C"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "wrap-ansi",
+  "version": "10.0.2",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 5,
+  "unpackedSize": 25896,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "chalk/wrap-ansi",
+      "ref": "4e44ec236852ac3ca28a554dbc3b5fc396346f1d"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

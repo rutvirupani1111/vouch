@@ -1,0 +1,28 @@
+{
+  "name": "yup",
+  "version": "1.7.1",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 6,
+  "unpackedSize": 270432,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "unknown",
+      "identical": 0,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "no repository declared; source match skipped"
+    }
+  },
+  "score": 70,
+  "grade": "C"
+}

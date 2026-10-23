@@ -1,0 +1,36 @@
+{
+  "name": "clsx",
+  "version": "2.1.1",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 10,
+  "unpackedSize": 8555,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [
+        "dist/clsx.js",
+        "dist/clsx.min.js",
+        "dist/clsx.mjs",
+        "dist/lite.js",
+        "dist/lite.mjs"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "lukeed/clsx",
+      "ref": "925494cf31bcd97d3337aacd34e659e80cae7fe2"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

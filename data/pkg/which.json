@@ -1,0 +1,53 @@
+{
+  "name": "which",
+  "version": "7.0.0",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "PATH, PATHEXT",
+      "evidence": [
+        {
+          "file": "lib/index.js",
+          "line": 19,
+          "excerpt": "path: optPath = process.env.PATH,"
+        },
+        {
+          "file": "lib/index.js",
+          "line": 20,
+          "excerpt": "pathExt: optPathExt = process.env.PATHEXT,"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "PATH",
+    "PATHEXT"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 5,
+  "unpackedSize": 7487,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "npm/node-which",
+      "commit": "297db11d58eebe01551ae0875a127a89ee63d2cb",
+      "workflow": ".github/workflows/release.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "npm/node-which",
+      "ref": "297db11d58eebe01551ae0875a127a89ee63d2cb"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

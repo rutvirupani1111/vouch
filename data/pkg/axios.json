@@ -1,0 +1,123 @@
+{
+  "name": "axios",
+  "version": "1.20.0",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "XMLHttpRequest, http, http2, https",
+      "evidence": [
+        {
+          "file": "dist/node/axios.cjs",
+          "line": 8,
+          "excerpt": "var http = require('http');"
+        },
+        {
+          "file": "lib/adapters/http.js",
+          "line": 7,
+          "excerpt": "import http from 'http';"
+        },
+        {
+          "file": "dist/node/axios.cjs",
+          "line": 10,
+          "excerpt": "var http2 = require('http2');"
+        },
+        {
+          "file": "dist/node/axios.cjs",
+          "line": 3078,
+          "excerpt": "const session = http2.connect(authority, options);"
+        },
+        {
+          "file": "lib/adapters/http.js",
+          "line": 9,
+          "excerpt": "import http2 from 'http2';"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed), NO_PROXY, no_proxy",
+      "evidence": [
+        {
+          "file": "dist/node/axios.cjs",
+          "line": 2740,
+          "excerpt": "return process.env[key.toLowerCase()] || process.env[key.toUpperCase()] || '';"
+        },
+        {
+          "file": "dist/node/axios.cjs",
+          "line": 3514,
+          "excerpt": "const noProxy = (process.env.no_proxy || process.env.NO_PROXY || '').toLowerCase();"
+        },
+        {
+          "file": "lib/helpers/shouldBypassProxy.js",
+          "line": 447,
+          "excerpt": "const noProxy = (process.env.no_proxy || process.env.NO_PROXY || '').toLowerCase();"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "string timer",
+      "evidence": [
+        {
+          "file": "dist/esm/axios.min.js",
+          "line": 2,
+          "excerpt": "…e),F.postMessage(K,\"*\")}):e=>setTimeout(e));var J,V,K,X;const G=\"undefined\"!=typeof queueMicrotask?queueMicr…"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)",
+    "NO_PROXY",
+    "no_proxy"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 89,
+  "unpackedSize": 1983343,
+  "risk": 12,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "string timer"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "XMLHttpRequest, http, http2, https"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "axios/axios",
+      "commit": "84a9f3b9a4f3244b8c8e818f557d64c7b964fb25",
+      "workflow": ".github/workflows/publish.yml@refs/tags/v1.20.0",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 81,
+      "differs": [],
+      "builtOnly": [
+        "dist/axios.js",
+        "dist/axios.min.js",
+        "dist/axios.min.js.map",
+        "dist/browser/axios.cjs",
+        "dist/esm/axios.js",
+        "dist/esm/axios.min.js",
+        "dist/esm/axios.min.js.map",
+        "dist/node/axios.cjs"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "axios/axios",
+      "ref": "84a9f3b9a4f3244b8c8e818f557d64c7b964fb25"
+    }
+  },
+  "score": 94,
+  "grade": "A"
+}

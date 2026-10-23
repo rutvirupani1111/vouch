@@ -1,0 +1,38 @@
+{
+  "name": "react-router-dom",
+  "version": "7.18.4",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 7,
+  "unpackedSize": 5398,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "remix-run/react-router",
+      "commit": "1b1e0b0e79b21692ce907933475233babdd16e3e",
+      "workflow": ".github/workflows/release.yml@refs/heads/v7",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/index.d.mts",
+        "dist/index.d.ts",
+        "dist/index.js",
+        "dist/index.mjs"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/react-router-dom/",
+      "repo": "remix-run/react-router",
+      "ref": "1b1e0b0e79b21692ce907933475233babdd16e3e"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

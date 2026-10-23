@@ -1,0 +1,56 @@
+{
+  "name": "lodash",
+  "version": "4.18.1",
+  "capabilities": [
+    {
+      "id": "eval",
+      "detail": "Function, string timer",
+      "evidence": [
+        {
+          "file": "template.js",
+          "line": 271,
+          "excerpt": "return Function(importsKeys, sourceURL + 'return ' + source)"
+        },
+        {
+          "file": "lodash.min.js",
+          "line": 112,
+          "excerpt": "…,Ws=Ml||function(n,t){return re.setTimeout(n,t)},Ls=Qi(xs),Cs=Pi(function(n){var t=[];return 46===n.charCode…"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [
+    "npms.io"
+  ],
+  "installScripts": {},
+  "files": 1051,
+  "unpackedSize": 1413741,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function, string timer"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 1051,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "lodash/lodash",
+      "ref": "4f0b76e2eca13de1c1fe8b4305abc1f7d63f4b86"
+    }
+  },
+  "score": 81,
+  "grade": "B"
+}

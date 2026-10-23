@@ -1,0 +1,62 @@
+{
+  "name": "moment",
+  "version": "2.31.0",
+  "capabilities": [
+    {
+      "id": "eval",
+      "detail": "require(expression)",
+      "evidence": [
+        {
+          "file": "dist/moment.js",
+          "line": 2289,
+          "excerpt": "aliasedRequire('./locale/' + normalizedName);"
+        },
+        {
+          "file": "min/moment-with-locales.js",
+          "line": 2295,
+          "excerpt": "aliasedRequire('./locale/' + normalizedName);"
+        },
+        {
+          "file": "min/moment-with-locales.min.js",
+          "line": 6,
+          "excerpt": "…+)*$/.test(t))try{e=ha._abbr,require(\"./locale/\"+a),pa(e)}catch(e){j[a]=null}return l(j,a)?j[a]:void 0}funct…"
+        },
+        {
+          "file": "min/moment.min.js",
+          "line": 6,
+          "excerpt": "…+)*$/.test(n))try{e=ct._abbr,require(\"./locale/\"+t),wt(e)}catch(e){W[t]=null}return c(W,t)?W[t]:void 0}funct…"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [
+    "momentjs.com"
+  ],
+  "installScripts": {},
+  "files": 545,
+  "unpackedSize": 4497001,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "moment/moment",
+      "commit": "15b45d48a176312e8f34143c5a800090abf4787f",
+      "workflow": ".github/workflows/release.yml@refs/tags/2.31.0",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 545,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "moment/moment",
+      "ref": "15b45d48a176312e8f34143c5a800090abf4787f"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

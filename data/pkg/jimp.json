@@ -1,0 +1,59 @@
+{
+  "name": "jimp",
+  "version": "1.6.1",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 31,
+  "unpackedSize": 3311403,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/browser/fonts.d.ts",
+        "dist/browser/fonts.d.ts.map",
+        "dist/browser/fonts.js",
+        "dist/browser/fonts.js.map",
+        "dist/browser/index-browser.d.mts.map",
+        "dist/browser/index-browser.mjs.map",
+        "dist/browser/index.d.ts",
+        "dist/browser/index.js",
+        "dist/browser/index.js.map",
+        "dist/browser/package.json",
+        "dist/commonjs/fonts.d.ts",
+        "dist/commonjs/fonts.d.ts.map",
+        "dist/commonjs/fonts.js",
+        "dist/commonjs/fonts.js.map",
+        "dist/commonjs/index.d.ts",
+        "dist/commonjs/index.d.ts.map",
+        "dist/commonjs/index.js",
+        "dist/commonjs/index.js.map",
+        "dist/commonjs/package.json",
+        "dist/esm/fonts.d.ts",
+        "dist/esm/fonts.d.ts.map",
+        "dist/esm/fonts.js",
+        "dist/esm/fonts.js.map",
+        "dist/esm/index.d.ts",
+        "dist/esm/index.d.ts.map",
+        "dist/esm/index.js",
+        "dist/esm/index.js.map",
+        "dist/esm/package.json"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead; package found in repo directory packages/jimp/",
+      "repo": "jimp-dev/jimp",
+      "ref": "7e6a95694e00a8b6f1bdd9aad709f5413eb9b08c"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

@@ -1,0 +1,93 @@
+{
+  "name": "pug",
+  "version": "3.0.4",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "lib/index.js",
+          "line": 489,
+          "excerpt": "process.env.NODE_ENV === 'production'"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function",
+      "evidence": [
+        {
+          "file": "lib/index.js",
+          "line": 288,
+          "excerpt": "? new Function('', parsed.body + ';return template;')()"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "require.extensions",
+      "evidence": [
+        {
+          "file": "register.js",
+          "line": 19,
+          "excerpt": "require.extensions['.pug'] = compileTemplate;"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/index.js",
+          "line": 13,
+          "excerpt": "var fs = require('fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 5,
+  "unpackedSize": 22534,
+  "risk": 31,
+  "findings": [
+    {
+      "id": "loader-hook",
+      "severity": "high",
+      "title": "Hooks the module loader",
+      "detail": "require.extensions"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "pugjs/pug",
+      "commit": "c323ed3e630b931bc04790efb509d34ac5927040",
+      "workflow": ".github/workflows/rollingversions.yml@refs/heads/master",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/pug/",
+      "repo": "pugjs/pug",
+      "ref": "c323ed3e630b931bc04790efb509d34ac5927040"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

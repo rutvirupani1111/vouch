@@ -1,0 +1,51 @@
+{
+  "name": "lodash-es",
+  "version": "4.18.1",
+  "capabilities": [
+    {
+      "id": "eval",
+      "detail": "Function",
+      "evidence": [
+        {
+          "file": "template.js",
+          "line": 271,
+          "excerpt": "return Function(importsKeys, sourceURL + 'return ' + source)"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [
+    "npms.io"
+  ],
+  "installScripts": {},
+  "files": 647,
+  "unpackedSize": 634630,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 647,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "lodash/lodash",
+      "ref": "d85490ebfb8f49ddc1eab84892aa33a3ef547894"
+    }
+  },
+  "score": 81,
+  "grade": "B"
+}

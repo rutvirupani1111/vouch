@@ -1,0 +1,42 @@
+{
+  "name": "nan",
+  "version": "2.30.0",
+  "capabilities": [
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "tools/1to2.js",
+          "line": 11,
+          "excerpt": "fs = require('fs'),"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 50,
+  "unpackedSize": 462414,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 50,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "nodejs/nan",
+      "ref": "d56d82f4a03e8f0fc7dff91abf2e4ffa2ad69c03"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

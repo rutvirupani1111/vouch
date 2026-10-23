@@ -1,0 +1,171 @@
+{
+  "name": "concurrently",
+  "version": "10.0.6",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process",
+      "evidence": [
+        {
+          "file": "dist/bin/console-codepage.js",
+          "line": 1,
+          "excerpt": "import { spawnSync as baseSpawnSync } from 'node:child_process';"
+        },
+        {
+          "file": "dist/lib/spawn.js",
+          "line": 2,
+          "excerpt": "import { spawn as baseSpawn } from 'node:child_process';"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "SNAP, npm_config_script_shell",
+      "evidence": [
+        {
+          "file": "dist/lib/spawn.js",
+          "line": 35,
+          "excerpt": "const npmScriptShell = process.env[NPM_SCRIPT_SHELL_ENV];"
+        },
+        {
+          "file": "dist/lib/index.js",
+          "line": 24,
+          "excerpt": "!String(process.env.SNAP).startsWith('/snap'), 'Snap', 'Snap confinement can interfere with spawning child pr…"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "dist/bin/read-package-json.js",
+          "line": 2,
+          "excerpt": "import { createRequire } from 'node:module';"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/bin/read-package-json.js",
+          "line": 1,
+          "excerpt": "import { readFileSync } from 'node:fs';"
+        },
+        {
+          "file": "dist/lib/command-parser/expand-wildcard.js",
+          "line": 1,
+          "excerpt": "import fs from 'node:fs';"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "SNAP",
+    "npm_config_script_shell"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 82,
+  "unpackedSize": 415701,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "open-cli-tools/concurrently",
+      "commit": "d84bab65cbfdd8406a457787f71075b31bd6ff3f",
+      "workflow": ".github/workflows/release.yml@refs/tags/v10.0.6",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 15,
+      "differs": [],
+      "builtOnly": [
+        "dist/bin/console-codepage.d.ts",
+        "dist/bin/console-codepage.js",
+        "dist/bin/index.d.ts",
+        "dist/bin/index.js",
+        "dist/bin/normalize-cli-command.d.ts",
+        "dist/bin/normalize-cli-command.js",
+        "dist/bin/read-package-json.d.ts",
+        "dist/bin/read-package-json.js",
+        "dist/lib/assert.d.ts",
+        "dist/lib/assert.js",
+        "dist/lib/command-parser/expand-arguments.d.ts",
+        "dist/lib/command-parser/expand-arguments.js",
+        "dist/lib/command-parser/expand-shortcut.d.ts",
+        "dist/lib/command-parser/expand-shortcut.js",
+        "dist/lib/command-parser/expand-wildcard.d.ts",
+        "dist/lib/command-parser/expand-wildcard.js",
+        "dist/lib/command.d.ts",
+        "dist/lib/command.js",
+        "dist/lib/completion-listener.d.ts",
+        "dist/lib/completion-listener.js",
+        "dist/lib/concurrently.d.ts",
+        "dist/lib/concurrently.js",
+        "dist/lib/date-format.d.ts",
+        "dist/lib/date-format.js",
+        "dist/lib/defaults.d.ts",
+        "dist/lib/defaults.js",
+        "dist/lib/flow-control/flow-controller.d.ts",
+        "dist/lib/flow-control/flow-controller.js",
+        "dist/lib/flow-control/input-handler.d.ts",
+        "dist/lib/flow-control/input-handler.js",
+        "dist/lib/flow-control/kill-on-signal.d.ts",
+        "dist/lib/flow-control/kill-on-signal.js",
+        "dist/lib/flow-control/kill-others.d.ts",
+        "dist/lib/flow-control/kill-others.js",
+        "dist/lib/flow-control/log-error.d.ts",
+        "dist/lib/flow-control/log-error.js",
+        "dist/lib/flow-control/log-exit.d.ts",
+        "dist/lib/flow-control/log-exit.js",
+        "dist/lib/flow-control/log-output.d.ts",
+        "dist/lib/flow-control/log-output.js",
+        "dist/lib/flow-control/log-timings.d.ts",
+        "dist/lib/flow-control/log-timings.js",
+        "dist/lib/flow-control/logger-padding.d.ts",
+        "dist/lib/flow-control/logger-padding.js",
+        "dist/lib/flow-control/output-error-handler.d.ts",
+        "dist/lib/flow-control/output-error-handler.js",
+        "dist/lib/flow-control/restart-process.d.ts",
+        "dist/lib/flow-control/restart-process.js",
+        "dist/lib/flow-control/teardown.d.ts",
+        "dist/lib/flow-control/teardown.js",
+        "dist/lib/index.d.ts",
+        "dist/lib/index.js",
+        "dist/lib/jsonc.d.ts",
+        "dist/lib/jsonc.js",
+        "dist/lib/logger.d.ts",
+        "dist/lib/logger.js",
+        "dist/lib/observables.d.ts",
+        "dist/lib/observables.js",
+        "dist/lib/output-writer.d.ts",
+        "dist/lib/output-writer.js",
+        "dist/lib/prefix-color-selector.d.ts",
+        "dist/lib/prefix-color-selector.js",
+        "dist/lib/spawn.d.ts",
+        "dist/lib/spawn.js",
+        "dist/lib/utils.d.ts",
+        "dist/lib/utils.js",
+        "dist/tsconfig.tsbuildinfo"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "open-cli-tools/concurrently",
+      "ref": "d84bab65cbfdd8406a457787f71075b31bd6ff3f"
+    }
+  },
+  "score": 99,
+  "grade": "A"
+}

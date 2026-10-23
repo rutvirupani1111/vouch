@@ -1,0 +1,57 @@
+{
+  "name": "qs",
+  "version": "6.16.1",
+  "capabilities": [
+    {
+      "id": "eval",
+      "detail": "Function",
+      "evidence": [
+        {
+          "file": "dist/qs.js",
+          "line": 79,
+          "excerpt": "…,c=0;c<e;c++)i[c]=\"$\"+c;if(r=Function(\"binder\",\"return function (\"+joiny(i,\",\")+\"){ return binder.apply(this…"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 20,
+  "unpackedSize": 418793,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "1 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 19,
+      "differs": [],
+      "builtOnly": [
+        "dist/qs.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "ljharb/qs",
+      "ref": "2471b66ae696a8a10915c01453ae2c0f139a5adc"
+    }
+  },
+  "score": 81,
+  "grade": "B"
+}

@@ -1,0 +1,123 @@
+{
+  "name": "svelte",
+  "version": "5.57.2",
+  "capabilities": [
+    {
+      "id": "obfuscation",
+      "detail": "base64-blob, high-entropy-strings",
+      "evidence": [
+        {
+          "file": "compiler/index.js",
+          "line": 1,
+          "excerpt": "…d Cn Uppercase_Letter Lu\",Kn=\"Adlam Adlm Ahom Anatolian_Hieroglyphs Hluw Arabic Arab Armenian Armn Avestan A…"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "import()",
+      "evidence": [
+        {
+          "file": "src/internal/server/crypto.js",
+          "line": 8,
+          "excerpt": "const obfuscated_import = (module_name) => import(/* @vite-ignore */ module_name);"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "Array.__svelte_cleanup, Array.prototype.includes, Array.prototype.indexOf, Array.prototype.lastIndexOf",
+      "evidence": [
+        {
+          "file": "src/internal/client/dev/equality.js",
+          "line": 64,
+          "excerpt": "Array.__svelte_cleanup = () => {"
+        },
+        {
+          "file": "src/internal/client/dev/equality.js",
+          "line": 48,
+          "excerpt": "array_prototype.includes = function (item, from_index) {"
+        },
+        {
+          "file": "src/internal/client/dev/equality.js",
+          "line": 67,
+          "excerpt": "array_prototype.includes = includes;"
+        },
+        {
+          "file": "src/internal/client/dev/equality.js",
+          "line": 16,
+          "excerpt": "array_prototype.indexOf = function (item, from_index) {"
+        },
+        {
+          "file": "src/internal/client/dev/equality.js",
+          "line": 65,
+          "excerpt": "array_prototype.indexOf = indexOf;"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [
+    "foo.com",
+    "svelte.dev"
+  ],
+  "installScripts": {},
+  "files": 388,
+  "unpackedSize": 2946697,
+  "risk": 18,
+  "findings": [
+    {
+      "id": "encoded-blob",
+      "severity": "medium",
+      "title": "Large encoded blob",
+      "detail": "base64-blob, high-entropy-strings"
+    },
+    {
+      "id": "global-patch",
+      "severity": "medium",
+      "title": "Patches globals",
+      "detail": "Array.__svelte_cleanup, Array.prototype.includes, Array.prototype.indexOf, Array.prototype.lastIndexOf"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "2 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "sveltejs/svelte",
+      "commit": "10fdca7d705081cae17bf7d609d46ee6eb237d17",
+      "workflow": ".github/workflows/release.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 375,
+      "differs": [],
+      "builtOnly": [
+        "action.d.ts",
+        "animate.d.ts",
+        "compiler.d.ts",
+        "compiler/index.js",
+        "easing.d.ts",
+        "index.d.ts",
+        "legacy.d.ts",
+        "motion.d.ts",
+        "store.d.ts",
+        "transition.d.ts",
+        "types/compiler/interfaces.d.ts",
+        "types/compiler/preprocess.d.ts",
+        "types/index.d.ts.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/svelte/",
+      "repo": "sveltejs/svelte",
+      "ref": "10fdca7d705081cae17bf7d609d46ee6eb237d17"
+    }
+  },
+  "score": 91,
+  "grade": "A"
+}

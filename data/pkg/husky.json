@@ -1,0 +1,92 @@
+{
+  "name": "husky",
+  "version": "9.1.7",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, spawnSync",
+      "evidence": [
+        {
+          "file": "index.js",
+          "line": 1,
+          "excerpt": "import c from 'child_process'"
+        },
+        {
+          "file": "index.js",
+          "line": 14,
+          "excerpt": "let { status: s, stderr: e } = c.spawnSync('git', ['config', 'core.hooksPath', `${d}/_`])"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "HUSKY, npm_config_user_agent",
+      "evidence": [
+        {
+          "file": "index.js",
+          "line": 9,
+          "excerpt": "if (process.env.HUSKY === '0') return 'HUSKY=0 skip install'"
+        },
+        {
+          "file": "bin.js",
+          "line": 18,
+          "excerpt": "w('.husky/pre-commit', (p.env.npm_config_user_agent?.split('/')[0] ?? 'npm') + ' test\\n')"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "bin.js",
+          "line": 2,
+          "excerpt": "import f, { writeFileSync as w } from 'fs'"
+        },
+        {
+          "file": "index.js",
+          "line": 2,
+          "excerpt": "import f, { readdir, writeFileSync as w } from 'fs'"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "HUSKY",
+    "npm_config_user_agent"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 7,
+  "unpackedSize": 4041,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, spawnSync"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "typicode/husky",
+      "commit": "799e84b716d0e03db80db5d5b0dcdd15b9d555fc",
+      "workflow": ".github/workflows/npm_publish.yml@refs/tags/v9.1.7",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 7,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "typicode/husky",
+      "ref": "799e84b716d0e03db80db5d5b0dcdd15b9d555fc"
+    }
+  },
+  "score": 99,
+  "grade": "A"
+}

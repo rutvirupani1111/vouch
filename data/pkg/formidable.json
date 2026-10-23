@@ -1,0 +1,84 @@
+{
+  "name": "formidable",
+  "version": "3.5.4",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "dist/index.cjs",
+          "line": 1002,
+          "excerpt": "const CUID2_FINGERPRINT = `${process.env.NODE_ENV}-${os.platform()}-${os.hostname()}`;"
+        },
+        {
+          "file": "src/Formidable.js",
+          "line": 19,
+          "excerpt": "const CUID2_FINGERPRINT = `${process.env.NODE_ENV}-${os.platform()}-${os.hostname()}`"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/index.cjs",
+          "line": 5,
+          "excerpt": "var fs = require('node:fs');"
+        },
+        {
+          "file": "dist/index.cjs",
+          "line": 10,
+          "excerpt": "var fsPromises = require('node:fs/promises');"
+        },
+        {
+          "file": "src/Formidable.js",
+          "line": 7,
+          "excerpt": "import fsPromises from 'node:fs/promises';"
+        },
+        {
+          "file": "src/PersistentFile.js",
+          "line": 3,
+          "excerpt": "import fs from 'node:fs';"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 31,
+  "unpackedSize": 203750,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 23,
+      "differs": [],
+      "builtOnly": [
+        "dist/helpers/firstValues.cjs",
+        "dist/helpers/readBooleans.cjs",
+        "dist/index.cjs",
+        "dist/parsers/JSON.cjs",
+        "dist/parsers/Multipart.cjs",
+        "dist/parsers/OctetStream.cjs",
+        "dist/parsers/Querystring.cjs",
+        "dist/parsers/StreamingQuerystring.cjs"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against tag v3.5.4 (no commit recorded; tags can move)",
+      "repo": "node-formidable/formidable",
+      "ref": "v3.5.4"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

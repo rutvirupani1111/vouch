@@ -1,0 +1,132 @@
+{
+  "name": "log4js",
+  "version": "6.9.1",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "cluster",
+      "evidence": [
+        {
+          "file": "lib/clustering.js",
+          "line": 9,
+          "excerpt": "cluster = require('cluster');"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "net",
+      "evidence": [
+        {
+          "file": "lib/appenders/multiprocess.js",
+          "line": 2,
+          "excerpt": "const net = require('net');"
+        },
+        {
+          "file": "lib/appenders/multiprocess.js",
+          "line": 26,
+          "excerpt": "const server = net.createServer((clientSocket) => {"
+        },
+        {
+          "file": "lib/appenders/multiprocess.js",
+          "line": 115,
+          "excerpt": "socket = net.createConnection("
+        },
+        {
+          "file": "lib/appenders/tcp-server.js",
+          "line": 2,
+          "excerpt": "const net = require('net');"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "LOG4JS_CONFIG, NODE_APP_INSTANCE",
+      "evidence": [
+        {
+          "file": "lib/log4js.js",
+          "line": 159,
+          "excerpt": "process.env.LOG4JS_CONFIG || {"
+        },
+        {
+          "file": "lib/clustering.js",
+          "line": 20,
+          "excerpt": "const isPM2Master = () => pm2 && process.env[pm2InstanceVar] === '0';"
+        },
+        {
+          "file": "lib/clustering.js",
+          "line": 59,
+          "excerpt": "debug(`process.env[${pm2InstanceVar}] = ${process.env[pm2InstanceVar]}`);"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "require(expression)",
+      "evidence": [
+        {
+          "file": "lib/appenders/index.js",
+          "line": 36,
+          "excerpt": "return require(resolvedPath);"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/appenders/fileSync.js",
+          "line": 3,
+          "excerpt": "const fs = require('fs');"
+        },
+        {
+          "file": "lib/log4js.js",
+          "line": 22,
+          "excerpt": "const fs = require('fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "LOG4JS_CONFIG",
+    "NODE_APP_INSTANCE"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 33,
+  "unpackedSize": 159728,
+  "risk": 6,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "cluster"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "net"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 33,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "log4js-node/log4js-node",
+      "ref": "26dcec62f9677dceba57de8cd717ff91447781c7"
+    }
+  },
+  "score": 82,
+  "grade": "B"
+}

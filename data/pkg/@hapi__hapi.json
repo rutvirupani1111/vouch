@@ -1,0 +1,64 @@
+{
+  "name": "@hapi/hapi",
+  "version": "21.4.11",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "http, https",
+      "evidence": [
+        {
+          "file": "lib/core.js",
+          "line": 3,
+          "excerpt": "const Http = require('http');"
+        },
+        {
+          "file": "lib/core.js",
+          "line": 543,
+          "excerpt": "… this.settings.listener ?? (this.settings.tls ? Https.createServer(this.settings.tls) : Http.createServer());"
+        },
+        {
+          "file": "lib/transmit.js",
+          "line": 3,
+          "excerpt": "const Http = require('http');"
+        },
+        {
+          "file": "lib/core.js",
+          "line": 4,
+          "excerpt": "const Https = require('https');"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 41,
+  "unpackedSize": 421474,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "http, https"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 41,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "hapijs/hapi",
+      "ref": "58630f377f819d3d172fcfb1c301f2aa29334f9e"
+    }
+  },
+  "score": 84,
+  "grade": "B"
+}

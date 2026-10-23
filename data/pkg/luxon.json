@@ -1,0 +1,62 @@
+{
+  "name": "luxon",
+  "version": "3.7.2",
+  "capabilities": [
+    {
+      "id": "global_hook",
+      "detail": "Array.prototype.0 (if missing), Array.prototype.abutsEnd, Array.prototype.abutsStart, Array.prototype.as, Array.prototype.contains, Array.prototype.count (+83 more)",
+      "evidence": [
+        {
+          "file": "build/global/luxon.min.js",
+          "line": 1,
+          "excerpt": "…i=r[n],o=i[0],i=i[1];0!==i&&(t[o]=i)}return t}var x=function(e){function m(e){var t=\"longterm\"===e.conversio…"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 40,
+  "unpackedSize": 4592735,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "global-patch",
+      "severity": "medium",
+      "title": "Patches globals",
+      "detail": "Array.prototype.0 (if missing), Array.prototype.abutsEnd, Array.prototype.abutsStart, Array.prototype.as, Array.prototype.contains, Array.prototype.count (+83 more)"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 28,
+      "differs": [],
+      "builtOnly": [
+        "build/amd/luxon.js",
+        "build/amd/luxon.js.map",
+        "build/cjs-browser/luxon.js",
+        "build/cjs-browser/luxon.js.map",
+        "build/es6/luxon.mjs",
+        "build/es6/luxon.mjs.map",
+        "build/global/luxon.js",
+        "build/global/luxon.js.map",
+        "build/global/luxon.min.js",
+        "build/global/luxon.min.js.map",
+        "build/node/luxon.js",
+        "build/node/luxon.js.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "moment/luxon",
+      "ref": "4262a38ded7762e22608a9feb9f117b40d338ced"
+    }
+  },
+  "score": 81,
+  "grade": "B"
+}

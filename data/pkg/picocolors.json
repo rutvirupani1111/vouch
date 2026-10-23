@@ -1,0 +1,32 @@
+{
+  "name": "picocolors",
+  "version": "1.1.1",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 7,
+  "unpackedSize": 6373,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "partial",
+      "identical": 6,
+      "differs": [
+        "README.md"
+      ],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "alexeyraspopov/picocolors",
+      "ref": "6f0a4638348ed20633d623ee973f9c9a96f65104"
+    }
+  },
+  "score": 75,
+  "grade": "B"
+}

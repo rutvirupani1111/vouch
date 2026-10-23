@@ -1,0 +1,104 @@
+{
+  "name": "prismjs",
+  "version": "1.30.0",
+  "capabilities": [
+    {
+      "id": "obfuscation",
+      "detail": "high-entropy-strings",
+      "evidence": [
+        {
+          "file": "components/prism-kumir.min.js",
+          "line": 1,
+          "excerpt": "…ortant\"}],keyword:{pattern:o(\"(^|[<nonId>])(?:алг|арг(?:\\\\x20*рез)?|ввод|ВКЛЮЧИТЬ|вс[её]|выбор|вывод|выход|д…"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "XMLHttpRequest",
+      "evidence": [
+        {
+          "file": "plugins/file-highlight/prism-file-highlight.js",
+          "line": 46,
+          "excerpt": "var xhr = new XMLHttpRequest();"
+        },
+        {
+          "file": "plugins/file-highlight/prism-file-highlight.min.js",
+          "line": 1,
+          "excerpt": "…ges(l),function(t,i,a){var r=new XMLHttpRequest;r.open(\"GET\",t,!0),r.onreadystatechange=function(){4==r.read…"
+        },
+        {
+          "file": "prism.js",
+          "line": 1797,
+          "excerpt": "var xhr = new XMLHttpRequest();"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "require(expression), string timer",
+      "evidence": [
+        {
+          "file": "plugins/autoloader/prism-autoloader.min.js",
+          "line": 1,
+          "excerpt": "…){p||(p=!0,t&&t(s))}))})):i&&setTimeout(i,0)}function u(e,a){if(r[e]){for(var s=r[e].callbacks,i=0,t=s.lengt…"
+        },
+        {
+          "file": "components/index.js",
+          "line": 45,
+          "excerpt": "require(pathToLanguage);"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 700,
+  "unpackedSize": 2052735,
+  "risk": 21,
+  "findings": [
+    {
+      "id": "encoded-blob",
+      "severity": "medium",
+      "title": "Large encoded blob",
+      "detail": "high-entropy-strings"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "string timer"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "XMLHttpRequest"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "113 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 700,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "PrismJS/prism",
+      "ref": "93cca40b364215210f23a9e35f085a682a2b8175"
+    }
+  },
+  "score": 75,
+  "grade": "B"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "string-width",
+  "version": "8.3.0",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 5,
+  "unpackedSize": 11986,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "sindresorhus/string-width",
+      "ref": "ffa1de3894af8f0471a86b60a624a3fd7a44580d"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

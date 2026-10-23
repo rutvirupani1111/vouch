@@ -1,0 +1,56 @@
+{
+  "name": "autoprefixer",
+  "version": "10.6.1",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "AUTOPREFIXER_GRID",
+      "evidence": [
+        {
+          "file": "lib/processor.js",
+          "line": 559,
+          "excerpt": "} else if (typeof process.env.AUTOPREFIXER_GRID !== 'undefined') {"
+        },
+        {
+          "file": "lib/processor.js",
+          "line": 560,
+          "excerpt": "if (process.env.AUTOPREFIXER_GRID === 'autoplace') {"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "AUTOPREFIXER_GRID"
+  ],
+  "endpoints": [
+    "twitter.com"
+  ],
+  "installScripts": {},
+  "files": 83,
+  "unpackedSize": 202620,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "postcss/autoprefixer",
+      "commit": "c99614d9148886493b749a1a39442f4de56fbf53",
+      "workflow": ".github/workflows/release.yml@refs/tags/10.6.1",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "partial",
+      "identical": 82,
+      "differs": [
+        "README.md"
+      ],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "postcss/autoprefixer",
+      "ref": "c99614d9148886493b749a1a39442f4de56fbf53"
+    }
+  },
+  "score": 90,
+  "grade": "A"
+}

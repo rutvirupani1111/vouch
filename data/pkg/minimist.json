@@ -1,0 +1,30 @@
+{
+  "name": "minimist",
+  "version": "1.2.8",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 24,
+  "unpackedSize": 54477,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 24,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "minimistjs/minimist",
+      "ref": "6901ee286bc4c16da6830b48b46ce1574703cea1"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

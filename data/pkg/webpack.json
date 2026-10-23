@@ -1,0 +1,273 @@
+{
+  "name": "webpack",
+  "version": "5.112.2",
+  "capabilities": [
+    {
+      "id": "obfuscation",
+      "detail": "base64-blob",
+      "evidence": [
+        {
+          "file": "lib/javascript/data.js",
+          "line": 319,
+          "excerpt": "9: \"Adlam Adlm Ahom Anatolian_Hieroglyphs Hluw Arabic Arab Armenian Armn Avestan Avst Balinese Bali Bamum Bam…"
+        }
+      ]
+    },
+    {
+      "id": "child_process",
+      "detail": "child_process, spawn",
+      "evidence": [
+        {
+          "file": "bin/webpack.js",
+          "line": 33,
+          "excerpt": "const cp = require(\"child_process\");"
+        },
+        {
+          "file": "bin/webpack.js",
+          "line": 36,
+          "excerpt": "const executedCommand = cp.spawn(command, args, {"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "EventSource, fetch, http, https",
+      "evidence": [
+        {
+          "file": "hot/lazy-compilation-web.js",
+          "line": 20,
+          "excerpt": "activeEventSource = new EventSource("
+        },
+        {
+          "file": "lib/schemes/HttpUriPlugin.js",
+          "line": 934,
+          "excerpt": "fetch(new URL(url), { headers }, (res) => {"
+        },
+        {
+          "file": "hot/load-http.js",
+          "line": 6,
+          "excerpt": "return isHTTPS ? import(\"https\") : import(\"http\");"
+        },
+        {
+          "file": "lib/hmr/lazyCompilationBackend.js",
+          "line": 48,
+          "excerpt": "const http = isHttps ? require(\"https\") : require(\"http\");"
+        },
+        {
+          "file": "lib/schemes/HttpUriPlugin.js",
+          "line": 24,
+          "excerpt": "const getHttp = memoize(() => require(\"http\"));"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed), BROWSERSLIST_DISABLE_CACHE, CI, CIRCLECI, FORCE_COLOR, GITHUB_ACTIONS (+8 more)",
+      "evidence": [
+        {
+          "file": "lib/define/DotenvPlugin.js",
+          "line": 513,
+          "excerpt": "? /** @type {string} */ (process.env[key])"
+        },
+        {
+          "file": "lib/define/EnvironmentPlugin.js",
+          "line": 52,
+          "excerpt": "process.env[key] !== undefined"
+        },
+        {
+          "file": "lib/define/EnvironmentPlugin.js",
+          "line": 53,
+          "excerpt": "? process.env[key]"
+        },
+        {
+          "file": "lib/config/browserslistTargetHandler.js",
+          "line": 26,
+          "excerpt": "const cache = process.env.BROWSERSLIST_DISABLE_CACHE ? null : new Map();"
+        },
+        {
+          "file": "lib/util/terminalColors.js",
+          "line": 27,
+          "excerpt": "env.CI !== undefined &&"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function, eval, import(), require(expression), runInThisContext, vm",
+      "evidence": [
+        {
+          "file": "lib/loaders/loadLoader.js",
+          "line": 77,
+          "excerpt": "const dynamicImport = eval(\"(url) => import(url)\");"
+        },
+        {
+          "file": "lib/javascript/syntax-printer.js",
+          "line": 2523,
+          "excerpt": "descend: new Function("
+        },
+        {
+          "file": "lib/javascript/syntax-printer.js",
+          "line": 2529,
+          "excerpt": "backwards: new Function("
+        },
+        {
+          "file": "lib/javascript/syntax-printer.js",
+          "line": 12138,
+          "excerpt": "return new Function("
+        },
+        {
+          "file": "lib/util/binarySearchBounds.js",
+          "line": 111,
+          "excerpt": "const result = new Function(fnSource);"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "bin/webpack.js",
+          "line": 7,
+          "excerpt": "const { constants, enableCompileCache } = require(\"module\");"
+        },
+        {
+          "file": "bin/webpack.js",
+          "line": 84,
+          "excerpt": "(require(\"module\"));"
+        },
+        {
+          "file": "lib/config/defaults.js",
+          "line": 699,
+          "excerpt": "typeof require(\"module\").stripTypeScriptTypes === \"function\" &&"
+        },
+        {
+          "file": "lib/fs/FileSystemInfo.js",
+          "line": 8,
+          "excerpt": "const nodeModule = require(\"module\");"
+        }
+      ]
+    },
+    {
+      "id": "native_binary",
+      "detail": "embedded WebAssembly",
+      "evidence": [
+        {
+          "file": "lib/util/hash/md4.js",
+          "line": 14,
+          "excerpt": "\"AGFzbQEAAAABCAJgAX8AYAAAAwUEAAABAAUDAQABBhoFfwFBAAt/AUEAC38BQQALfwFBAAt/AUEACwciBARpbml0AAIGdXBkYXRlAAEFZmlu…"
+        },
+        {
+          "file": "lib/util/hash/xxhash64.js",
+          "line": 14,
+          "excerpt": "\"AGFzbQEAAAABCAJgAX8AYAAAAwQDAAEABQMBAAEGGgV+AUIAC34BQgALfgFCAAt+AUIAC34BQgALByIEBGluaXQAAQZ1cGRhdGUAAAVmaW5h…"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/config/defaults.js",
+          "line": 8,
+          "excerpt": "const fs = require(\"fs\");"
+        },
+        {
+          "file": "lib/loaders/LoaderRunner.js",
+          "line": 8,
+          "excerpt": "const { readFile } = require(\"fs\");"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)",
+    "BROWSERSLIST_DISABLE_CACHE",
+    "CI",
+    "CIRCLECI",
+    "FORCE_COLOR",
+    "GITHUB_ACTIONS",
+    "GITLAB_CI",
+    "HTTP_PROXY",
+    "NODE_COMPILE_CACHE",
+    "NO_COLOR",
+    "TERM",
+    "TERSER_DEBUG_DIR",
+    "http_proxy"
+  ],
+  "endpoints": [
+    "foo.com",
+    "ibm.com",
+    "webpack.js.org"
+  ],
+  "installScripts": {},
+  "files": 897,
+  "unpackedSize": 14125699,
+  "risk": 55,
+  "findings": [
+    {
+      "id": "env-dump",
+      "severity": "high",
+      "title": "Reads the whole environment",
+      "detail": "Enumerates process.env instead of named variables and has network access."
+    },
+    {
+      "id": "encoded-blob",
+      "severity": "medium",
+      "title": "Large encoded blob",
+      "detail": "base64-blob"
+    },
+    {
+      "id": "native-binary",
+      "severity": "medium",
+      "title": "Ships native binaries",
+      "detail": "embedded WebAssembly"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function, eval, runInThisContext, vm"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, spawn"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "EventSource, fetch, http, https"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "26 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "webpack/webpack",
+      "commit": "e95a7f2764281318c038e9384371797dfef0e48a",
+      "workflow": ".github/workflows/release.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 897,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "webpack/webpack",
+      "ref": "e95a7f2764281318c038e9384371797dfef0e48a"
+    }
+  },
+  "score": 73,
+  "grade": "C"
+}

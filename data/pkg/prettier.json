@@ -1,0 +1,267 @@
+{
+  "name": "prettier",
+  "version": "3.9.10",
+  "capabilities": [
+    {
+      "id": "obfuscation",
+      "detail": "base64-blob, high-entropy-strings",
+      "evidence": [
+        {
+          "file": "plugins/acorn.js",
+          "line": 7,
+          "excerpt": "…d Cn Uppercase_Letter Lu\",jt=\"Adlam Adlm Ahom Anatolian_Hieroglyphs Hluw Arabic Arab Armenian Armn Avestan A…"
+        },
+        {
+          "file": "plugins/acorn.mjs",
+          "line": 7,
+          "excerpt": "…d Cn Uppercase_Letter Lu\",Ft=\"Adlam Adlm Ahom Anatolian_Hieroglyphs Hluw Arabic Arab Armenian Armn Avestan A…"
+        },
+        {
+          "file": "index.mjs",
+          "line": 12675,
+          "excerpt": "var bmpIdentifierStartChars = \"\\xAA\\xB5\\xBA\\xC0-\\xD6\\xD8-\\xF6\\xF8-\\u02C1\\u02C6-\\u02D1\\u02E0-\\u02E4\\u02EC\\u02E…"
+        },
+        {
+          "file": "plugins/acorn.js",
+          "line": 3,
+          "excerpt": "…467,541,1507,4938,6,8489],Hi=\"\\u200C\\u200D\\xB7\\u0300-\\u036F\\u0387\\u0483-\\u0487\\u0591-\\u05BD\\u05BF\\u05C1\\u05C…"
+        },
+        {
+          "file": "plugins/acorn.mjs",
+          "line": 3,
+          "excerpt": "…467,541,1507,4938,6,8489],Hi=\"\\u200C\\u200D\\xB7\\u0300-\\u036F\\u0387\\u0483-\\u0487\\u0591-\\u05BD\\u05BF\\u05C1\\u05C…"
+        }
+      ]
+    },
+    {
+      "id": "child_process",
+      "detail": "Worker, worker_threads",
+      "evidence": [
+        {
+          "file": "internal/experimental-cli.mjs",
+          "line": 11619,
+          "excerpt": "__classPrivateFieldSet2(this, _WorkerShim_worker, new Worker(new URL(code)), \"f\");"
+        },
+        {
+          "file": "internal/experimental-cli.mjs",
+          "line": 11592,
+          "excerpt": "import { Worker } from \"worker_threads\";"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed), BUILD_ID, BUILD_NUMBER, CACHE_DIR, CI, CI_APP_ID (+12 more)",
+      "evidence": [
+        {
+          "file": "index.mjs",
+          "line": 10008,
+          "excerpt": "….env === \"object\" && process.env && process.env.__MINIMATCH_TESTING_PLATFORM__ || process.platform : \"posix\";"
+        },
+        {
+          "file": "internal/legacy-cli.mjs",
+          "line": 775,
+          "excerpt": "if (typeof obj === \"string\") return !!env3[obj];"
+        },
+        {
+          "file": "internal/legacy-cli.mjs",
+          "line": 777,
+          "excerpt": "return env3[obj.env] && env3[obj.env].includes(obj.includes);"
+        },
+        {
+          "file": "internal/legacy-cli.mjs",
+          "line": 781,
+          "excerpt": "return !!env3[k];"
+        },
+        {
+          "file": "internal/legacy-cli.mjs",
+          "line": 764,
+          "excerpt": "(env3.BUILD_ID || // Jenkins, Cloudbees"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function, import(), require(expression)",
+      "evidence": [
+        {
+          "file": "bin/prettier.cjs",
+          "line": 67,
+          "excerpt": "var dynamicImport = new Function(\"module\", \"return import(module)\");"
+        },
+        {
+          "file": "index.mjs",
+          "line": 13672,
+          "excerpt": "const module = await import(pathToFileURL2(file).href);"
+        },
+        {
+          "file": "index.mjs",
+          "line": 15179,
+          "excerpt": "return import(url3);"
+        },
+        {
+          "file": "index.mjs",
+          "line": 18601,
+          "excerpt": "return import(name);"
+        },
+        {
+          "file": "internal/experimental-cli-worker.mjs",
+          "line": 2641,
+          "excerpt": "const moduleExports = await import(url.pathToFileURL(modulePath).href);"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "Function, module, process",
+      "evidence": [
+        {
+          "file": "plugins/angular.js",
+          "line": 1,
+          "excerpt": "…nt\",t[t.Number=4]=\"Number\",t[t.Function=5]=\"Function\",t[t.Inferred=6]=\"Inferred\",t[t.None=7]=\"None\"})(zn||(z…"
+        },
+        {
+          "file": "plugins/typescript.js",
+          "line": 11,
+          "excerpt": "…EnumMember=8]=\"EnumMember\",e[e.Function=16]=\"Function\",e[e.Class=32]=\"Class\",e[e.Interface=64]=\"Interface\",e…"
+        },
+        {
+          "file": "plugins/markdown.js",
+          "line": 30,
+          "excerpt": "…ingify=m,u.run=f,u.runSync=p,u.process=D,u.processSync=x,u;function u(){for(var d=Ep(),k=-1;++k<e.length;)d.…"
+        },
+        {
+          "file": "plugins/postcss.js",
+          "line": 25,
+          "excerpt": "…get(){return i||(i=n()),i}}),n.process=function(o,u,a){return E([n(a)]).process(o,u)},n};E.stringify=Np;E.pa…"
+        },
+        {
+          "file": "bin/prettier.cjs",
+          "line": 60,
+          "excerpt": "var nodeModule = require(\"module\");"
+        }
+      ]
+    },
+    {
+      "id": "native_binary",
+      "detail": "embedded WebAssembly",
+      "evidence": [
+        {
+          "file": "plugins/flow.js",
+          "line": 1,
+          "excerpt": "…rtsWith(\"file://\")}var UA;UA=\"data:application/octet-stream;base64,AGFzbQEAAAAB6gIqYAF/AGACf38AYAN/f38AYAF/A…"
+        },
+        {
+          "file": "plugins/flow.mjs",
+          "line": 1,
+          "excerpt": "…rtsWith(\"file://\")}var UA;UA=\"data:application/octet-stream;base64,AGFzbQEAAAAB6gIqYAF/AGACf38AYAN/f38AYAF/A…"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "index.mjs",
+          "line": 8934,
+          "excerpt": "import * as fs from \"fs\";"
+        },
+        {
+          "file": "index.mjs",
+          "line": 11005,
+          "excerpt": "import * as fs2 from \"fs/promises\";"
+        },
+        {
+          "file": "index.mjs",
+          "line": 13642,
+          "excerpt": "import fs3 from \"fs/promises\";"
+        },
+        {
+          "file": "internal/experimental-cli-worker.mjs",
+          "line": 10,
+          "excerpt": "import { createWriteStream } from \"fs\";"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)",
+    "BUILD_ID",
+    "BUILD_NUMBER",
+    "CACHE_DIR",
+    "CI",
+    "CI_APP_ID",
+    "CI_BUILD_ID",
+    "CI_BUILD_NUMBER",
+    "CI_NAME",
+    "CONTINUOUS_INTEGRATION",
+    "FORCE_COLOR",
+    "NO_COLOR",
+    "PRETTIER_DEBUG",
+    "PRETTIER_EXPERIMENTAL_CLI",
+    "PRETTIER_PERF_REPEAT",
+    "RUN_ID",
+    "TERM",
+    "__MINIMATCH_TESTING_PLATFORM__"
+  ],
+  "endpoints": [
+    "aka.ms",
+    "evilmartians.com",
+    "git.io",
+    "tseslint.com"
+  ],
+  "installScripts": {},
+  "files": 56,
+  "unpackedSize": 9959033,
+  "risk": 36,
+  "findings": [
+    {
+      "id": "encoded-blob",
+      "severity": "medium",
+      "title": "Large encoded blob",
+      "detail": "base64-blob, high-entropy-strings"
+    },
+    {
+      "id": "global-patch",
+      "severity": "medium",
+      "title": "Patches globals",
+      "detail": "Function, process"
+    },
+    {
+      "id": "native-binary",
+      "severity": "medium",
+      "title": "Ships native binaries",
+      "detail": "embedded WebAssembly"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "28 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "unknown",
+      "identical": 0,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "repo": "prettier/prettier",
+      "note": "commit bd676aae6a3805672a21d02198e5d17c9cb1a97b not found on GitHub"
+    }
+  },
+  "score": 52,
+  "grade": "D"
+}

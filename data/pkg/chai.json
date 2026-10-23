@@ -1,0 +1,54 @@
+{
+  "name": "chai",
+  "version": "6.3.0",
+  "capabilities": [
+    {
+      "id": "global_hook",
+      "detail": "Object.prototype.should",
+      "evidence": [
+        {
+          "file": "index.js",
+          "line": 3437,
+          "excerpt": "Object.defineProperty(Object.prototype, \"should\", {"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 7,
+  "unpackedSize": 149545,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "global-patch",
+      "severity": "medium",
+      "title": "Patches globals",
+      "detail": "Object.prototype.should"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "chaijs/chai",
+      "commit": "d86de2a9519bdd0d89aa64c9fbcc0e880513b153",
+      "workflow": ".github/workflows/npm-publish.yml@refs/tags/v6.3.0",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 6,
+      "differs": [],
+      "builtOnly": [
+        "index.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "chaijs/chai",
+      "ref": "d86de2a9519bdd0d89aa64c9fbcc0e880513b153"
+    }
+  },
+  "score": 96,
+  "grade": "A"
+}

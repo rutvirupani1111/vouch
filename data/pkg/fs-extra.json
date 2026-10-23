@@ -1,0 +1,30 @@
+{
+  "name": "fs-extra",
+  "version": "11.4.1",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 32,
+  "unpackedSize": 59898,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 32,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "jprichardson/node-fs-extra",
+      "ref": "1e223d3b1e26b7ebef7f402acf0e3b5533cc5833"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}
