@@ -1,0 +1,52 @@
+{
+  "name": "js-yaml",
+  "version": "5.5.0",
+  "capabilities": [
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "bin/js-yaml.mjs",
+          "line": 3,
+          "excerpt": "import { readFileSync } from 'node:fs'"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 13,
+  "unpackedSize": 1626579,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 4,
+      "differs": [],
+      "builtOnly": [
+        "dist/browser/js-yaml.esm.min.mjs",
+        "dist/browser/js-yaml.esm.min.mjs.map",
+        "dist/browser/js-yaml.umd.min.js",
+        "dist/browser/js-yaml.umd.min.js.map",
+        "dist/js-yaml.cjs.js",
+        "dist/js-yaml.cjs.js.map",
+        "dist/js-yaml.d.ts",
+        "dist/js-yaml.mjs",
+        "dist/js-yaml.mjs.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "nodeca/js-yaml",
+      "ref": "cb62b2dbbaa0b3e7379d83a5d69d8d52d21b6efb"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

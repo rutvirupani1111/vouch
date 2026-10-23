@@ -1,0 +1,72 @@
+{
+  "name": "tailwindcss",
+  "version": "4.3.3",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [
+    "tailwindcss.com"
+  ],
+  "installScripts": {},
+  "files": 34,
+  "unpackedSize": 772893,
+  "risk": 0,
+  "findings": [
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "7 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "tailwindlabs/tailwindcss",
+      "commit": "c2b24dd15fed1c59dd521bd86082f520c9f5ad0d",
+      "workflow": ".github/workflows/release.yml@refs/tags/v4.3.3",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "partial",
+      "identical": 6,
+      "differs": [
+        "index.css"
+      ],
+      "builtOnly": [
+        "dist/chunk-5JIJA4QV.mjs",
+        "dist/chunk-C2OYBFIH.mjs",
+        "dist/chunk-DCG7AFIE.mjs",
+        "dist/colors-C__qRT83.d.ts",
+        "dist/colors.d.mts",
+        "dist/colors.d.ts",
+        "dist/colors.js",
+        "dist/colors.mjs",
+        "dist/default-theme.d.mts",
+        "dist/default-theme.d.ts",
+        "dist/default-theme.js",
+        "dist/default-theme.mjs",
+        "dist/flatten-color-palette.d.mts",
+        "dist/flatten-color-palette.d.ts",
+        "dist/flatten-color-palette.js",
+        "dist/flatten-color-palette.mjs",
+        "dist/lib.d.mts",
+        "dist/lib.d.ts",
+        "dist/lib.js",
+        "dist/lib.mjs",
+        "dist/plugin.d.mts",
+        "dist/plugin.d.ts",
+        "dist/plugin.js",
+        "dist/plugin.mjs",
+        "dist/resolve-config-B4yBzhca.d.ts",
+        "dist/resolve-config-QUZ9b-Gn.d.mts",
+        "dist/types-DWdTiksJ.d.mts"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/tailwindcss/",
+      "repo": "tailwindlabs/tailwindcss",
+      "ref": "c2b24dd15fed1c59dd521bd86082f520c9f5ad0d"
+    }
+  },
+  "score": 90,
+  "grade": "A"
+}

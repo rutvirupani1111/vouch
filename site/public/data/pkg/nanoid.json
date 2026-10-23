@@ -1,0 +1,51 @@
+{
+  "name": "nanoid",
+  "version": "6.0.2",
+  "capabilities": [
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "bin/nanoid.js",
+          "line": 3,
+          "excerpt": "import { readFileSync } from 'node:fs'"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 11,
+  "unpackedSize": 14728,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "ai/nanoid",
+      "commit": "3167e108865702c0539d8e552365ed840ac9d8d9",
+      "workflow": ".github/workflows/release.yml@refs/tags/6.0.2",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 6,
+      "differs": [
+        "README.md",
+        "index.browser.js",
+        "index.js",
+        "non-secure/index.js",
+        "url-alphabet/index.js"
+      ],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "ai/nanoid",
+      "ref": "3167e108865702c0539d8e552365ed840ac9d8d9"
+    }
+  },
+  "score": 65,
+  "grade": "C"
+}

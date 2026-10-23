@@ -1,0 +1,35 @@
+{
+  "name": "joi",
+  "version": "18.3.0",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 39,
+  "unpackedSize": 1890752,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 35,
+      "differs": [],
+      "builtOnly": [
+        "dist/joi-browser.min.js",
+        "dist/joi-browser.min.js.map",
+        "dist/joi-browser.min.mjs",
+        "dist/joi-browser.min.mjs.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "hapijs/joi",
+      "ref": "b3973e5e6d72a9b0d15b697dd3079bc40e0b1353"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

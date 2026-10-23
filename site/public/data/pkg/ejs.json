@@ -1,0 +1,129 @@
+{
+  "name": "ejs",
+  "version": "7.0.2",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, execFileSync",
+      "evidence": [
+        {
+          "file": "jakefile.js",
+          "line": 4,
+          "excerpt": "let proc = require('child_process');"
+        },
+        {
+          "file": "jakefile.js",
+          "line": 149,
+          "excerpt": "proc.execFileSync(npmCmd, ['install', '--no-audit', '--no-fund', packagePath],"
+        },
+        {
+          "file": "jakefile.js",
+          "line": 159,
+          "excerpt": "proc.execFileSync(process.execPath, ['cjs-smoke.cjs'],"
+        },
+        {
+          "file": "jakefile.js",
+          "line": 169,
+          "excerpt": "proc.execFileSync(process.execPath, ['esm-smoke.mjs'],"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function",
+      "evidence": [
+        {
+          "file": "ejs.js",
+          "line": 600,
+          "excerpt": "ctor = (new Function('return (async function(){}).constructor;'))();"
+        },
+        {
+          "file": "ejs.min.js",
+          "line": 1,
+          "excerpt": "…}try{if(opts.async){try{ctor=new Function(\"return (async function(){}).constructor;\")()}catch(e){if(e instan…"
+        },
+        {
+          "file": "lib/cjs/ejs.js",
+          "line": 599,
+          "excerpt": "ctor = (new Function('return (async function(){}).constructor;'))();"
+        },
+        {
+          "file": "lib/esm/ejs.js",
+          "line": 655,
+          "excerpt": "ctor = (new Function('return (async function(){}).constructor;'))();"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "bin/cli.js",
+          "line": 23,
+          "excerpt": "let fs = require('fs');"
+        },
+        {
+          "file": "ejs.js",
+          "line": 24,
+          "excerpt": "var fs_1 = __importDefault(require(\"fs\"));"
+        },
+        {
+          "file": "ejs.min.js",
+          "line": 1,
+          "excerpt": "…e});var fs_1=__importDefault(require(\"fs\"));var path_1=__importDefault(require(\"path\"));var utils_js_1=__imp…"
+        },
+        {
+          "file": "jakefile.js",
+          "line": 1,
+          "excerpt": "let fs = require('fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 16,
+  "unpackedSize": 218428,
+  "risk": 12,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, execFileSync"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 10,
+      "differs": [],
+      "builtOnly": [
+        "ejs.js",
+        "ejs.min.js",
+        "lib/cjs/ejs.js",
+        "lib/cjs/package.json",
+        "lib/cjs/parseargs.js",
+        "lib/cjs/utils.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against tag v7.0.2 (no commit recorded; tags can move)",
+      "repo": "mde/ejs",
+      "ref": "v7.0.2"
+    }
+  },
+  "score": 79,
+  "grade": "B"
+}

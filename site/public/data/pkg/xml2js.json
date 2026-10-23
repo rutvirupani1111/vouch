@@ -1,0 +1,128 @@
+{
+  "name": "xml2js",
+  "version": "0.6.2",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, execSync",
+      "evidence": [
+        {
+          "file": "lib/xml2js.bc.js",
+          "line": 3984,
+          "excerpt": "var child_process = require(\"child_process\");"
+        },
+        {
+          "file": "lib/xml2js.bc.js",
+          "line": 3986,
+          "excerpt": "try{child_process.execSync(cmd, {stdio: \"inherit\"}); return 0;}"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed)",
+      "evidence": [
+        {
+          "file": "lib/xml2js.bc.js",
+          "line": 258,
+          "excerpt": "if(process && process.env && process.env[n] != undefined)"
+        },
+        {
+          "file": "lib/xml2js.bc.js",
+          "line": 259,
+          "excerpt": "return process.env[n];"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "eval",
+      "evidence": [
+        {
+          "file": "lib/xml2js.bc.js",
+          "line": 2701,
+          "excerpt": "function caml_js_eval_string(s){return eval(caml_jsstring_of_string(s));}"
+        },
+        {
+          "file": "lib/xml2js.bc.js",
+          "line": 5839,
+          "excerpt": "return eval(caml_jsstring_of_string(s));"
+        },
+        {
+          "file": "lib/xml2js.bc.js",
+          "line": 5907,
+          "excerpt": "return eval(caml_jsstring_of_string(s));"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/xml2js.bc.js",
+          "line": 1099,
+          "excerpt": "this.fs = require(\"fs\");"
+        },
+        {
+          "file": "lib/xml2js.bc.js",
+          "line": 1142,
+          "excerpt": "function MlNodeDevice(root){this.fs = require(\"fs\"); this.root = root;}"
+        },
+        {
+          "file": "lib/xml2js.bc.js",
+          "line": 5116,
+          "excerpt": "var fs = require(\"fs\"), fd2 = fs.openSync(flags.name, \"rs\");"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 10,
+  "unpackedSize": 3436188,
+  "risk": 12,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "eval"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, execSync"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "1 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 9,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [
+        "lib/xml2js.bc.js"
+      ],
+      "note": "compared against commit from gitHead",
+      "repo": "Leonidas-from-XIV/node-xml2js",
+      "ref": "cf3e061e22e98152b88068c2345bc02581f4d6c7"
+    }
+  },
+  "score": 44,
+  "grade": "D"
+}

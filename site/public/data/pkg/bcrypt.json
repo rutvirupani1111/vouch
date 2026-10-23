@@ -1,0 +1,112 @@
+{
+  "name": "bcrypt",
+  "version": "6.0.0",
+  "capabilities": [
+    {
+      "id": "install_script",
+      "detail": "install (reachable at install time)",
+      "evidence": [
+        {
+          "file": "package.json",
+          "line": 29,
+          "excerpt": "\"install\": \"node-gyp-build\","
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "TEST_TIMEOUT_SECONDS",
+      "evidence": [
+        {
+          "file": "test/repetitions.test.js",
+          "line": 4,
+          "excerpt": "const { TEST_TIMEOUT_SECONDS } = process.env;"
+        }
+      ]
+    },
+    {
+      "id": "native_binary",
+      "detail": "prebuilds/darwin-arm64/bcrypt.node, prebuilds/darwin-x64/bcrypt.node, prebuilds/linux-arm/bcrypt.glibc.node, prebuilds/linux-arm/bcrypt.musl.node, prebuilds/linux-arm64/bcrypt.glibc.node, prebuilds/linux-arm64/bcrypt.musl.node (+4 more)",
+      "evidence": [
+        {
+          "file": "prebuilds/darwin-arm64/bcrypt.node",
+          "line": 0,
+          "excerpt": "native addon, 86.5 kB"
+        },
+        {
+          "file": "prebuilds/darwin-x64/bcrypt.node",
+          "line": 0,
+          "excerpt": "native addon, 54.2 kB"
+        },
+        {
+          "file": "prebuilds/linux-arm/bcrypt.glibc.node",
+          "line": 0,
+          "excerpt": "native addon, 65.9 kB"
+        },
+        {
+          "file": "prebuilds/linux-arm/bcrypt.musl.node",
+          "line": 0,
+          "excerpt": "native addon, 65.8 kB"
+        },
+        {
+          "file": "prebuilds/linux-arm64/bcrypt.glibc.node",
+          "line": 0,
+          "excerpt": "native addon, 74.8 kB"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "TEST_TIMEOUT_SECONDS"
+  ],
+  "endpoints": [],
+  "installScripts": {
+    "install": "node-gyp-build"
+  },
+  "files": 38,
+  "unpackedSize": 1106749,
+  "risk": 18,
+  "findings": [
+    {
+      "id": "install-script",
+      "severity": "medium",
+      "title": "Runs code on install",
+      "detail": "install: node-gyp-build"
+    },
+    {
+      "id": "native-binary",
+      "severity": "medium",
+      "title": "Ships native binaries",
+      "detail": "prebuilds/darwin-arm64/bcrypt.node, prebuilds/darwin-x64/bcrypt.node, prebuilds/linux-arm/bcrypt.glibc.node, prebuilds/linux-arm/bcrypt.musl.node, prebuilds/linux-arm64/bcrypt.glibc.node, prebuilds/linux-arm64/bcrypt.musl.node (+4 more)"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 28,
+      "differs": [],
+      "builtOnly": [
+        "prebuilds/darwin-arm64/bcrypt.node",
+        "prebuilds/darwin-x64/bcrypt.node",
+        "prebuilds/linux-arm/bcrypt.glibc.node",
+        "prebuilds/linux-arm/bcrypt.musl.node",
+        "prebuilds/linux-arm64/bcrypt.glibc.node",
+        "prebuilds/linux-arm64/bcrypt.musl.node",
+        "prebuilds/linux-x64/bcrypt.glibc.node",
+        "prebuilds/linux-x64/bcrypt.musl.node",
+        "prebuilds/win32-arm64/bcrypt.node",
+        "prebuilds/win32-x64/bcrypt.node"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against tag v6.0.0 (no commit recorded; tags can move)",
+      "repo": "kelektiv/node.bcrypt.js",
+      "ref": "v6.0.0"
+    }
+  },
+  "score": 76,
+  "grade": "B"
+}

@@ -1,0 +1,91 @@
+{
+  "name": "mysql2",
+  "version": "3.24.6",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "net, tls",
+      "evidence": [
+        {
+          "file": "lib/base/connection.js",
+          "line": 18,
+          "excerpt": "const Net = require('net');"
+        },
+        {
+          "file": "lib/base/connection.js",
+          "line": 100,
+          "excerpt": "this.stream = Net.connect(opts.config.socketPath);"
+        },
+        {
+          "file": "lib/base/connection.js",
+          "line": 102,
+          "excerpt": "this.stream = Net.connect(opts.config.port, opts.config.host);"
+        },
+        {
+          "file": "lib/server.js",
+          "line": 3,
+          "excerpt": "const net = require('net');"
+        },
+        {
+          "file": "lib/auth_plugins/sha256_password.js",
+          "line": 6,
+          "excerpt": "const Tls = require('tls');"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "NODE_DEBUG, TZ",
+      "evidence": [
+        {
+          "file": "lib/packets/index.js",
+          "line": 60,
+          "excerpt": "if (process.env.NODE_DEBUG) {"
+        },
+        {
+          "file": "lib/parsers/local_date.js",
+          "line": 24,
+          "excerpt": "return process.env.TZ;"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_DEBUG",
+    "TZ"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 135,
+  "unpackedSize": 630064,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "net, tls"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "sidorares/node-mysql2",
+      "commit": "7f65d9af6e2cc87fea33cce9319c11faf266363a",
+      "workflow": ".github/workflows/release.yml@refs/heads/master",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 135,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "sidorares/node-mysql2",
+      "ref": "7f65d9af6e2cc87fea33cce9319c11faf266363a"
+    }
+  },
+  "score": 99,
+  "grade": "A"
+}

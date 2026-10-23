@@ -1,0 +1,158 @@
+{
+  "name": "@reduxjs/toolkit",
+  "version": "2.13.0",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "fetch",
+      "evidence": [
+        {
+          "file": "dist/query/cjs/rtk-query.development.cjs",
+          "line": 116,
+          "excerpt": "const defaultFetchFn = (...args) => fetch(...args);"
+        },
+        {
+          "file": "dist/query/cjs/rtk-query.production.min.cjs",
+          "line": 1,
+          "excerpt": "…);return t.signal},T=(...e)=>fetch(...e),E=e=>e.status>=200&&e.status<=299,D=e=>/ion\\/(vnd\\.api\\+)?json/.tes…"
+        },
+        {
+          "file": "dist/query/rtk-query.browser.mjs",
+          "line": 1,
+          "excerpt": "…;return t.signal},ue=(...e)=>fetch(...e),de=e=>e.status>=200&&e.status<=299,fe=e=>/ion\\/(vnd\\.api\\+)?json/.t…"
+        },
+        {
+          "file": "dist/query/rtk-query.legacy-esm.js",
+          "line": 219,
+          "excerpt": "const defaultFetchFn = (...args) => fetch(...args);"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "dist/cjs/index.js",
+          "line": 2,
+          "excerpt": "if (process.env.NODE_ENV === 'production') {"
+        },
+        {
+          "file": "dist/query/cjs/index.js",
+          "line": 2,
+          "excerpt": "if (process.env.NODE_ENV === 'production') {"
+        },
+        {
+          "file": "dist/query/react/cjs/index.js",
+          "line": 2,
+          "excerpt": "if (process.env.NODE_ENV === 'production') {"
+        },
+        {
+          "file": "dist/query/react/rtk-query-react.legacy-esm.js",
+          "line": 269,
+          "excerpt": "if (process.env.NODE_ENV !== \"production\") {"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [
+    "redux-toolkit.js.org",
+    "redux.js.org"
+  ],
+  "installScripts": {},
+  "files": 172,
+  "unpackedSize": 6411951,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "fetch"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "6 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "reduxjs/redux-toolkit",
+      "commit": "370f7eb6403bdfdb1a2ab5b90fbcfd8eaee7d57b",
+      "workflow": ".github/workflows/publish.yml@refs/heads/master",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 119,
+      "differs": [],
+      "builtOnly": [
+        "dist/cjs/index.js",
+        "dist/cjs/redux-toolkit.development.cjs",
+        "dist/cjs/redux-toolkit.development.cjs.map",
+        "dist/cjs/redux-toolkit.production.min.cjs",
+        "dist/cjs/redux-toolkit.production.min.cjs.map",
+        "dist/index.d.mts",
+        "dist/index.d.ts",
+        "dist/query/cjs/index.js",
+        "dist/query/cjs/rtk-query.development.cjs",
+        "dist/query/cjs/rtk-query.development.cjs.map",
+        "dist/query/cjs/rtk-query.production.min.cjs",
+        "dist/query/cjs/rtk-query.production.min.cjs.map",
+        "dist/query/index.d.mts",
+        "dist/query/index.d.ts",
+        "dist/query/react/cjs/index.js",
+        "dist/query/react/cjs/rtk-query-react.development.cjs",
+        "dist/query/react/cjs/rtk-query-react.development.cjs.map",
+        "dist/query/react/cjs/rtk-query-react.production.min.cjs",
+        "dist/query/react/cjs/rtk-query-react.production.min.cjs.map",
+        "dist/query/react/index.d.mts",
+        "dist/query/react/index.d.ts",
+        "dist/query/react/rtk-query-react.browser.mjs",
+        "dist/query/react/rtk-query-react.browser.mjs.map",
+        "dist/query/react/rtk-query-react.legacy-esm.js",
+        "dist/query/react/rtk-query-react.legacy-esm.js.map",
+        "dist/query/react/rtk-query-react.modern.mjs",
+        "dist/query/react/rtk-query-react.modern.mjs.map",
+        "dist/query/rtk-query.browser.mjs",
+        "dist/query/rtk-query.browser.mjs.map",
+        "dist/query/rtk-query.legacy-esm.js",
+        "dist/query/rtk-query.legacy-esm.js.map",
+        "dist/query/rtk-query.modern.mjs",
+        "dist/query/rtk-query.modern.mjs.map",
+        "dist/react/cjs/index.js",
+        "dist/react/cjs/redux-toolkit-react.development.cjs",
+        "dist/react/cjs/redux-toolkit-react.development.cjs.map",
+        "dist/react/cjs/redux-toolkit-react.production.min.cjs",
+        "dist/react/cjs/redux-toolkit-react.production.min.cjs.map",
+        "dist/react/index.d.mts",
+        "dist/react/index.d.ts",
+        "dist/react/redux-toolkit-react.browser.mjs",
+        "dist/react/redux-toolkit-react.browser.mjs.map",
+        "dist/react/redux-toolkit-react.legacy-esm.js",
+        "dist/react/redux-toolkit-react.legacy-esm.js.map",
+        "dist/react/redux-toolkit-react.modern.mjs",
+        "dist/react/redux-toolkit-react.modern.mjs.map",
+        "dist/redux-toolkit.browser.mjs",
+        "dist/redux-toolkit.browser.mjs.map",
+        "dist/redux-toolkit.legacy-esm.js",
+        "dist/redux-toolkit.legacy-esm.js.map",
+        "dist/redux-toolkit.modern.mjs",
+        "dist/redux-toolkit.modern.mjs.map",
+        "dist/uncheckedindexed.ts"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/toolkit/",
+      "repo": "reduxjs/redux-toolkit",
+      "ref": "370f7eb6403bdfdb1a2ab5b90fbcfd8eaee7d57b"
+    }
+  },
+  "score": 99,
+  "grade": "A"
+}

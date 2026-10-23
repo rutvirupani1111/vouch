@@ -1,0 +1,45 @@
+{
+  "name": "multer",
+  "version": "2.5.0",
+  "capabilities": [
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "storage/disk.js",
+          "line": 1,
+          "excerpt": "var fs = require('fs')"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 12,
+  "unpackedSize": 55242,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "expressjs/multer",
+      "commit": "2c380d06cdaacc68bbef8b36244493a3d33d6b88",
+      "workflow": ".github/workflows/npm-publish.yml@refs/tags/v2.5.0",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 12,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "expressjs/multer",
+      "ref": "2c380d06cdaacc68bbef8b36244493a3d33d6b88"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

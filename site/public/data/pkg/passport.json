@@ -1,0 +1,49 @@
+{
+  "name": "passport",
+  "version": "0.7.0",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "http",
+      "evidence": [
+        {
+          "file": "lib/middleware/authenticate.js",
+          "line": 4,
+          "excerpt": "var http = require('http')"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 21,
+  "unpackedSize": 156687,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "http"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 21,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "jaredhanson/passport",
+      "ref": "33b92f96616642864844753a481df7c5b823e047"
+    }
+  },
+  "score": 84,
+  "grade": "B"
+}

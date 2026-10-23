@@ -1,0 +1,81 @@
+{
+  "name": "markdown-it",
+  "version": "15.0.3",
+  "capabilities": [
+    {
+      "id": "obfuscation",
+      "detail": "high-entropy-strings",
+      "evidence": [
+        {
+          "file": "dist/browser/markdown-it.esm.min.mjs",
+          "line": 316,
+          "excerpt": "var ue = /* #__PURE__ */ le(\"!}.&u%}'&}*'~!6*)%&,~!J~!J~%L~y<~!R,~~%Lu~~#GD~~#|)1#%}^%}2%+#.##%##%}&%##%'#%##…"
+        },
+        {
+          "file": "dist/browser/markdown-it.umd.min.js",
+          "line": 2,
+          "excerpt": "… S[C++]=n}return S}var ue=le(\"!}.&u%}'&}*'~!6*)%&,~!J~!J~%L~y<~!R,~~%Lu~~#GD~~#|)1#%}^%}2%+#.##%##%}&%##%'#%…"
+        },
+        {
+          "file": "dist/markdown-it.cjs.js",
+          "line": 257,
+          "excerpt": "… #__PURE__ */ decodeTrieDict(\"!}.&u%}'&}*'~!6*)%&,~!J~!J~%L~y<~!R,~~%Lu~~#GD~~#|)1#%}^%}2%+#.##%##%}&%##%'#%…"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "bin/markdown-it.mjs",
+          "line": 4,
+          "excerpt": "import fs from 'node:fs'"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 14,
+  "unpackedSize": 2064760,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "encoded-blob",
+      "severity": "medium",
+      "title": "Large encoded blob",
+      "detail": "high-entropy-strings"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 4,
+      "differs": [],
+      "builtOnly": [
+        "dist/browser/markdown-it.esm.min.mjs",
+        "dist/browser/markdown-it.esm.min.mjs.map",
+        "dist/browser/markdown-it.umd.min.js",
+        "dist/browser/markdown-it.umd.min.js.map",
+        "dist/markdown-it.cjs.js",
+        "dist/markdown-it.cjs.js.map",
+        "dist/markdown-it.d.cts",
+        "dist/markdown-it.d.mts",
+        "dist/markdown-it.mjs",
+        "dist/markdown-it.mjs.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "markdown-it/markdown-it",
+      "ref": "a8c00d474ec9b304fad9b71c16d6fa8b4909279e"
+    }
+  },
+  "score": 81,
+  "grade": "B"
+}

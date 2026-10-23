@@ -1,0 +1,30 @@
+{
+  "name": "micromatch",
+  "version": "4.0.8",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 4,
+  "unpackedSize": 56599,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 4,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "micromatch/micromatch",
+      "ref": "8bd704ec0d9894693d35da425d827819916be920"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

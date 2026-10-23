@@ -1,0 +1,111 @@
+{
+  "name": "d3",
+  "version": "7.9.0",
+  "capabilities": [
+    {
+      "id": "obfuscation",
+      "detail": "base64-blob",
+      "evidence": [
+        {
+          "file": "dist/d3.js",
+          "line": 17459,
+          "excerpt": "var viridis = ramp(colors(\"44015444025645045745055946075a46085c460a5d460b5e470d60470e614710634711644713654814…"
+        },
+        {
+          "file": "dist/d3.min.js",
+          "line": 2,
+          "excerpt": "….floor(e*n)))]}}var hm=lm(H_(\"44015444025645045745055946075a46085c460a5d460b5e470d60470e61471063471164471365…"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "fetch",
+      "evidence": [
+        {
+          "file": "dist/d3.js",
+          "line": 8329,
+          "excerpt": "return fetch(input, init).then(responseBlob);"
+        },
+        {
+          "file": "dist/d3.js",
+          "line": 8338,
+          "excerpt": "return fetch(input, init).then(responseArrayBuffer);"
+        },
+        {
+          "file": "dist/d3.js",
+          "line": 8347,
+          "excerpt": "return fetch(input, init).then(responseText);"
+        },
+        {
+          "file": "dist/d3.min.js",
+          "line": 2,
+          "excerpt": "…xt()}function mc(t,n){return fetch(t,n).then(bc)}function xc(t){return function(n,e,r){return 2===arguments.…"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function",
+      "evidence": [
+        {
+          "file": "dist/d3.js",
+          "line": 8124,
+          "excerpt": "return new Function(\"d\", \"return {\" + columns.map(function(name, i) {"
+        },
+        {
+          "file": "dist/d3.min.js",
+          "line": 2,
+          "excerpt": "…,Vu=13;function Wu(t){return new Function(\"d\",\"return {\"+t.map((function(t,n){return JSON.stringify(t)+\": d[…"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 6,
+  "unpackedSize": 871285,
+  "risk": 21,
+  "findings": [
+    {
+      "id": "encoded-blob",
+      "severity": "medium",
+      "title": "Large encoded blob",
+      "detail": "base64-blob"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "fetch"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 4,
+      "differs": [],
+      "builtOnly": [
+        "dist/d3.js",
+        "dist/d3.min.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "d3/d3",
+      "ref": "1f8dd3b92960f58726006532c11e9457864513ec"
+    }
+  },
+  "score": 75,
+  "grade": "B"
+}

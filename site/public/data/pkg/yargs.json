@@ -1,0 +1,112 @@
+{
+  "name": "yargs",
+  "version": "18.2.0",
+  "capabilities": [
+    {
+      "id": "install_script",
+      "detail": "prepare (reachable at install time)",
+      "evidence": [
+        {
+          "file": "package.json",
+          "line": 76,
+          "excerpt": "\"prepare\": \"npm run compile\","
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed)",
+      "evidence": [
+        {
+          "file": "lib/platform-shims/esm.mjs",
+          "line": 29,
+          "excerpt": "return process.env[key]"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "lib/platform-shims/esm.mjs",
+          "line": 13,
+          "excerpt": "import { createRequire } from 'node:module';"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/platform-shims/esm.mjs",
+          "line": 15,
+          "excerpt": "import { readFileSync, readdirSync } from 'node:fs'"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)"
+  ],
+  "endpoints": [
+    "yargs.js.org"
+  ],
+  "installScripts": {
+    "prepare": "npm run compile"
+  },
+  "files": 59,
+  "unpackedSize": 236734,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "install-script",
+      "severity": "medium",
+      "title": "Runs code on install",
+      "detail": "prepare: npm run compile"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "yargs/yargs",
+      "commit": "e49b60aa1ab2bfe061a9ecd5d61f4c5130fe3e14",
+      "workflow": ".github/workflows/release-please.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 39,
+      "differs": [],
+      "builtOnly": [
+        "build/lib/argsert.js",
+        "build/lib/command.js",
+        "build/lib/completion-templates.js",
+        "build/lib/completion.js",
+        "build/lib/middleware.js",
+        "build/lib/parse-command.js",
+        "build/lib/typings/common-types.js",
+        "build/lib/typings/yargs-parser-types.js",
+        "build/lib/usage.js",
+        "build/lib/utils/apply-extends.js",
+        "build/lib/utils/is-promise.js",
+        "build/lib/utils/levenshtein.js",
+        "build/lib/utils/maybe-async-result.js",
+        "build/lib/utils/obj-filter.js",
+        "build/lib/utils/process-argv.js",
+        "build/lib/utils/set-blocking.js",
+        "build/lib/utils/which-module.js",
+        "build/lib/validation.js",
+        "build/lib/yargs-factory.js",
+        "build/lib/yerror.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "yargs/yargs",
+      "ref": "e49b60aa1ab2bfe061a9ecd5d61f4c5130fe3e14"
+    }
+  },
+  "score": 96,
+  "grade": "A"
+}

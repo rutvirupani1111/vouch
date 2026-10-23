@@ -1,0 +1,56 @@
+{
+  "name": "preact",
+  "version": "11.0.1",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 88,
+  "unpackedSize": 619707,
+  "risk": 0,
+  "findings": [
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "4 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "preactjs/preact",
+      "commit": "04074e2162c85852797b09a1d220f9483182fdce",
+      "workflow": ".github/workflows/release.yml@refs/tags/11.0.1",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 74,
+      "differs": [],
+      "builtOnly": [
+        "compat/dist/compat.mjs.map",
+        "debug/dist/debug.mjs.map",
+        "devtools/dist/devtools.mjs.map",
+        "dist/preact.mjs",
+        "dist/preact.mjs.map",
+        "hooks/dist/hooks.mjs.map",
+        "jsx-runtime/dist/jsxRuntime.mjs.map",
+        "test-utils/dist/testUtils.mjs.map"
+      ],
+      "onlyInPackage": [
+        "compat/dist/compat.mjs",
+        "debug/dist/debug.mjs",
+        "devtools/dist/devtools.mjs",
+        "hooks/dist/hooks.mjs",
+        "jsx-runtime/dist/jsxRuntime.mjs",
+        "test-utils/dist/testUtils.mjs"
+      ],
+      "note": "compared against commit from provenance",
+      "repo": "preactjs/preact",
+      "ref": "04074e2162c85852797b09a1d220f9483182fdce"
+    }
+  },
+  "score": 65,
+  "grade": "C"
+}

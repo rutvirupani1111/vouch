@@ -1,0 +1,121 @@
+{
+  "name": "execa",
+  "version": "10.2.1",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, execFile, spawn, spawnSync",
+      "evidence": [
+        {
+          "file": "lib/methods/main-async.js",
+          "line": 2,
+          "excerpt": "import {spawn} from 'node:child_process';"
+        },
+        {
+          "file": "lib/methods/main-sync.js",
+          "line": 1,
+          "excerpt": "import {spawnSync} from 'node:child_process';"
+        },
+        {
+          "file": "lib/methods/template.js",
+          "line": 1,
+          "excerpt": "import {ChildProcess} from 'node:child_process';"
+        },
+        {
+          "file": "lib/return/early-error.js",
+          "line": 1,
+          "excerpt": "import {ChildProcess} from 'node:child_process';"
+        },
+        {
+          "file": "lib/terminate/kill-descendants.js",
+          "line": 75,
+          "excerpt": "execFile(taskkillFile, ['/pid', `${subprocess.pid}`, '/T', '/F'], error => {"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "FORCE_COLOR, SystemRoot, comspec, windir",
+      "evidence": [
+        {
+          "file": "lib/arguments/command-file.js",
+          "line": 55,
+          "excerpt": "file: process.env.comspec || 'cmd.exe',"
+        },
+        {
+          "file": "lib/verbose/default.js",
+          "line": 12,
+          "excerpt": "const hasColors = process.env.FORCE_COLOR !== undefined || process.stderr.isTTY === true;"
+        },
+        {
+          "file": "lib/terminate/kill-descendants.js",
+          "line": 84,
+          "excerpt": "const windowsDirectory = [process.env.SystemRoot, process.env.windir]"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/arguments/command-file.js",
+          "line": 1,
+          "excerpt": "import {openSync, readSync, closeSync} from 'node:fs';"
+        },
+        {
+          "file": "lib/arguments/cwd.js",
+          "line": 1,
+          "excerpt": "import {statSync} from 'node:fs';"
+        },
+        {
+          "file": "lib/io/output-sync.js",
+          "line": 1,
+          "excerpt": "import {writeFileSync, appendFileSync} from 'node:fs';"
+        },
+        {
+          "file": "lib/stdio/handle-async.js",
+          "line": 1,
+          "excerpt": "import {createReadStream, createWriteStream} from 'node:fs';"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "FORCE_COLOR",
+    "SystemRoot",
+    "comspec",
+    "windir"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 148,
+  "unpackedSize": 424921,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, execFile, spawn, spawnSync"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 148,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "sindresorhus/execa",
+      "ref": "247faa0ff0641020e8790475989cee72df85d62b"
+    }
+  },
+  "score": 84,
+  "grade": "B"
+}

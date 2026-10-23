@@ -1,0 +1,85 @@
+{
+  "name": "immer",
+  "version": "11.2.9",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "dist/cjs/immer.cjs.development.js",
+          "line": 54,
+          "excerpt": "var errors = process.env.NODE_ENV !== \"production\" ? ["
+        },
+        {
+          "file": "dist/cjs/immer.cjs.development.js",
+          "line": 86,
+          "excerpt": "if (process.env.NODE_ENV !== \"production\") {"
+        },
+        {
+          "file": "dist/cjs/immer.cjs.development.js",
+          "line": 657,
+          "excerpt": "if (process.env.NODE_ENV !== \"production\" && isNaN(parseInt(prop)))"
+        },
+        {
+          "file": "dist/cjs/index.js",
+          "line": 4,
+          "excerpt": "if (process.env.NODE_ENV === 'production') {"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [
+    "bit.ly"
+  ],
+  "installScripts": {},
+  "files": 34,
+  "unpackedSize": 976898,
+  "risk": 0,
+  "findings": [
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "2 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "immerjs/immer",
+      "commit": "75a290e44ba14bd723c8ef8546b6559c8ef3ae88",
+      "workflow": ".github/workflows/release.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 21,
+      "differs": [],
+      "builtOnly": [
+        "dist/cjs/immer.cjs.development.js",
+        "dist/cjs/immer.cjs.development.js.map",
+        "dist/cjs/immer.cjs.production.js",
+        "dist/cjs/immer.cjs.production.js.map",
+        "dist/cjs/index.js",
+        "dist/cjs/index.js.flow",
+        "dist/immer.d.ts",
+        "dist/immer.legacy-esm.js",
+        "dist/immer.legacy-esm.js.map",
+        "dist/immer.mjs",
+        "dist/immer.mjs.map",
+        "dist/immer.production.mjs",
+        "dist/immer.production.mjs.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "immerjs/immer",
+      "ref": "75a290e44ba14bd723c8ef8546b6559c8ef3ae88"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

@@ -1,0 +1,176 @@
+{
+  "name": "nodemon",
+  "version": "3.1.14",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, exec, spawn",
+      "evidence": [
+        {
+          "file": "lib/monitor/run.js",
+          "line": 5,
+          "excerpt": "var childProcess = require('child_process');"
+        },
+        {
+          "file": "lib/spawn.js",
+          "line": 5,
+          "excerpt": "const spawn = require('child_process').spawn;"
+        },
+        {
+          "file": "lib/version.js",
+          "line": 6,
+          "excerpt": "var exec = require('child_process').exec;"
+        },
+        {
+          "file": "lib/version.js",
+          "line": 79,
+          "excerpt": "exec(cmd, { cwd: root }, function (err, stdout, stderr) {"
+        },
+        {
+          "file": "lib/spawn.js",
+          "line": 51,
+          "excerpt": "const child = spawn(sh, [shFlag, args], spawnOptions);"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "HOME, HOMEPATH, NODE_OPTIONS, PATH, TEST, comspec",
+      "evidence": [
+        {
+          "file": "lib/monitor/run.js",
+          "line": 94,
+          "excerpt": "sh = process.env.comspec || 'cmd';"
+        },
+        {
+          "file": "lib/spawn.js",
+          "line": 44,
+          "excerpt": "sh = process.env.comspec || 'cmd';"
+        },
+        {
+          "file": "lib/utils/index.js",
+          "line": 36,
+          "excerpt": "home: process.env.HOME || process.env.HOMEPATH,"
+        },
+        {
+          "file": "lib/config/defaults.js",
+          "line": 28,
+          "excerpt": "const nodeOptions = process.env.NODE_OPTIONS || ''; // ?"
+        },
+        {
+          "file": "lib/monitor/run.js",
+          "line": 71,
+          "excerpt": "(undefsafe(options, '.execOptions.env.PATH') || process.env.PATH),"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "require(expression)",
+      "evidence": [
+        {
+          "file": "lib/config/exec.js",
+          "line": 21,
+          "excerpt": "var pkg = require(path.join(process.cwd(), 'package.json'));"
+        },
+        {
+          "file": "lib/config/load.js",
+          "line": 22,
+          "excerpt": "require(path.join(process.cwd(), 'package.json'));"
+        },
+        {
+          "file": "lib/version.js",
+          "line": 20,
+          "excerpt": "var v = require(path.resolve(dir, 'package.json')).version;"
+        }
+      ]
+    },
+    {
+      "id": "native_binary",
+      "detail": "bin/windows-kill.exe",
+      "evidence": [
+        {
+          "file": "bin/windows-kill.exe",
+          "line": 0,
+          "excerpt": "Windows executable, 78.5 kB"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "bin/nodemon.js",
+          "line": 9,
+          "excerpt": "const fs = require('fs');"
+        },
+        {
+          "file": "lib/cli/parse.js",
+          "line": 18,
+          "excerpt": "var fs = require('fs');"
+        },
+        {
+          "file": "lib/config/exec.js",
+          "line": 2,
+          "excerpt": "const fs = require('fs');"
+        },
+        {
+          "file": "lib/config/load.js",
+          "line": 2,
+          "excerpt": "var fs = require('fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "HOME",
+    "HOMEPATH",
+    "NODE_OPTIONS",
+    "PATH",
+    "TEST",
+    "comspec"
+  ],
+  "endpoints": [
+    "git.io"
+  ],
+  "installScripts": {},
+  "files": 42,
+  "unpackedSize": 219252,
+  "risk": 12,
+  "findings": [
+    {
+      "id": "native-binary",
+      "severity": "medium",
+      "title": "Ships native binaries",
+      "detail": "bin/windows-kill.exe"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, exec, spawn"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "remy/nodemon",
+      "commit": "cfebe2feb2054a13fa6b9c493c1cd826ffccf167",
+      "workflow": ".github/workflows/release.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 42,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "remy/nodemon",
+      "ref": "cfebe2feb2054a13fa6b9c493c1cd826ffccf167"
+    }
+  },
+  "score": 94,
+  "grade": "A"
+}

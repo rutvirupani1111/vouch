@@ -1,0 +1,161 @@
+{
+  "name": "sass",
+  "version": "1.106.1",
+  "capabilities": [
+    {
+      "id": "eval",
+      "detail": "Function, require(expression)",
+      "evidence": [
+        {
+          "file": "sass.dart.js",
+          "line": 33289,
+          "excerpt": "var typeOf = A._asString(new self.Function(\"value\", \"return typeof value\").call$1(value));"
+        },
+        {
+          "file": "sass.dart.js",
+          "line": 33290,
+          "excerpt": "…ject\" ? typeOf : A._asString(new self.Function(\"value\", '    if (value && value.constructor && value.constru…"
+        },
+        {
+          "file": "sass.dart.js",
+          "line": 90565,
+          "excerpt": "if (A._asString(new self.Function(\"value\", \"return typeof value\").call$1(contents)) !== \"string\")"
+        },
+        {
+          "file": "sass.js",
+          "line": 10,
+          "excerpt": "…if(void 0!==r)return r;try{r=require(i)}catch(e){if('MODULE_NOT_FOUND'!==e.code)console.error(e);r=null}retu…"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "Function.prototype.call$0, Function.prototype.call$1, Function.prototype.call$1$0, Function.prototype.call$1$1, Function.prototype.call$1$2, Function.prototype.call$1$4 (+17 more)",
+      "evidence": [
+        {
+          "file": "sass.dart.js",
+          "line": 137518,
+          "excerpt": "Function.prototype.call$0 = function() {"
+        },
+        {
+          "file": "sass.dart.js",
+          "line": 137521,
+          "excerpt": "Function.prototype.call$1 = function(a) {"
+        },
+        {
+          "file": "sass.dart.js",
+          "line": 137569,
+          "excerpt": "Function.prototype.call$1$0 = function() {"
+        },
+        {
+          "file": "sass.dart.js",
+          "line": 137533,
+          "excerpt": "Function.prototype.call$1$1 = function(a) {"
+        },
+        {
+          "file": "sass.dart.js",
+          "line": 137572,
+          "excerpt": "Function.prototype.call$1$2 = function(a, b) {"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "sass.js",
+          "line": 14,
+          "excerpt": "fs: require(\"fs\"),"
+        },
+        {
+          "file": "sass.node.js",
+          "line": 8,
+          "excerpt": "fs: require(\"fs\"),"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [
+    "sass-lang.com"
+  ],
+  "installScripts": {},
+  "files": 37,
+  "unpackedSize": 6085346,
+  "risk": 18,
+  "findings": [
+    {
+      "id": "global-patch",
+      "severity": "medium",
+      "title": "Patches globals",
+      "detail": "Function.prototype.call$0, Function.prototype.call$1, Function.prototype.call$1$0, Function.prototype.call$1$1, Function.prototype.call$1$2, Function.prototype.call$1$4 (+16 more)"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "sass/dart-sass",
+      "commit": "811ecc67bc5ed16d410d76e8bde343d9770f08c0",
+      "workflow": ".github/workflows/ci.yml@refs/tags/1.106.1",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 1,
+      "differs": [
+        "LICENSE",
+        "README.md"
+      ],
+      "builtOnly": [
+        "types/compile.d.ts",
+        "types/deprecations.d.ts",
+        "types/exception.d.ts",
+        "types/importer.d.ts",
+        "types/index.d.ts",
+        "types/legacy/exception.d.ts",
+        "types/legacy/function.d.ts",
+        "types/legacy/importer.d.ts",
+        "types/legacy/options.d.ts",
+        "types/legacy/plugin_this.d.ts",
+        "types/legacy/render.d.ts",
+        "types/logger/index.d.ts",
+        "types/logger/source_location.d.ts",
+        "types/logger/source_span.d.ts",
+        "types/options.d.ts",
+        "types/util/promise_or.d.ts",
+        "types/value/argument_list.d.ts",
+        "types/value/boolean.d.ts",
+        "types/value/calculation.d.ts",
+        "types/value/color.d.ts",
+        "types/value/function.d.ts",
+        "types/value/index.d.ts",
+        "types/value/list.d.ts",
+        "types/value/map.d.ts",
+        "types/value/mixin.d.ts",
+        "types/value/module.d.ts",
+        "types/value/number.d.ts",
+        "types/value/string.d.ts"
+      ],
+      "onlyInPackage": [
+        "sass.dart.js",
+        "sass.default.cjs",
+        "sass.default.js",
+        "sass.js",
+        "sass.node.js",
+        "sass.node.mjs"
+      ],
+      "note": "compared against commit from provenance",
+      "repo": "sass/dart-sass",
+      "ref": "811ecc67bc5ed16d410d76e8bde343d9770f08c0"
+    }
+  },
+  "score": 56,
+  "grade": "D"
+}

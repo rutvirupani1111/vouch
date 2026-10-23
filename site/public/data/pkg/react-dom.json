@@ -1,0 +1,105 @@
+{
+  "name": "react-dom",
+  "version": "19.3.1",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "cjs/react-dom-client.development.js",
+          "line": 15,
+          "excerpt": "\"production\" !== process.env.NODE_ENV &&"
+        },
+        {
+          "file": "cjs/react-dom-profiling.development.js",
+          "line": 15,
+          "excerpt": "\"production\" !== process.env.NODE_ENV &&"
+        },
+        {
+          "file": "cjs/react-dom-server-legacy.browser.development.js",
+          "line": 36,
+          "excerpt": "\"production\" !== process.env.NODE_ENV &&"
+        },
+        {
+          "file": "cjs/react-dom-server-legacy.node.development.js",
+          "line": 36,
+          "excerpt": "\"production\" !== process.env.NODE_ENV &&"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 43,
+  "unpackedSize": 8067632,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "react/react",
+      "commit": "61aa00df822d0eb76d0362eb8b6fdd3527693efe",
+      "workflow": ".github/workflows/runtime_release_from_ci.yml@refs/heads/releases/19.3.x",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 3,
+      "differs": [
+        "client.js",
+        "index.js",
+        "profiling.js",
+        "server.browser.js",
+        "server.bun.js",
+        "server.edge.js",
+        "server.js",
+        "server.node.js",
+        "static.browser.js",
+        "static.edge.js",
+        "static.js",
+        "static.node.js",
+        "test-utils.js"
+      ],
+      "builtOnly": [
+        "cjs/react-dom-client.development.js",
+        "cjs/react-dom-client.production.js",
+        "cjs/react-dom-profiling.development.js",
+        "cjs/react-dom-profiling.profiling.js",
+        "cjs/react-dom-server-legacy.browser.development.js",
+        "cjs/react-dom-server-legacy.browser.production.js",
+        "cjs/react-dom-server-legacy.node.development.js",
+        "cjs/react-dom-server-legacy.node.production.js",
+        "cjs/react-dom-server.browser.development.js",
+        "cjs/react-dom-server.browser.production.js",
+        "cjs/react-dom-server.bun.development.js",
+        "cjs/react-dom-server.bun.production.js",
+        "cjs/react-dom-server.edge.development.js",
+        "cjs/react-dom-server.edge.production.js",
+        "cjs/react-dom-server.node.development.js",
+        "cjs/react-dom-server.node.production.js",
+        "cjs/react-dom-test-utils.development.js",
+        "cjs/react-dom-test-utils.production.js",
+        "cjs/react-dom.development.js",
+        "cjs/react-dom.production.js",
+        "cjs/react-dom.react-server.development.js",
+        "cjs/react-dom.react-server.production.js"
+      ],
+      "onlyInPackage": [
+        "client.react-server.js",
+        "profiling.react-server.js",
+        "react-dom.react-server.js",
+        "server.react-server.js",
+        "static.react-server.js"
+      ],
+      "note": "compared against commit from provenance; package found in repo directory packages/react-dom/",
+      "repo": "react/react",
+      "ref": "61aa00df822d0eb76d0362eb8b6fdd3527693efe"
+    }
+  },
+  "score": 65,
+  "grade": "C"
+}

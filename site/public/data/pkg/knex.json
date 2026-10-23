@@ -1,0 +1,149 @@
+{
+  "name": "knex",
+  "version": "3.3.0",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "KNEX_PATH, NODE_ENV, UV_THREADPOOL_SIZE",
+      "evidence": [
+        {
+          "file": "bin/cli.js",
+          "line": 111,
+          "excerpt": "process.env.KNEX_PATH;"
+        },
+        {
+          "file": "bin/utils/cli-config-utils.js",
+          "line": 34,
+          "excerpt": "const envName = opts.env || process.env.NODE_ENV || 'development';"
+        },
+        {
+          "file": "bin/utils/cli-config-utils.js",
+          "line": 50,
+          "excerpt": "const environment = opts.env || process.env.NODE_ENV || 'development';"
+        },
+        {
+          "file": "lib/dialects/oracledb/index.js",
+          "line": 37,
+          "excerpt": "process.env.UV_THREADPOOL_SIZE = process.env.UV_THREADPOOL_SIZE || 1;"
+        },
+        {
+          "file": "lib/dialects/oracledb/index.js",
+          "line": 39,
+          "excerpt": "parseInt(process.env.UV_THREADPOOL_SIZE) + this.driver.poolMax;"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "import(), require(expression)",
+      "evidence": [
+        {
+          "file": "lib/migrations/util/import-file.js",
+          "line": 10,
+          "excerpt": "? import(require('url').pathToFileURL(filepath))"
+        },
+        {
+          "file": "bin/cli.js",
+          "line": 96,
+          "excerpt": "const knex = require(env.modulePath);"
+        },
+        {
+          "file": "bin/cli.js",
+          "line": 151,
+          "excerpt": "modulePackage = require(path.join("
+        },
+        {
+          "file": "bin/utils/cli-config-utils.js",
+          "line": 180,
+          "excerpt": "const modulePackage = require(modulePackagePath);"
+        },
+        {
+          "file": "lib/migrations/util/import-file.js",
+          "line": 11,
+          "excerpt": ": require(filepath);"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "require, require.extensions",
+      "evidence": [
+        {
+          "file": "bin/cli.js",
+          "line": 524,
+          "excerpt": "require = require('esm')(module);"
+        },
+        {
+          "file": "bin/cli.js",
+          "line": 527,
+          "excerpt": "require.extensions['.js'] = (m, fileName) => {"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "bin/cli.js",
+          "line": 535,
+          "excerpt": "require('fs').readFileSync(fileName, 'utf8'),"
+        },
+        {
+          "file": "lib/migrations/util/fs.js",
+          "line": 1,
+          "excerpt": "const fs = require('fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "KNEX_PATH",
+    "NODE_ENV",
+    "UV_THREADPOOL_SIZE"
+  ],
+  "endpoints": [
+    "knexjs.org"
+  ],
+  "installScripts": {},
+  "files": 183,
+  "unpackedSize": 941393,
+  "risk": 31,
+  "findings": [
+    {
+      "id": "loader-hook",
+      "severity": "high",
+      "title": "Hooks the module loader",
+      "detail": "require.extensions"
+    },
+    {
+      "id": "global-patch",
+      "severity": "medium",
+      "title": "Patches globals",
+      "detail": "require"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "knex/knex",
+      "commit": "47988fb88152289a0bcc38d26f61ce89dc3ccd68",
+      "workflow": ".github/workflows/release.yml@refs/tags/3.3.0",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "partial",
+      "identical": 182,
+      "differs": [
+        "CHANGELOG.md"
+      ],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "knex/knex",
+      "ref": "47988fb88152289a0bcc38d26f61ce89dc3ccd68"
+    }
+  },
+  "score": 75,
+  "grade": "B"
+}

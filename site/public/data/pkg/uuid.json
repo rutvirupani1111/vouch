@@ -1,0 +1,122 @@
+{
+  "name": "uuid",
+  "version": "14.0.3",
+  "capabilities": [
+    {
+      "id": "install_script",
+      "detail": "prepare (reachable at install time)",
+      "evidence": [
+        {
+          "file": "package.json",
+          "line": 87,
+          "excerpt": "\"prepare\": \"if [ -d .git ]; then npx lefthook install; fi\","
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {
+    "prepare": "if [ -d .git ]; then npx lefthook install; fi"
+  },
+  "files": 70,
+  "unpackedSize": 65739,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "install-script",
+      "severity": "medium",
+      "title": "Runs code on install",
+      "detail": "prepare: if [ -d .git ]; then npx lefthook install; fi"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "uuidjs/uuid",
+      "commit": "993ff7b64a289ef7f921ccafc8bb98ef9461d214",
+      "workflow": ".github/workflows/release-please.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist-node/bin/uuid",
+        "dist-node/index.js",
+        "dist-node/max.js",
+        "dist-node/md5.js",
+        "dist-node/nil.js",
+        "dist-node/parse.js",
+        "dist-node/regex.js",
+        "dist-node/rng.js",
+        "dist-node/sha1.js",
+        "dist-node/stringify.js",
+        "dist-node/types.js",
+        "dist-node/uuid-bin.js",
+        "dist-node/v1.js",
+        "dist-node/v1ToV6.js",
+        "dist-node/v3.js",
+        "dist-node/v35.js",
+        "dist-node/v4.js",
+        "dist-node/v5.js",
+        "dist-node/v6.js",
+        "dist-node/v6ToV1.js",
+        "dist-node/v7.js",
+        "dist-node/validate.js",
+        "dist-node/version.js",
+        "dist/index.d.ts",
+        "dist/index.js",
+        "dist/max.d.ts",
+        "dist/max.js",
+        "dist/md5.d.ts",
+        "dist/md5.js",
+        "dist/nil.d.ts",
+        "dist/nil.js",
+        "dist/parse.d.ts",
+        "dist/parse.js",
+        "dist/regex.d.ts",
+        "dist/regex.js",
+        "dist/rng.d.ts",
+        "dist/rng.js",
+        "dist/sha1.d.ts",
+        "dist/sha1.js",
+        "dist/stringify.d.ts",
+        "dist/stringify.js",
+        "dist/types.d.ts",
+        "dist/types.js",
+        "dist/uuid-bin.d.ts",
+        "dist/uuid-bin.js",
+        "dist/v1.d.ts",
+        "dist/v1.js",
+        "dist/v1ToV6.d.ts",
+        "dist/v1ToV6.js",
+        "dist/v3.d.ts",
+        "dist/v3.js",
+        "dist/v35.d.ts",
+        "dist/v35.js",
+        "dist/v4.d.ts",
+        "dist/v4.js",
+        "dist/v5.d.ts",
+        "dist/v5.js",
+        "dist/v6.d.ts",
+        "dist/v6.js",
+        "dist/v6ToV1.d.ts",
+        "dist/v6ToV1.js",
+        "dist/v7.d.ts",
+        "dist/v7.js",
+        "dist/validate.d.ts",
+        "dist/validate.js",
+        "dist/version.d.ts",
+        "dist/version.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "uuidjs/uuid",
+      "ref": "993ff7b64a289ef7f921ccafc8bb98ef9461d214"
+    }
+  },
+  "score": 96,
+  "grade": "A"
+}

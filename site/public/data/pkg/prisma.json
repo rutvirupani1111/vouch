@@ -1,0 +1,216 @@
+{
+  "name": "prisma",
+  "version": "8.0.0-rc.27",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, cross-spawn, execa, fork, spawn",
+      "evidence": [
+        {
+          "file": "dist/prisma.js",
+          "line": 22,
+          "excerpt": "import { execFile, fork, spawn } from \"node:child_process\";"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 30,
+          "excerpt": "import spawn$1 from \"cross-spawn\";"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 14643,
+          "excerpt": "const child = spawn$1(request.command, [...request.args], {"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 27,
+          "excerpt": "import { execa } from \"execa\";"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 14605,
+          "excerpt": "const subprocess = execa(file, [...args], {"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "fetch, http",
+      "evidence": [
+        {
+          "file": "dist/prisma.js",
+          "line": 6104,
+          "excerpt": "return await fetch(endpoint, {"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 14475,
+          "excerpt": "const response = await fetch(endpoint, {"
+        },
+        {
+          "file": "dist/sender.js",
+          "line": 163,
+          "excerpt": "debugLog(`sent event: status=${(await fetch(payload.endpoint, {"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 16,
+          "excerpt": "import http from \"node:http\";"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 1120,
+          "excerpt": "const server = http.createServer();"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed), PRISMA_CLI_RUN_UPDATE_CHECK_WORKER, PRISMA_DEBUG, PRISMA_PLATFORM_AUTH_FILE",
+      "evidence": [
+        {
+          "file": "dist/prisma.js",
+          "line": 480,
+          "excerpt": "return process.env[s];"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 535,
+          "excerpt": "return process.env[s];"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 15238,
+          "excerpt": "if (process$1.env.PRISMA_CLI_RUN_UPDATE_CHECK_WORKER === \"1\") {"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 14452,
+          "excerpt": "if (err !== null && process.env.PRISMA_DEBUG === \"1\") process.stderr.write(`[cli-telemetry] parent send error…"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 14458,
+          "excerpt": "if (process.env.PRISMA_DEBUG === \"1\") process.stderr.write(`[cli-telemetry] parent fork failed: ${String(err)…"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "require(expression)",
+      "evidence": [
+        {
+          "file": "dist/prisma.js",
+          "line": 2235,
+          "excerpt": "const metadata = requireFromHere(candidate);"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "dist/prisma.js",
+          "line": 2,
+          "excerpt": "import { createRequire } from \"node:module\";"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/prisma.js",
+          "line": 12,
+          "excerpt": "import fs, { mkdir, readFile, readdir, rename, rm, rmdir, stat, unlink, writeFile } from \"node:fs/promises\";"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 13,
+          "excerpt": "import { mkdir as mkdir$1, readFile as readFile$1, writeFile as writeFile$1 } from \"fs/promises\";"
+        },
+        {
+          "file": "dist/prisma.js",
+          "line": 19,
+          "excerpt": "import { fstatSync, readFileSync, statSync } from \"node:fs\";"
+        },
+        {
+          "file": "dist/sender.js",
+          "line": 3,
+          "excerpt": "import { readFileSync } from \"node:fs\";"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)",
+    "PRISMA_CLI_RUN_UPDATE_CHECK_WORKER",
+    "PRISMA_DEBUG",
+    "PRISMA_PLATFORM_AUTH_FILE"
+  ],
+  "endpoints": [
+    "api.prisma.io",
+    "auth.prisma.io",
+    "hiieirp2pwqnjvq9axzyg6d0.fra.prisma.build",
+    "prisma.io"
+  ],
+  "installScripts": {},
+  "files": 9,
+  "unpackedSize": 601553,
+  "risk": 60,
+  "findings": [
+    {
+      "id": "ci-tamper",
+      "severity": "critical",
+      "title": "Writes CI configuration",
+      "detail": "Touches CI workflow files: .github/workflows."
+    },
+    {
+      "id": "env-secrets",
+      "severity": "medium",
+      "title": "Reads secret-looking environment variables",
+      "detail": "PRISMA_PLATFORM_AUTH_FILE"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, cross-spawn, execa, fork, spawn"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "fetch, http"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "prisma/prisma-cli",
+      "commit": "325e33b9efe79217ae9184a5c2c8a735ed55d74f",
+      "workflow": ".github/workflows/publish.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 4,
+      "differs": [],
+      "builtOnly": [
+        "dist/config.d.ts",
+        "dist/config.js",
+        "dist/payload-B88Qvzxk-CrtTXSOe.js",
+        "dist/prisma.js",
+        "dist/sender.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/prisma/",
+      "repo": "prisma/prisma-cli",
+      "ref": "325e33b9efe79217ae9184a5c2c8a735ed55d74f"
+    }
+  },
+  "score": 39,
+  "grade": "F"
+}
