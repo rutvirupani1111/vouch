@@ -148,7 +148,7 @@ export function IndexPage() {
         {[
           { k: 'Packages scored', v: stats.total },
           { k: 'Run install scripts', v: stats.install },
-          { k: 'Signed provenance', v: stats.prov },
+          { k: 'With provenance', v: stats.prov },
           { k: 'Ship unsourced files', v: stats.unsourced },
         ].map((s, i) => (
           <div key={s.k} className={`px-4 py-4 ${i % 2 ? 'border-l border-line' : ''} ${i > 1 ? 'border-t border-line sm:border-t-0' : ''} ${i === 2 ? 'sm:border-l' : ''}`}>

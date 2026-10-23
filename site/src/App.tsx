@@ -55,9 +55,9 @@ function ThemeToggle() {
 }
 
 const NAV = [
-  { to: '/', label: 'Index' },
-  { to: '/methodology', label: 'Methodology' },
-  { to: '/use', label: 'Use Vouch' },
+  { to: '/', label: 'Index', short: 'Index' },
+  { to: '/methodology', label: 'Methodology', short: 'Method' },
+  { to: '/use', label: 'Use Vouch', short: 'Use' },
 ];
 
 export function App() {
@@ -96,9 +96,10 @@ export function App() {
                   key={n.to}
                   to={n.to}
                   ariaCurrent={active}
-                  className={`mono px-2 py-1 text-[12px] uppercase tracking-wider no-underline sm:text-[13px] ${active ? 'text-accent' : 'text-ink-2 hover:text-ink'}`}
+                  className={`mono px-1.5 py-1 text-[12px] sm:px-2 uppercase tracking-wider no-underline sm:text-[13px] ${active ? 'text-accent' : 'text-ink-2 hover:text-ink'}`}
                 >
-                  {n.label}
+                  <span className="sm:hidden">{n.short}</span>
+                  <span className="hidden sm:inline">{n.label}</span>
                 </Link>
               );
             })}

@@ -54,7 +54,9 @@ function short(sha?: string) {
 function repoUrl(repo?: string) {
   if (!repo) return undefined;
   const r = repo.replace(/^git\+/, '').replace(/\.git$/, '');
-  return /^https?:\/\//.test(r) ? r : `https://${r}`;
+  if (/^https?:\/\//.test(r)) return r;
+  if (/^[\w.-]+\.[a-z]{2,}\//i.test(r)) return `https://${r}`;
+  return `https://github.com/${r}`;
 }
 
 export function PackagePage({ name }: { name: string }) {
@@ -130,7 +132,7 @@ export function PackagePage({ name }: { name: string }) {
           </Panel>
 
           {/* Source match */}
-          <Panel title="Does it match its source?" kicker={src.ref ? `${src.repo ?? ''} @ ${src.ref}` : src.repo}>
+          <Panel title="Does it match its source?" kicker={src.ref ? `${src.repo ?? ''} @ ${/^[0-9a-f]{40}$/.test(src.ref) ? src.ref.slice(0, 10) : src.ref}` : src.repo}>
             <div className="flex flex-wrap items-center gap-3">
               <SourcePill status={src.status} only={src.onlyInPackage.length} />
               <span className="text-sm text-ink-2">{src.note ?? (compared ? `${compared} published files compared with the repository.` : 'No file comparison was possible.')}</span>
@@ -191,7 +193,7 @@ export function PackagePage({ name }: { name: string }) {
           <Panel title="Provenance" kicker="npm attestation">
             <div className="flex items-center gap-2">
               <ProvenancePill status={prov.status} />
-              <span className="text-sm text-ink-2">{prov.status === 'present' ? 'Built and published by CI, signed via Sigstore.' : prov.note ?? 'No attestation published.'}</span>
+              <span className="text-sm text-ink-2">{prov.status === 'present' ? 'npm publishes a provenance statement naming the CI build. Vouch decodes it; the Sigstore signature check is not done yet.' : prov.note ?? 'No attestation published.'}</span>
             </div>
             <dl className="mono mt-4 flex flex-col gap-3 text-[12.5px]">
               <div>

@@ -7,6 +7,7 @@
  * package in scripts/packages.json. Tarballs over 15 MB are skipped. Set GITHUB_TOKEN
  * to raise the GitHub API rate limit used for source matching.
  */
+import { existsSync } from 'node:fs';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -26,6 +27,7 @@ function arg(name: string): string | undefined {
 const concurrency = Number(arg('concurrency') ?? 4);
 const timeoutMs = Number(arg('timeout') ?? 90) * 1000;
 const limit = arg('limit') ? Number(arg('limit')) : Infinity;
+const resume = process.argv.includes('--resume');
 const only = arg('only')?.split(',').map((s) => s.trim()).filter(Boolean);
 
 interface Packument {
@@ -83,6 +85,12 @@ async function main() {
   const skipped: { name: string; reason: string }[] = [];
   const opts = { githubToken: process.env.GITHUB_TOKEN || process.env.GH_TOKEN || undefined };
 
+  const writeIndex = async () => {
+    const pkgs = [...entries].sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
+    const index: IndexFile = { generatedAt: new Date().toISOString(), source: 'live', count: pkgs.length, skipped, packages: pkgs };
+    await writeFile(join(outDir, 'index.json'), JSON.stringify(index));
+  };
+
   let next = 0;
   let done = 0;
   async function worker() {
@@ -90,6 +98,12 @@ async function main() {
       const name = names[next++];
       const started = Date.now();
       try {
+        const cached = join(outDir, 'pkg', `${slug(name)}.json`);
+        if (resume && existsSync(cached)) {
+          entries.push(summarize(JSON.parse(await readFile(cached, 'utf8')) as PackageReport));
+          done++;
+          continue;
+        }
         const meta = await latest(name);
         const size = await tarballSize(meta.tarball);
         if (size && size > MAX_TARBALL) throw new Error(`tarball ${(size / 1048576).toFixed(1)} MB exceeds 15 MB`);
@@ -97,6 +111,7 @@ async function main() {
         await writeFile(join(outDir, 'pkg', `${slug(name)}.json`), JSON.stringify(report, null, 2));
         entries.push(summarize(report));
         done++;
+        await writeIndex();
         console.log(`[${done + skipped.length}/${names.length}] ${name}@${report.version} ${report.grade} ${report.score} (${Date.now() - started} ms)`);
       } catch (e) {
         const reason = e instanceof Error ? e.message : String(e);
@@ -107,9 +122,7 @@ async function main() {
   }
   await Promise.all(Array.from({ length: Math.max(1, concurrency) }, worker));
 
-  entries.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
-  const index: IndexFile = { generatedAt: new Date().toISOString(), source: 'live', count: entries.length, skipped, packages: entries };
-  await writeFile(join(outDir, 'index.json'), JSON.stringify(index));
+  await writeIndex();
   console.log(`\nwrote ${entries.length} reports, skipped ${skipped.length}`);
   process.exit(0);
 }

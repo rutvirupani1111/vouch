@@ -25,9 +25,9 @@ export function UsePage() {
         <p className="mt-2 text-ink-2">No install needed. Pass a name, optionally with a version.</p>
         <div className="mt-4 flex flex-col gap-3">
           <CodeBlock>{`npx vouchjs report express\nnpx vouchjs report chalk@5.4.1`}</CodeBlock>
-          <CodeBlock label="output, abridged">{`chalk@5.4.1   grade A   trust 97
+          <CodeBlock label="example output, abridged">{`chalk@5.4.1   grade A   trust 97
   can do       env (FORCE_COLOR, TERM, CI ...)
-  provenance   signed, github.com/chalk/chalk
+  provenance   attested, github.com/chalk/chalk
   source       match, 11 identical, 0 only in package`}</CodeBlock>
         </div>
       </section>
