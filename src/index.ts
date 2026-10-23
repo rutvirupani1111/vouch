@@ -3,3 +3,19 @@ export { analyzePackage, analyzeFileMap, fetchPackageFiles, toPublicAnalysis, CA
 export { verifyPackage, verifyFiles, readProvenance, compareToSource, isBuildArtifact } from './verify.js';
 export { reportPackage, scoreReport, SCORE_WEIGHTS } from './report.js';
 export { parseLockfile, findLockfile } from './engine/lockfile/index.js';
+export { analyzeLocked } from './analyze.js';
+export {
+  MANIFEST_FILE,
+  approve,
+  checkManifest,
+  compareToManifest,
+  initManifest,
+  lockedPackages,
+  readManifest,
+  writeManifest,
+  type CheckResult,
+  type CheckViolation,
+  type Manifest,
+  type ManifestEntry,
+} from './manifest.js';
+export { renderReport, renderCheck } from './format.js';

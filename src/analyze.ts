@@ -4,7 +4,7 @@
  * Nothing from the analysed package is ever executed.
  */
 import { analyzeFiles } from './engine/analysis/analyze.js';
-import { createContext } from './engine/load.js';
+import { analyzePackage as engineAnalyze, createContext } from './engine/load.js';
 import { extractPackage } from './engine/fetch/tar.js';
 import type { Capabilities, CapabilityKey, PackageAnalysis as EnginePackageAnalysis } from './engine/types.js';
 import type { AnalyzeOptions, Capability, CapabilityId, Evidence, Finding, PackageAnalysis, PackageSpec, Severity } from './types.js';
@@ -183,4 +183,16 @@ export function analyzeFileMap(files: Map<string, Buffer>, spec?: Partial<Packag
 export async function analyzePackage(spec: PackageSpec, opts: AnalyzeOptions = {}): Promise<PackageAnalysis> {
   const { files, version } = await fetchPackageFiles(spec, opts);
   return analyzeFileMap(files, { name: spec.name, version });
+}
+
+/** Analyses a lockfile entry; uses the lockfile integrity so the result is cached by it. */
+export async function analyzeLocked(
+  pkg: { name: string; version: string; integrity?: string; resolved?: string },
+  opts: AnalyzeOptions = {},
+): Promise<PackageAnalysis> {
+  const a = await engineAnalyze(
+    { name: pkg.name, version: pkg.version, integrity: pkg.integrity, tarballUrl: pkg.resolved },
+    { cacheDir: opts.cacheDir, fetch: opts.fetch, registry: opts.registry },
+  );
+  return toPublicAnalysis(a);
 }
