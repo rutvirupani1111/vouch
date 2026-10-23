@@ -212,6 +212,63 @@ function installHooks(pkgJson: Buffer | undefined): string {
   }
 }
 
+function parseJson(b: Buffer | undefined): any {
+  try {
+    return b ? JSON.parse(b.toString('utf8')) : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+const BUILD_SCRIPT = /build|bundle|compile|prepack|prepublish|prepare|dist/i;
+const SOURCE_SEG = new Set(['src', 'source', 'modules', 'internals', 'lib-src']);
+const stemOf = (p: string) => posix.basename(p).replace(/\.[^.]+$/, '').replace(/\.d$/, '');
+
+/**
+ * Monorepo packages are often assembled by a build script from the repo's source
+ * folders (core-js generates its entry points from modules/). A package file with
+ * no counterpart path counts as generated when the repo has a build script and
+ * either its name exists under a source folder, or the package's "files" field
+ * names a folder the repo does not track.
+ */
+function monorepoGenerated(pkg: Map<string, Buffer>, repo: Map<string, Buffer>, dir: string, tracked: Set<string>): (p: string) => boolean {
+  const hasBuild = [repo.get(`${dir}/package.json`), repo.get('package.json')].some((b) => {
+    const scripts = parseJson(b)?.scripts;
+    return scripts && typeof scripts === 'object' && Object.entries(scripts).some(([k, v]) => BUILD_SCRIPT.test(k) && typeof v === 'string' && v.trim() !== '');
+  });
+  if (!hasBuild) return () => false;
+  const names = new Set<string>();
+  for (const p of repo.keys()) {
+    if (p.includes('node_modules/')) continue;
+    const segs = p.split('/');
+    if (!segs.slice(0, -1).some((s) => SOURCE_SEG.has(s))) continue;
+    const base = segs[segs.length - 1]!;
+    const stem = stemOf(base);
+    names.add(base).add(stem);
+    // core-js style dotted module names: es.array.at -> at, array.at
+    const parts = stem.split('.');
+    for (let i = 1; i < parts.length; i++) names.add(parts.slice(i).join('.'));
+  }
+  const filesField = [parseJson(pkg.get('package.json'))?.files, parseJson(repo.get(`${dir}/package.json`))?.files]
+    .flatMap((f) => (Array.isArray(f) ? f : []))
+    .filter((f): f is string => typeof f === 'string' && !f.startsWith('!'))
+    .map((f) => f.replace(/^\.\//, '').split('/')[0]!.replace(/\*.*$/, ''))
+    .filter((top) => top && !top.includes('.') && !tracked.has(top));
+  const absentFolders = new Set(filesField);
+  return (p: string) => {
+    const segs = p.split('/');
+    if (segs.length > 1 && absentFolders.has(segs[0]!)) return true;
+    const base = segs[segs.length - 1]!;
+    if (names.has(base) || names.has(stemOf(base))) return true;
+    // features/array/at.js <- modules/es.array.at.js
+    if (segs.length > 1) {
+      const dotted = [...segs.slice(1, -1), stemOf(base)].join('.');
+      if (names.has(dotted)) return true;
+    }
+    return false;
+  };
+}
+
 /**
  * Compares a published package's files against the repository at a commit.
  * Pure: both sides are in-memory maps of path -> bytes.
@@ -237,6 +294,7 @@ export function compareToSource(
   for (const cmd of installHooks(pkg.get('package.json')).split('\n')) {
     for (const tok of cmd.split(/[\s=;&|]+/)) if (/\.(c|m)?js$|\.sh$/.test(tok)) hookTargets.add(tok.replace(/^\.\//, ''));
   }
+  const generated = dir ? monorepoGenerated(pkg, repo, dir, tracked) : () => false;
   let identical = 0;
   const differs: string[] = [];
   const builtOnly: string[] = [];
@@ -259,7 +317,7 @@ export function compareToSource(
       else differs.push(path);
       continue;
     }
-    if (built(path) && !hookTargets.has(path)) builtOnly.push(path);
+    if ((built(path) || generated(path)) && !hookTargets.has(path)) builtOnly.push(path);
     else onlyInPackage.push(path);
   }
   if (dir) notes.push(`package found in repo directory ${dir}/`);

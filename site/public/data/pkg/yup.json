@@ -15,21 +15,14 @@
       "note": "No npm provenance attestation was published for this version."
     },
     "source": {
-      "status": "mismatch",
-      "identical": 3,
+      "status": "unknown",
+      "identical": 0,
       "differs": [],
-      "builtOnly": [
-        "index.d.ts"
-      ],
-      "onlyInPackage": [
-        "index.esm.js",
-        "index.js"
-      ],
-      "note": "compared against commit from gitHead",
-      "repo": "jquense/yup",
-      "ref": "b413bf65ecdbea965a8e22060a16b5caa9b2c39b"
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "no repository declared; source match skipped"
     }
   },
-  "score": 50,
-  "grade": "D"
+  "score": 70,
+  "grade": "C"
 }
