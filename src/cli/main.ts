@@ -1,4 +1,5 @@
-import { join, resolve } from 'node:path';
+import { spawn } from 'node:child_process';
+import { basename, join, resolve } from 'node:path';
 import { analyzeLocked } from '../analyze.js';
 import { makeUi, renderCheck, renderReport, type Ui } from '../format.js';
 import {
@@ -12,6 +13,7 @@ import {
   writeManifest,
 } from '../manifest.js';
 import { reportPackage } from '../report.js';
+import { prepareRuntime, runtimeEnv, type RunMode } from '../runtime/preload.js';
 import type { FetchLike } from '../types.js';
 
 export const VERSION = '0.1.0';
@@ -23,6 +25,7 @@ Usage
   vouch init                     analyse every lockfile package, write vouch.lock.json
   vouch check                    fail (exit 1) on new packages or newly gained capabilities
   vouch approve <pkg>[@version]  accept the current capabilities of a package
+  vouch run [--mode warn|block] -- <cmd>   run Node with runtime capability enforcement (preview)
 
 Options
   --json                    machine-readable output (report, check)
@@ -31,6 +34,7 @@ Options
   --lockfile <path>         lockfile to read (default: autodetect)
   --cache-dir <path>        cache directory (default: OS cache dir, or VOUCH_CACHE_DIR)
   --concurrency <n>         parallel downloads (default 8)
+  --mode warn|block         vouch run: warn (default) or throw VouchPermissionError
   -h, --help / -v, --version
 
 Environment
@@ -53,7 +57,7 @@ interface Parsed {
   flags: Record<string, string | boolean>;
 }
 
-const VALUE_FLAGS = new Set(['format', 'dir', 'lockfile', 'cache-dir', 'concurrency']);
+const VALUE_FLAGS = new Set(['format', 'dir', 'lockfile', 'cache-dir', 'concurrency', 'mode']);
 
 export function parseArgs(argv: string[]): Parsed {
   const p: Parsed = { args: [], flags: {} };
@@ -85,6 +89,9 @@ export function parseSpec(s: string): { name: string; version: string } {
 
 export async function main(argv: string[], io: CliIo = defaultIo()): Promise<number> {
   let p: Parsed;
+  const dashdash = argv.indexOf('--');
+  const command = dashdash >= 0 ? argv.slice(dashdash + 1) : [];
+  if (dashdash >= 0) argv = argv.slice(0, dashdash);
   try {
     p = parseArgs(argv);
   } catch (err) {
@@ -164,6 +171,14 @@ export async function main(argv: string[], io: CliIo = defaultIo()): Promise<num
         writeManifest(manifestPath, manifest);
         return 0;
       }
+      case 'run': {
+        const cmd = [...p.args, ...command];
+        if (cmd.length === 0) throw new UsageError('run needs a command, e.g. vouch run -- node app.js');
+        const mode = String(p.flags.mode ?? 'warn');
+        if (mode !== 'warn' && mode !== 'block') throw new UsageError(`unknown --mode ${mode} (warn or block)`);
+        if (!readManifest(manifestPath)) throw new UsageError(`${MANIFEST_FILE} not found in ${dir}; run vouch init first`);
+        return await runEnforced(cmd, runtimeEnv(prepareRuntime(), manifestPath, mode as RunMode), dir);
+      }
       default:
         throw new UsageError(`unknown command "${p.cmd}"; see vouch --help`);
     }
@@ -171,6 +186,21 @@ export async function main(argv: string[], io: CliIo = defaultIo()): Promise<num
     io.err(`vouch: ${(err as Error).message}\n`);
     return 2;
   }
+}
+
+/** Spawns the command with the runtime preload in NODE_OPTIONS; resolves with its exit code. */
+function runEnforced(cmd: string[], env: NodeJS.ProcessEnv, cwd: string): Promise<number> {
+  const [bin, ...rest] = cmd as [string, ...string[]];
+  const exe = /^node(\.exe)?$/i.test(basename(bin)) ? process.execPath : bin;
+  return new Promise((done) => {
+    const child = spawn(exe, rest, { stdio: 'inherit', env, cwd, shell: exe !== process.execPath && process.platform === 'win32' });
+    child.on('error', (err) => {
+      process.stderr.write(`vouch: could not start ${bin}: ${err.message}
+`);
+      done(2);
+    });
+    child.on('exit', (code, signal) => done(code ?? (signal ? 1 : 0)));
+  });
 }
 
 function defaultIo(): CliIo {
