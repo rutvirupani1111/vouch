@@ -91,7 +91,7 @@ export function Pill({ tone, children, title }: { tone: Tone; children: ReactNod
 }
 
 export function ProvenancePill({ status }: { status: 'present' | 'absent' | 'error' }) {
-  if (status === 'present') return <Pill tone="ok" title="Signed npm provenance attestation links this version to a CI build">Signed</Pill>;
+  if (status === 'present') return <Pill tone="ok" title="npm publishes a provenance statement tying this version to a CI build">Attested</Pill>;
   if (status === 'error') return <Pill tone="warn" title="Provenance could not be checked">Error</Pill>;
   return <Pill tone="muted" title="No provenance attestation was published">None</Pill>;
 }

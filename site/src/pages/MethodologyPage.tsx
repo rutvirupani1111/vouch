@@ -48,14 +48,14 @@ export function MethodologyPage() {
         <h2>2. Does it match its source?</h2>
         <h3>Provenance</h3>
         <p>
-          npm provenance is a Sigstore-signed statement, published with the package, saying which repository, commit and CI workflow built it. Vouch fetches the attestation and checks that it covers this exact tarball. Present means the build is tied to a public commit; absent means you are trusting the publisher's laptop.
+          npm provenance is a Sigstore-signed statement, published with the package, saying which repository, commit and CI workflow built it. Vouch fetches the attestation bundle from the registry, decodes the SLSA provenance statement and reports the repository, commit and workflow it names. Present means the build claims a public commit; absent means you are trusting whatever machine published it. Today Vouch reads the statement but does not yet verify the Sigstore signature cryptographically; that check is planned.
         </p>
         <h3>File-by-file source match</h3>
         <p>
-          Vouch resolves the repository and the commit or tag for the version, fetches the tree, and compares every published file against it. Each file lands in one bucket:
+          Vouch downloads the repository at the commit (from provenance, or a matching tag) and compares every file in the tarball against it by SHA-256. Each file lands in one bucket:
         </p>
         <ul>
-          <li><code>identical</code>: byte-for-byte the same as the repository after line-ending normalisation.</li>
+          <li><code>identical</code>: the same content as the file at that path in the repository.</li>
           <li><code>builtOnly</code>: not in the repository, but explained as build output, for example <code>dist/</code> produced from sources that are.</li>
           <li><code>differs</code>: the path exists in the repository but the content is different.</li>
           <li><code>onlyInPackage</code>: in the tarball, nowhere in the repository, and not explained as build output. This is the strongest signal of a tampered release, and the site always calls it out.</li>
