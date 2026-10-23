@@ -11,7 +11,7 @@ export default defineConfig({
     // Tests are fully offline: every registry call goes through an injected fake fetch.
     env: {
       NO_COLOR: '1',
-      DEPDELTA_NO_NETWORK: '1',
+      VOUCH_NO_NETWORK: '1',
     },
   },
 });
