@@ -19,3 +19,5 @@ export {
   type ManifestEntry,
 } from './manifest.js';
 export { renderReport, renderCheck } from './format.js';
+export { findVulns, findImports, packageOf, renderVulns, scanProjectImports, vulnsExitCode } from './vulns.js';
+export type { Advisory, FailOn, ImportSite, OsvFetch, Reachability, VulnerablePackage, VulnsResult, VulnsOptions, VulnSeverity } from './vulns.js';
