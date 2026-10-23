@@ -154,6 +154,37 @@ builtins loaded before the preload, `process.binding`, native addons and
 non-Node runtimes are not covered; the fetch check is warn-only. Treat it as a
 tripwire, not a sandbox.
 
+## vouch vulns (preview): reachability, first step
+
+`npm audit` tells you a package somewhere in your tree has an advisory. `vouch
+vulns` asks the more useful question first: does your own code import it?
+
+```sh
+vouch vulns                    # pretty, grouped by reachability
+vouch vulns --json             # machine-readable
+vouch vulns --fail-on any      # exit 1 on any advisory (default: imported)
+```
+
+It reads the lockfile with the same parsers as `init`/`check`, sends every
+`name@version` to [OSV](https://osv.dev) in one `querybatch` call, fetches each
+advisory's details once (cached by id and `modified` time), and then scans your
+own `.js/.ts/.mjs/.cjs/.jsx/.tsx` files (never `node_modules`) with acorn for
+`import`, `export ... from`, `require()` and `import()`. Each vulnerable
+package lands in one bucket, sorted by bucket then severity:
+
+| Bucket | Meaning |
+| --- | --- |
+| imported by your code | your source imports it; `file:line` is shown |
+| direct dependency, not imported | in `package.json`, but no import was found |
+| transitive only | pulled in by another dependency |
+
+Exit codes: `--fail-on imported` (default) exits 1 only when a vulnerable package
+is imported by your code, `any` on any advisory, `never` always 0.
+
+This is package-level reachability: an imported package is not proof the
+vulnerable function is called, and "not imported" does not cover a dependency
+that loads it for you. Function-level call reachability is the next step.
+
 ## Trust score
 
 ```

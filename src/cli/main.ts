@@ -15,6 +15,7 @@ import {
 import { reportPackage } from '../report.js';
 import { prepareRuntime, runtimeEnv, type RunMode } from '../runtime/preload.js';
 import type { FetchLike } from '../types.js';
+import { findVulns, renderVulns, vulnsExitCode, type FailOn, type OsvFetch } from '../vulns.js';
 
 export const VERSION = '0.1.0';
 
@@ -26,6 +27,7 @@ Usage
   vouch check                    fail (exit 1) on new packages or newly gained capabilities
   vouch approve <pkg>[@version]  accept the current capabilities of a package
   vouch run [--mode warn|block] -- <cmd>   run Node with runtime capability enforcement (preview)
+  vouch vulns [--fail-on imported|any|never]   OSV vulnerabilities, ranked by whether your code imports them (preview)
 
 Options
   --json                    machine-readable output (report, check)
@@ -35,6 +37,7 @@ Options
   --cache-dir <path>        cache directory (default: OS cache dir, or VOUCH_CACHE_DIR)
   --concurrency <n>         parallel downloads (default 8)
   --mode warn|block         vouch run: warn (default) or throw VouchPermissionError
+  --fail-on imported|any|never   vouch vulns: when to exit 1 (default imported)
   -h, --help / -v, --version
 
 Environment
@@ -57,7 +60,7 @@ interface Parsed {
   flags: Record<string, string | boolean>;
 }
 
-const VALUE_FLAGS = new Set(['format', 'dir', 'lockfile', 'cache-dir', 'concurrency', 'mode']);
+const VALUE_FLAGS = new Set(['format', 'dir', 'lockfile', 'cache-dir', 'concurrency', 'mode', 'fail-on']);
 
 export function parseArgs(argv: string[]): Parsed {
   const p: Parsed = { args: [], flags: {} };
@@ -178,6 +181,13 @@ export async function main(argv: string[], io: CliIo = defaultIo()): Promise<num
         if (mode !== 'warn' && mode !== 'block') throw new UsageError(`unknown --mode ${mode} (warn or block)`);
         if (!readManifest(manifestPath)) throw new UsageError(`${MANIFEST_FILE} not found in ${dir}; run vouch init first`);
         return await runEnforced(cmd, runtimeEnv(prepareRuntime(), manifestPath, mode as RunMode), dir);
+      }
+      case 'vulns': {
+        const failOn = String(p.flags['fail-on'] ?? 'imported');
+        if (failOn !== 'imported' && failOn !== 'any' && failOn !== 'never') throw new UsageError(`unknown --fail-on ${failOn} (imported, any or never)`);
+        const r = await findVulns(lockfile(), dir, { fetch: io.fetch as OsvFetch | undefined, cacheDir: opts.cacheDir });
+        io.out(p.flags.json ? JSON.stringify(r, null, 2) + '\n' : renderVulns(r, ui));
+        return vulnsExitCode(r, failOn as FailOn);
       }
       default:
         throw new UsageError(`unknown command "${p.cmd}"; see vouch --help`);
