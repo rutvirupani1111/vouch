@@ -35,6 +35,8 @@ export interface FakePackage {
 export interface FakeNet {
   fetch: FetchLike;
   requests: string[];
+  integrity(name: string, version: string): string;
+  tarballUrl(name: string, version: string): string;
 }
 
 export function slsaV1Attestation(p: { repo: string; commit: string; workflow: string }, sha512Hex?: string) {
@@ -106,7 +108,7 @@ export function fakeNet(packages: Record<string, Record<string, FakePackage>>, r
     const all = Object.keys(versions);
     return response(200, { name, 'dist-tags': { latest: all[all.length - 1] }, versions: Object.fromEntries(all.map((v) => [v, manifest(v)])) });
   };
-  return { fetch, requests };
+  return { fetch, requests, integrity: (n, v) => integrities.get(`${n}@${v}`)!, tarballUrl };
 }
 
 /** A temp directory inside test/.tmp (never outside the project). */
