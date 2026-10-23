@@ -3,17 +3,6 @@
   "version": "4.65.0",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 74,
-          "excerpt": "\"prepare\": \"husky && npm run prepare:patch && node scripts/check-release.js || npm run build:prepare\","
-        }
-      ]
-    },
-    {
       "id": "child_process",
       "detail": "child_process, execSync, spawnSync",
       "evidence": [
@@ -143,19 +132,11 @@
     "aka.ms",
     "rollupjs.org"
   ],
-  "installScripts": {
-    "prepare": "husky && npm run prepare:patch && node scripts/check-release.js || npm run build:prepare"
-  },
+  "installScripts": {},
   "files": 28,
   "unpackedSize": 2947428,
-  "risk": 21,
+  "risk": 12,
   "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: husky && npm run prepare:patch && node scripts/check-release.js || npm run build:prepare"
-    },
     {
       "id": "eval",
       "severity": "medium",
@@ -214,6 +195,6 @@
       "ref": "9aac09a39dc1fa297a7b06f1ad6907f7bd41b310"
     }
   },
-  "score": 90,
+  "score": 94,
   "grade": "A"
 }

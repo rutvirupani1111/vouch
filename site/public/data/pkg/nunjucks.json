@@ -3,17 +3,6 @@
   "version": "3.2.4",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 79,
-          "excerpt": "\"prepare\": \"npm run build\","
-        }
-      ]
-    },
-    {
       "id": "network",
       "detail": "XMLHttpRequest",
       "evidence": [
@@ -113,19 +102,11 @@
     "BUILD_TYPE"
   ],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "npm run build"
-  },
+  "installScripts": {},
   "files": 35,
   "unpackedSize": 1774549,
-  "risk": 30,
+  "risk": 21,
   "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: npm run build"
-    },
     {
       "id": "global-patch",
       "severity": "medium",
@@ -192,6 +173,6 @@
       "ref": "86a77f49da4779d55414d8337e1a4d7ec7582da5"
     }
   },
-  "score": 70,
-  "grade": "C"
+  "score": 75,
+  "grade": "B"
 }

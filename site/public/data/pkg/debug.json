@@ -37,11 +37,11 @@
   "installScripts": {},
   "files": 7,
   "unpackedSize": 42793,
-  "risk": 22,
+  "risk": 9,
   "findings": [
     {
       "id": "env-dump",
-      "severity": "high",
+      "severity": "medium",
       "title": "Reads the whole environment",
       "detail": "Enumerates process.env instead of named variables."
     }
@@ -62,6 +62,6 @@
       "ref": "6b2c5fbdb7d414483d9e306ef234acb4cd7ea67c"
     }
   },
-  "score": 74,
-  "grade": "C"
+  "score": 81,
+  "grade": "B"
 }

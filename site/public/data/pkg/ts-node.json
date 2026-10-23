@@ -3,17 +3,6 @@
   "version": "10.9.2",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 79,
-          "excerpt": "\"prepare\": \"npm run clean && npm run build-nopack\","
-        }
-      ]
-    },
-    {
       "id": "child_process",
       "detail": "child_process",
       "evidence": [
@@ -136,19 +125,11 @@
   "endpoints": [
     "typestrong.org"
   ],
-  "installScripts": {
-    "prepare": "npm run clean && npm run build-nopack"
-  },
+  "installScripts": {},
   "files": 117,
   "unpackedSize": 757333,
-  "risk": 43,
+  "risk": 34,
   "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: npm run clean && npm run build-nopack"
-    },
     {
       "id": "loader-hook",
       "severity": "high",
@@ -271,6 +252,6 @@
       "ref": "057ac1beb118f9c42d21e876a17320ad73ea6be2"
     }
   },
-  "score": 64,
+  "score": 68,
   "grade": "C"
 }

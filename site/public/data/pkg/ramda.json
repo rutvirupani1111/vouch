@@ -1,35 +1,14 @@
 {
   "name": "ramda",
   "version": "0.32.0",
-  "capabilities": [
-    {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 83,
-          "excerpt": "\"prepare\": \"npm run clean && npm run build\","
-        }
-      ]
-    }
-  ],
+  "capabilities": [],
   "envVars": [],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "npm run clean && npm run build"
-  },
+  "installScripts": {},
   "files": 744,
   "unpackedSize": 1201960,
-  "risk": 9,
-  "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: npm run clean && npm run build"
-    }
-  ],
+  "risk": 0,
+  "findings": [],
   "verify": {
     "provenance": {
       "status": "absent",
@@ -786,6 +765,6 @@
       "ref": "f0b1fb524a681bc8c37dd6c35886420f8c2470c3"
     }
   },
-  "score": 81,
+  "score": 85,
   "grade": "B"
 }

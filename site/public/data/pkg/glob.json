@@ -3,17 +3,6 @@
   "version": "13.0.6",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 60,
-          "excerpt": "\"prepare\": \"tshy && bash scripts/build.sh\","
-        }
-      ]
-    },
-    {
       "id": "env",
       "detail": "__MINIMATCH_TESTING_PLATFORM__",
       "evidence": [
@@ -50,20 +39,11 @@
     "__MINIMATCH_TESTING_PLATFORM__"
   ],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "tshy && bash scripts/build.sh"
-  },
+  "installScripts": {},
   "files": 65,
   "unpackedSize": 1607230,
-  "risk": 9,
-  "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: tshy && bash scripts/build.sh"
-    }
-  ],
+  "risk": 0,
+  "findings": [],
   "verify": {
     "provenance": {
       "status": "absent",
@@ -143,6 +123,6 @@
       "ref": "e80cb38ae60d6cbff9e75f39032a994858994d35"
     }
   },
-  "score": 81,
+  "score": 85,
   "grade": "B"
 }

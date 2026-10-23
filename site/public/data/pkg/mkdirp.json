@@ -3,17 +3,6 @@
   "version": "3.0.1",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 38,
-          "excerpt": "\"prepare\": \"tsc -p tsconfig.json && tsc -p tsconfig-esm.json\","
-        }
-      ]
-    },
-    {
       "id": "env",
       "detail": "__TESTING_MKDIRP_NODE_VERSION__, __TESTING_MKDIRP_PLATFORM__",
       "evidence": [
@@ -71,20 +60,11 @@
     "__TESTING_MKDIRP_PLATFORM__"
   ],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "tsc -p tsconfig.json && tsc -p tsconfig-esm.json"
-  },
+  "installScripts": {},
   "files": 65,
   "unpackedSize": 106656,
-  "risk": 9,
-  "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: tsc -p tsconfig.json && tsc -p tsconfig-esm.json"
-    }
-  ],
+  "risk": 0,
+  "findings": [],
   "verify": {
     "provenance": {
       "status": "absent",
@@ -164,6 +144,6 @@
       "ref": "6fc29774a008f41d96b34523d6aae543ecb46cd1"
     }
   },
-  "score": 81,
+  "score": 85,
   "grade": "B"
 }

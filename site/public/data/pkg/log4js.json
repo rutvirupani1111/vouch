@@ -3,17 +3,6 @@
   "version": "6.9.1",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 36,
-          "excerpt": "\"prepare\": \"is-ci || husky install\","
-        }
-      ]
-    },
-    {
       "id": "child_process",
       "detail": "cluster",
       "evidence": [
@@ -104,19 +93,11 @@
     "NODE_APP_INSTANCE"
   ],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "is-ci || husky install"
-  },
+  "installScripts": {},
   "files": 33,
   "unpackedSize": 159728,
-  "risk": 15,
+  "risk": 6,
   "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: is-ci || husky install"
-    },
     {
       "id": "child-process",
       "severity": "low",
@@ -146,6 +127,6 @@
       "ref": "26dcec62f9677dceba57de8cd717ff91447781c7"
     }
   },
-  "score": 78,
+  "score": 82,
   "grade": "B"
 }

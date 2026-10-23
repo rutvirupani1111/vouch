@@ -3,17 +3,6 @@
   "version": "3.7.2",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 32,
-          "excerpt": "\"prepare\": \"husky install\","
-        }
-      ]
-    },
-    {
       "id": "global_hook",
       "detail": "Array.prototype.0 (if missing), Array.prototype.abutsEnd, Array.prototype.abutsStart, Array.prototype.as, Array.prototype.contains, Array.prototype.count (+83 more)",
       "evidence": [
@@ -27,19 +16,11 @@
   ],
   "envVars": [],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "husky install"
-  },
+  "installScripts": {},
   "files": 40,
   "unpackedSize": 4592735,
-  "risk": 18,
+  "risk": 9,
   "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: husky install"
-    },
     {
       "id": "global-patch",
       "severity": "medium",
@@ -76,6 +57,6 @@
       "ref": "4262a38ded7762e22608a9feb9f117b40d338ced"
     }
   },
-  "score": 76,
+  "score": 81,
   "grade": "B"
 }
