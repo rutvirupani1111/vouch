@@ -72,7 +72,15 @@ function installTime(caps: Capabilities, keys: CapabilityKey[]): boolean {
 }
 
 /** Converts the engine's analysis to the public shape. Pure: used by tests directly. */
-export function toPublicAnalysis(a: EnginePackageAnalysis): PackageAnalysis {
+export function toPublicAnalysis(input: EnginePackageAnalysis): PackageAnalysis {
+  // `prepare` never runs when a package is installed from the registry tarball.
+  const a: EnginePackageAnalysis = { ...input, capabilities: { ...input.capabilities }, installScripts: input.installScripts.filter((s) => s.event !== 'prepare') };
+  const inst = a.capabilities['install-script'];
+  if (inst) {
+    const vals = inst.values.filter((v) => v !== 'prepare');
+    if (vals.length === 0) delete a.capabilities['install-script'];
+    else a.capabilities['install-script'] = { ...inst, values: vals, evidence: inst.evidence.filter((e) => e.value !== 'prepare') };
+  }
   const caps = a.capabilities;
   const capabilities: Capability[] = [];
   for (const id of CAPABILITY_ORDER) {
@@ -144,7 +152,11 @@ function deriveFindings(a: EnginePackageAnalysis, installScripts: Record<string,
   if (has('shell-download')) add('shell-download', 'critical', 'Downloads and runs a shell payload', v('shell-download'));
   if (has('suspicious-endpoint')) add('suspicious-endpoint', 'high', 'Talks to a suspicious endpoint', v('suspicious-endpoint'));
   if (has('credential-files')) add('credential-files', 'high', 'Reads credential files', v('credential-files'));
-  if (has('env-dump')) add('env-dump', 'high', 'Reads the whole environment', 'Enumerates process.env instead of named variables.');
+  if (has('env-dump')) {
+    // Enumerating process.env is common (debug reads DEBUG_*); with network access it is the exfiltration pattern.
+    const exfil = has('network') || has('suspicious-endpoint');
+    add('env-dump', exfil ? 'high' : 'medium', 'Reads the whole environment', `Enumerates process.env instead of named variables${exfil ? ' and has network access' : ''}.`);
+  }
   if (has('obfuscation')) add('obfuscation', 'high', 'Obfuscated code', v('obfuscation'));
   if (has('loader-hook')) add('loader-hook', 'high', 'Hooks the module loader', v('loader-hook'));
   if (has('env-secrets')) add('env-secrets', 'medium', 'Reads secret-looking environment variables', v('env-secrets'));

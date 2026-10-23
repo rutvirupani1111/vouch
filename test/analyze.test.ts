@@ -34,6 +34,14 @@ describe('analyzeFileMap', () => {
     expect(a.findings.find((f) => f.id === 'crypto-wallet')?.severity).toBe('critical');
   });
 
+  it('ignores `prepare`, which never runs for registry installs', () => {
+    const files = benignV1();
+    files['package.json'] = JSON.stringify({ name: 'tiny-colors', version: '1.0.0', scripts: { prepare: 'husky' } });
+    const a = analyzeFileMap(toBuffers(files), { name: 'tiny-colors', version: '1.0.0' });
+    expect(a.installScripts).toEqual({});
+    expect(ids(a)).not.toContain('install_script');
+  });
+
   it('detects native build steps', () => {
     const a = analyzeFileMap(toBuffers(nativeAddon()), { name: 'addon', version: '2.0.0' });
     expect(ids(a)).toContain('install_script');
