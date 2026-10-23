@@ -1,0 +1,67 @@
+{
+  "name": "debug",
+  "version": "4.4.3",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "(computed), DEBUG, Object.keys(process.env)",
+      "evidence": [
+        {
+          "file": "src/node.js",
+          "line": 136,
+          "excerpt": "let val = process.env[key];"
+        },
+        {
+          "file": "src/browser.js",
+          "line": 230,
+          "excerpt": "r = process.env.DEBUG;"
+        },
+        {
+          "file": "src/node.js",
+          "line": 221,
+          "excerpt": "return process.env.DEBUG;"
+        },
+        {
+          "file": "src/node.js",
+          "line": 124,
+          "excerpt": "exports.inspectOpts = Object.keys(process.env).filter(key => {"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)",
+    "DEBUG"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 7,
+  "unpackedSize": 42793,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "env-dump",
+      "severity": "medium",
+      "title": "Reads the whole environment",
+      "detail": "Enumerates process.env instead of named variables."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 7,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "debug-js/debug",
+      "ref": "6b2c5fbdb7d414483d9e306ef234acb4cd7ea67c"
+    }
+  },
+  "score": 81,
+  "grade": "B"
+}

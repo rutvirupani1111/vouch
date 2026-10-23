@@ -1,0 +1,103 @@
+{
+  "name": "zustand",
+  "version": "5.0.16",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "middleware.js",
+          "line": 66,
+          "excerpt": "…= (enabled != null ? enabled : process.env.NODE_ENV !== \"production\") && window.__REDUX_DEVTOOLS_EXTENSION__;"
+        },
+        {
+          "file": "middleware.js",
+          "line": 131,
+          "excerpt": "if (process.env.NODE_ENV !== \"production\" && args[0].type === \"__setState\" && !didWarnAboutReservedActionType…"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 52,
+  "unpackedSize": 95961,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "pmndrs/zustand",
+      "commit": "382d29c485e67018c06e75ec7235130d0968522c",
+      "workflow": ".github/workflows/publish.yml@refs/tags/v5.0.16",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "esm/index.d.mts",
+        "esm/index.mjs",
+        "esm/middleware.d.mts",
+        "esm/middleware.mjs",
+        "esm/middleware/combine.d.mts",
+        "esm/middleware/devtools.d.mts",
+        "esm/middleware/immer.d.mts",
+        "esm/middleware/immer.mjs",
+        "esm/middleware/persist.d.mts",
+        "esm/middleware/redux.d.mts",
+        "esm/middleware/ssrSafe.d.mts",
+        "esm/middleware/subscribeWithSelector.d.mts",
+        "esm/react.d.mts",
+        "esm/react.mjs",
+        "esm/react/shallow.d.mts",
+        "esm/react/shallow.mjs",
+        "esm/shallow.d.mts",
+        "esm/shallow.mjs",
+        "esm/traditional.d.mts",
+        "esm/traditional.mjs",
+        "esm/vanilla.d.mts",
+        "esm/vanilla.mjs",
+        "esm/vanilla/shallow.d.mts",
+        "esm/vanilla/shallow.mjs",
+        "index.d.ts",
+        "middleware.d.ts",
+        "middleware/combine.d.ts",
+        "middleware/devtools.d.ts",
+        "middleware/immer.d.ts",
+        "middleware/persist.d.ts",
+        "middleware/redux.d.ts",
+        "middleware/ssrSafe.d.ts",
+        "middleware/subscribeWithSelector.d.ts",
+        "react.d.ts",
+        "react/shallow.d.ts",
+        "shallow.d.ts",
+        "traditional.d.ts",
+        "ts_version_4.5_and_above_is_required.d.ts",
+        "vanilla.d.ts",
+        "vanilla/shallow.d.ts"
+      ],
+      "onlyInPackage": [
+        "index.js",
+        "middleware.js",
+        "middleware/immer.js",
+        "react.js",
+        "react/shallow.js",
+        "shallow.js",
+        "traditional.js",
+        "vanilla.js",
+        "vanilla/shallow.js"
+      ],
+      "note": "compared against commit from provenance",
+      "repo": "pmndrs/zustand",
+      "ref": "382d29c485e67018c06e75ec7235130d0968522c"
+    }
+  },
+  "score": 65,
+  "grade": "C"
+}

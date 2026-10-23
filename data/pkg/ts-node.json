@@ -1,0 +1,257 @@
+{
+  "name": "ts-node",
+  "version": "10.9.2",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process",
+      "evidence": [
+        {
+          "file": "dist/child/spawn-child.js",
+          "line": 4,
+          "excerpt": "const child_process_1 = require(\"child_process\");"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "NODE_OPTIONS, NODE_PENDING_DEPRECATION",
+      "evidence": [
+        {
+          "file": "dist-raw/node-options.js",
+          "line": 48,
+          "excerpt": "const envArgv = ParseNodeOptionsEnvVar(process.env.NODE_OPTIONS || '', errors);"
+        },
+        {
+          "file": "dist-raw/node-options.js",
+          "line": 99,
+          "excerpt": "if(process.env.NODE_PENDING_DEPRECATION === '1') {"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Script, import(), require(expression), vm",
+      "evidence": [
+        {
+          "file": "dist/repl.js",
+          "line": 464,
+          "excerpt": "const script = new vm_1.Script(code, { filename });"
+        },
+        {
+          "file": "dist/repl.js",
+          "line": 7,
+          "excerpt": "const vm_1 = require(\"vm\");"
+        },
+        {
+          "file": "dist-raw/runmain-hack.js",
+          "line": 8,
+          "excerpt": "import(pathToFileURL(entryPointPath));"
+        },
+        {
+          "file": "dist/index.js",
+          "line": 247,
+          "excerpt": "const transpilerFactory = require(transpilerPath)"
+        },
+        {
+          "file": "dist/transpilers/swc.js",
+          "line": 13,
+          "excerpt": "swcInstance = require(transpilerConfigLocalResolveHelper(swc, true));"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "Module._findPath, Module._resolveFilename, module",
+      "evidence": [
+        {
+          "file": "dist/cjs-resolve-hooks.js",
+          "line": 15,
+          "excerpt": "Module._findPath = _findPath;"
+        },
+        {
+          "file": "dist/cjs-resolve-hooks.js",
+          "line": 14,
+          "excerpt": "Module._resolveFilename = _resolveFilename;"
+        },
+        {
+          "file": "child-loader.mjs",
+          "line": 2,
+          "excerpt": "import { createRequire } from 'module';"
+        },
+        {
+          "file": "dist-raw/node-internal-modules-cjs-helpers.js",
+          "line": 35,
+          "excerpt": "const Module = require('module').Module;"
+        },
+        {
+          "file": "dist-raw/node-internal-modules-cjs-loader.js",
+          "line": 50,
+          "excerpt": "const Module = require('module');"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist-raw/node-internal-modules-cjs-loader.js",
+          "line": 27,
+          "excerpt": "const fs = require('fs');"
+        },
+        {
+          "file": "dist-raw/node-internal-modules-esm-resolve.js",
+          "line": 43,
+          "excerpt": "} = require('fs');"
+        },
+        {
+          "file": "dist-raw/node-internalBinding-fs.js",
+          "line": 1,
+          "excerpt": "const fs = require('fs');"
+        },
+        {
+          "file": "dist/repl.js",
+          "line": 9,
+          "excerpt": "const fs_1 = require(\"fs\");"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_OPTIONS",
+    "NODE_PENDING_DEPRECATION"
+  ],
+  "endpoints": [
+    "typestrong.org"
+  ],
+  "installScripts": {},
+  "files": 117,
+  "unpackedSize": 757333,
+  "risk": 34,
+  "findings": [
+    {
+      "id": "loader-hook",
+      "severity": "high",
+      "title": "Hooks the module loader",
+      "detail": "Module._findPath, Module._resolveFilename"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Script, vm"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 31,
+      "differs": [],
+      "builtOnly": [
+        "dist/bin-cwd.d.ts",
+        "dist/bin-cwd.js",
+        "dist/bin-cwd.js.map",
+        "dist/bin-esm.d.ts",
+        "dist/bin-esm.js",
+        "dist/bin-esm.js.map",
+        "dist/bin-script-deprecated.d.ts",
+        "dist/bin-script-deprecated.js",
+        "dist/bin-script-deprecated.js.map",
+        "dist/bin-script.d.ts",
+        "dist/bin-script.js",
+        "dist/bin-script.js.map",
+        "dist/bin-transpile.d.ts",
+        "dist/bin-transpile.js",
+        "dist/bin-transpile.js.map",
+        "dist/bin.d.ts",
+        "dist/bin.js",
+        "dist/bin.js.map",
+        "dist/child/argv-payload.d.ts",
+        "dist/child/argv-payload.js",
+        "dist/child/argv-payload.js.map",
+        "dist/child/child-entrypoint.d.ts",
+        "dist/child/child-entrypoint.js",
+        "dist/child/child-entrypoint.js.map",
+        "dist/child/child-loader.d.ts",
+        "dist/child/child-loader.js",
+        "dist/child/child-loader.js.map",
+        "dist/child/child-require.d.ts",
+        "dist/child/child-require.js",
+        "dist/child/child-require.js.map",
+        "dist/child/spawn-child.d.ts",
+        "dist/child/spawn-child.js",
+        "dist/child/spawn-child.js.map",
+        "dist/cjs-resolve-hooks.d.ts",
+        "dist/cjs-resolve-hooks.js",
+        "dist/cjs-resolve-hooks.js.map",
+        "dist/configuration.d.ts",
+        "dist/configuration.js",
+        "dist/configuration.js.map",
+        "dist/esm.d.ts",
+        "dist/esm.js",
+        "dist/esm.js.map",
+        "dist/file-extensions.d.ts",
+        "dist/file-extensions.js",
+        "dist/file-extensions.js.map",
+        "dist/index.d.ts",
+        "dist/index.js",
+        "dist/index.js.map",
+        "dist/module-type-classifier.d.ts",
+        "dist/module-type-classifier.js",
+        "dist/module-type-classifier.js.map",
+        "dist/node-module-type-classifier.d.ts",
+        "dist/node-module-type-classifier.js",
+        "dist/node-module-type-classifier.js.map",
+        "dist/repl.d.ts",
+        "dist/repl.js",
+        "dist/repl.js.map",
+        "dist/resolver-functions.d.ts",
+        "dist/resolver-functions.js",
+        "dist/resolver-functions.js.map",
+        "dist/transpilers/swc.d.ts",
+        "dist/transpilers/swc.js",
+        "dist/transpilers/swc.js.map",
+        "dist/transpilers/types.d.ts",
+        "dist/transpilers/types.js",
+        "dist/transpilers/types.js.map",
+        "dist/ts-compiler-types.d.ts",
+        "dist/ts-compiler-types.js",
+        "dist/ts-compiler-types.js.map",
+        "dist/ts-internals.d.ts",
+        "dist/ts-internals.js",
+        "dist/ts-internals.js.map",
+        "dist/ts-transpile-module.d.ts",
+        "dist/ts-transpile-module.js",
+        "dist/ts-transpile-module.js.map",
+        "dist/tsconfig-schema.d.ts",
+        "dist/tsconfig-schema.js",
+        "dist/tsconfig-schema.js.map",
+        "dist/tsconfigs.d.ts",
+        "dist/tsconfigs.js",
+        "dist/tsconfigs.js.map",
+        "dist/util.d.ts",
+        "dist/util.js",
+        "dist/util.js.map",
+        "tsconfig.schema.json",
+        "tsconfig.schemastore-schema.json"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "TypeStrong/ts-node",
+      "ref": "057ac1beb118f9c42d21e876a17320ad73ea6be2"
+    }
+  },
+  "score": 68,
+  "grade": "C"
+}

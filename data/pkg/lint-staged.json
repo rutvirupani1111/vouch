@@ -1,0 +1,138 @@
+{
+  "name": "lint-staged",
+  "version": "17.6.0",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process",
+      "evidence": [
+        {
+          "file": "lib/killSubprocesses.js",
+          "line": 1,
+          "excerpt": "import { exec } from 'node:child_process'"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "GIT_DIR, GIT_INDEX_FILE, GIT_LITERAL_PATHSPECS, GIT_WORK_TREE",
+      "evidence": [
+        {
+          "file": "lib/resolveGitRepo.js",
+          "line": 42,
+          "excerpt": "debugLog('Unset GIT_DIR (was `%s`)', process.env.GIT_DIR)"
+        },
+        {
+          "file": "lib/gitWorkflow.js",
+          "line": 398,
+          "excerpt": "const activeIndexFile = process.env.GIT_INDEX_FILE"
+        },
+        {
+          "file": "lib/gitWorkflow.js",
+          "line": 399,
+          "excerpt": "? normalizePath(process.env.GIT_INDEX_FILE)"
+        },
+        {
+          "file": "lib/gitWorkflow.js",
+          "line": 400,
+          "excerpt": ": process.env.GIT_INDEX_FILE"
+        },
+        {
+          "file": "lib/index.js",
+          "line": 90,
+          "excerpt": "debugLog('Unset GIT_LITERAL_PATHSPECS (was `%s`)', process.env.GIT_LITERAL_PATHSPECS)"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "import()",
+      "evidence": [
+        {
+          "file": "lib/loadConfig.js",
+          "line": 48,
+          "excerpt": "export const dynamicImport = (p) => import(pathToFileURL(p)).then((module) => module.default)"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "lib/resolveConfig.js",
+          "line": 1,
+          "excerpt": "import { createRequire } from 'node:module'"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/cli.js",
+          "line": 1,
+          "excerpt": "import { readFile } from 'node:fs/promises'"
+        },
+        {
+          "file": "lib/file.js",
+          "line": 1,
+          "excerpt": "import fs from 'node:fs/promises'"
+        },
+        {
+          "file": "lib/loadConfig.js",
+          "line": 3,
+          "excerpt": "import fs from 'node:fs/promises'"
+        },
+        {
+          "file": "lib/searchConfigs.js",
+          "line": 1,
+          "excerpt": "import fs, { constants } from 'node:fs/promises'"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "GIT_DIR",
+    "GIT_INDEX_FILE",
+    "GIT_LITERAL_PATHSPECS",
+    "GIT_WORK_TREE"
+  ],
+  "endpoints": [
+    "git-scm.com"
+  ],
+  "installScripts": {},
+  "files": 47,
+  "unpackedSize": 168006,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "lint-staged/lint-staged",
+      "commit": "48f9f4ea4b88eb605de3546e4599083de7a394b2",
+      "workflow": ".github/workflows/release.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 47,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "lint-staged/lint-staged",
+      "ref": "48f9f4ea4b88eb605de3546e4599083de7a394b2"
+    }
+  },
+  "score": 99,
+  "grade": "A"
+}

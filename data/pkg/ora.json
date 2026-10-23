@@ -1,0 +1,44 @@
+{
+  "name": "ora",
+  "version": "9.4.1",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "index.js",
+          "line": 161,
+          "excerpt": "if (process.env.NODE_ENV === 'test') {"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 5,
+  "unpackedSize": 40673,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "sindresorhus/ora",
+      "ref": "79cd8c15ac34572cffb3ab53e3d4b6bab6d59ea8"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

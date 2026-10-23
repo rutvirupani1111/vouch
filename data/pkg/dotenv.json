@@ -1,0 +1,117 @@
+{
+  "name": "dotenv",
+  "version": "18.0.9",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, spawn, spawnSync",
+      "evidence": [
+        {
+          "file": "dist/index.cjs",
+          "line": 7,
+          "excerpt": "…s=A});var M=j((Te,W)=>{var _=require(\"child_process\"),ue=require(\"fs\"),L=require(\"path\");function de(e){let …"
+        },
+        {
+          "file": "dist/index.cjs",
+          "line": 8,
+          "excerpt": "…(process.platform===\"win32\"){ve.spawnSync(\"taskkill\",[\"/pid\",String(i.pid),\"/T\",\"/F\"],{stdio:\"ignore\"});retu…"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed), DOTENV_CONFIG_QUIET, DOTENV_QUIET, quiet",
+      "evidence": [
+        {
+          "file": "dist/index.cjs",
+          "line": 3,
+          "excerpt": "…(o=re.exec(t))!=null;){let r=o[1],s=o[2]||\"\";s=s.trim();let i=s[0];s=s.replace(/^(['\"`])([\\s\\S]*)\\1$/mg,\"$2\"…"
+        },
+        {
+          "file": "dist/config.cjs",
+          "line": 6,
+          "excerpt": ": process.env.DOTENV_CONFIG_QUIET"
+        },
+        {
+          "file": "dist/config.cjs",
+          "line": 4,
+          "excerpt": "const quiet = process.env.DOTENV_QUIET != null"
+        },
+        {
+          "file": "dist/config.cjs",
+          "line": 5,
+          "excerpt": "? process.env.DOTENV_QUIET"
+        },
+        {
+          "file": "dist/index.cjs",
+          "line": 8,
+          "excerpt": "…o=Ee(t);try{let c=be(o);if(!(o.quiet==null?J().quiet:o.quiet)){let g=`\\u25C7 injected env (${Object.keys(c.i…"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/index.cjs",
+          "line": 2,
+          "excerpt": "…:Y}});var N=j((ye,x)=>{var z=require(\"fs\"),I=require(\"path\"),Z=require(\"os\"),{URL:ee,fileURLToPath:te}=requi…"
+        },
+        {
+          "file": "dist/index.cjs",
+          "line": 7,
+          "excerpt": "…=require(\"child_process\"),ue=require(\"fs\"),L=require(\"path\");function de(e){let n=['\"'],t=0;for(let o of e){…"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)",
+    "DOTENV_CONFIG_QUIET",
+    "DOTENV_QUIET",
+    "quiet"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 7,
+  "unpackedSize": 46091,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, spawn, spawnSync"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "1 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/config.cjs",
+        "dist/config.d.ts",
+        "dist/index.cjs",
+        "dist/index.d.ts"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "motdotla/dotenv",
+      "ref": "8d1ab850aa628781929f08bfd0d71ba1d1bf0a23"
+    }
+  },
+  "score": 84,
+  "grade": "B"
+}

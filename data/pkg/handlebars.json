@@ -1,0 +1,159 @@
+{
+  "name": "handlebars",
+  "version": "4.7.10",
+  "capabilities": [
+    {
+      "id": "global_hook",
+      "detail": "require.extensions",
+      "evidence": [
+        {
+          "file": "lib/index.js",
+          "line": 24,
+          "excerpt": "require.extensions['.handlebars'] = extension;"
+        },
+        {
+          "file": "lib/index.js",
+          "line": 25,
+          "excerpt": "require.extensions['.hbs'] = extension;"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/cjs/precompiler.js",
+          "line": 17,
+          "excerpt": "var _fs = require('fs');"
+        },
+        {
+          "file": "lib/index.js",
+          "line": 18,
+          "excerpt": "var fs = require('fs');"
+        },
+        {
+          "file": "lib/precompiler.js",
+          "line": 4,
+          "excerpt": "import fs from 'fs';"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [
+    "handlebarsjs.com"
+  ],
+  "installScripts": {},
+  "files": 118,
+  "unpackedSize": 2957513,
+  "risk": 22,
+  "findings": [
+    {
+      "id": "loader-hook",
+      "severity": "high",
+      "title": "Hooks the module loader",
+      "detail": "require.extensions"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "64 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 43,
+      "differs": [],
+      "builtOnly": [
+        "dist/amd/handlebars.js",
+        "dist/amd/handlebars.runtime.js",
+        "dist/amd/handlebars/base.js",
+        "dist/amd/handlebars/compiler/ast.js",
+        "dist/amd/handlebars/compiler/base.js",
+        "dist/amd/handlebars/compiler/code-gen.js",
+        "dist/amd/handlebars/compiler/compiler.js",
+        "dist/amd/handlebars/compiler/helpers.js",
+        "dist/amd/handlebars/compiler/javascript-compiler.js",
+        "dist/amd/handlebars/compiler/node-types.js",
+        "dist/amd/handlebars/compiler/parser.js",
+        "dist/amd/handlebars/compiler/printer.js",
+        "dist/amd/handlebars/compiler/visitor.js",
+        "dist/amd/handlebars/compiler/whitespace-control.js",
+        "dist/amd/handlebars/decorators.js",
+        "dist/amd/handlebars/decorators/inline.js",
+        "dist/amd/handlebars/exception.js",
+        "dist/amd/handlebars/helpers.js",
+        "dist/amd/handlebars/helpers/block-helper-missing.js",
+        "dist/amd/handlebars/helpers/each.js",
+        "dist/amd/handlebars/helpers/helper-missing.js",
+        "dist/amd/handlebars/helpers/if.js",
+        "dist/amd/handlebars/helpers/log.js",
+        "dist/amd/handlebars/helpers/lookup.js",
+        "dist/amd/handlebars/helpers/with.js",
+        "dist/amd/handlebars/internal/proto-access.js",
+        "dist/amd/handlebars/internal/wrapHelper.js",
+        "dist/amd/handlebars/logger.js",
+        "dist/amd/handlebars/no-conflict.js",
+        "dist/amd/handlebars/runtime.js",
+        "dist/amd/handlebars/safe-string.js",
+        "dist/amd/handlebars/utils.js",
+        "dist/amd/precompiler.js",
+        "dist/cjs/handlebars.js",
+        "dist/cjs/handlebars.runtime.js",
+        "dist/cjs/handlebars/base.js",
+        "dist/cjs/handlebars/compiler/ast.js",
+        "dist/cjs/handlebars/compiler/base.js",
+        "dist/cjs/handlebars/compiler/code-gen.js",
+        "dist/cjs/handlebars/compiler/compiler.js",
+        "dist/cjs/handlebars/compiler/helpers.js",
+        "dist/cjs/handlebars/compiler/javascript-compiler.js",
+        "dist/cjs/handlebars/compiler/node-types.js",
+        "dist/cjs/handlebars/compiler/parser.js",
+        "dist/cjs/handlebars/compiler/printer.js",
+        "dist/cjs/handlebars/compiler/visitor.js",
+        "dist/cjs/handlebars/compiler/whitespace-control.js",
+        "dist/cjs/handlebars/decorators.js",
+        "dist/cjs/handlebars/decorators/inline.js",
+        "dist/cjs/handlebars/exception.js",
+        "dist/cjs/handlebars/helpers.js",
+        "dist/cjs/handlebars/helpers/block-helper-missing.js",
+        "dist/cjs/handlebars/helpers/each.js",
+        "dist/cjs/handlebars/helpers/helper-missing.js",
+        "dist/cjs/handlebars/helpers/if.js",
+        "dist/cjs/handlebars/helpers/log.js",
+        "dist/cjs/handlebars/helpers/lookup.js",
+        "dist/cjs/handlebars/helpers/with.js",
+        "dist/cjs/handlebars/internal/proto-access.js",
+        "dist/cjs/handlebars/internal/wrapHelper.js",
+        "dist/cjs/handlebars/logger.js",
+        "dist/cjs/handlebars/no-conflict.js",
+        "dist/cjs/handlebars/runtime.js",
+        "dist/cjs/handlebars/safe-string.js",
+        "dist/cjs/handlebars/utils.js",
+        "dist/cjs/precompiler.js",
+        "dist/handlebars.amd.js",
+        "dist/handlebars.amd.min.js",
+        "dist/handlebars.js",
+        "dist/handlebars.min.js",
+        "dist/handlebars.runtime.amd.js",
+        "dist/handlebars.runtime.amd.min.js",
+        "dist/handlebars.runtime.js",
+        "dist/handlebars.runtime.min.js",
+        "lib/handlebars/compiler/parser.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "handlebars-lang/handlebars.js",
+      "ref": "45ce15255e0f430ac6d19742b18e316b7539264e"
+    }
+  },
+  "score": 74,
+  "grade": "C"
+}

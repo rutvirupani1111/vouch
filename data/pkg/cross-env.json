@@ -1,0 +1,97 @@
+{
+  "name": "cross-env",
+  "version": "10.1.0",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "cross-spawn",
+      "evidence": [
+        {
+          "file": "dist/index.js",
+          "line": 2,
+          "excerpt": "import { spawn } from 'cross-spawn';"
+        },
+        {
+          "file": "dist/index.js",
+          "line": 15,
+          "excerpt": "const proc = spawn("
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed), APPDATA, OSTYPE",
+      "evidence": [
+        {
+          "file": "dist/variable.js",
+          "line": 46,
+          "excerpt": "(process.env[varName || altVarName] || ''));"
+        },
+        {
+          "file": "dist/index.js",
+          "line": 88,
+          "excerpt": "if (process.env.APPDATA) {"
+        },
+        {
+          "file": "dist/index.js",
+          "line": 89,
+          "excerpt": "envVars.APPDATA = process.env.APPDATA;"
+        },
+        {
+          "file": "dist/is-windows.js",
+          "line": 7,
+          "excerpt": "/^(msys|cygwin)$/.test(process.env.OSTYPE || ''));"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)",
+    "APPDATA",
+    "OSTYPE"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 15,
+  "unpackedSize": 20233,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "cross-spawn"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/bin/cross-env-shell.d.ts",
+        "dist/bin/cross-env-shell.js",
+        "dist/bin/cross-env.d.ts",
+        "dist/bin/cross-env.js",
+        "dist/command.d.ts",
+        "dist/command.js",
+        "dist/index.d.ts",
+        "dist/index.js",
+        "dist/is-windows.d.ts",
+        "dist/is-windows.js",
+        "dist/variable.d.ts",
+        "dist/variable.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "kentcdodds/cross-env",
+      "ref": "152ae6a85b5725ac3c725a8a3e471aee79acc712"
+    }
+  },
+  "score": 84,
+  "grade": "B"
+}

@@ -1,0 +1,141 @@
+{
+  "name": "bunyan",
+  "version": "1.8.15",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process",
+      "evidence": [
+        {
+          "file": "bin/bunyan",
+          "line": 23,
+          "excerpt": "var child_process = require('child_process'),"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "http",
+      "evidence": [
+        {
+          "file": "bin/bunyan",
+          "line": 20,
+          "excerpt": "var http = require('http');"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "BUNYAN_EXEC, BUNYAN_NO_COLOR, BUNYAN_NO_PAGER, BUNYAN_TEST_NO_SAFE_JSON_STRINGIFY, PAGER",
+      "evidence": [
+        {
+          "file": "bin/bunyan",
+          "line": 580,
+          "excerpt": "if (Boolean(process.env.BUNYAN_EXEC &&"
+        },
+        {
+          "file": "bin/bunyan",
+          "line": 581,
+          "excerpt": "process.env.BUNYAN_EXEC === 'vm'))"
+        },
+        {
+          "file": "bin/bunyan",
+          "line": 1598,
+          "excerpt": "if (process.env.BUNYAN_NO_COLOR &&"
+        },
+        {
+          "file": "bin/bunyan",
+          "line": 1599,
+          "excerpt": "process.env.BUNYAN_NO_COLOR.length > 0) {"
+        },
+        {
+          "file": "bin/bunyan",
+          "line": 1618,
+          "excerpt": "(!process.env.BUNYAN_NO_PAGER ||"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function, vm",
+      "evidence": [
+        {
+          "file": "bin/bunyan",
+          "line": 398,
+          "excerpt": "return (new Function(varDefs + js));"
+        },
+        {
+          "file": "bin/bunyan",
+          "line": 19,
+          "excerpt": "var vm = require('vm');"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "bin/bunyan",
+          "line": 21,
+          "excerpt": "var fs = require('fs');"
+        },
+        {
+          "file": "lib/bunyan.js",
+          "line": 77,
+          "excerpt": "fs = require('fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "BUNYAN_EXEC",
+    "BUNYAN_NO_COLOR",
+    "BUNYAN_NO_PAGER",
+    "BUNYAN_TEST_NO_SAFE_JSON_STRINGIFY",
+    "PAGER"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 6,
+  "unpackedSize": 201267,
+  "risk": 15,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function, vm"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "http"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 6,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "trentm/node-bunyan",
+      "ref": "7be79fb8f6a81f556faaab89d55f04ca33b0791a"
+    }
+  },
+  "score": 78,
+  "grade": "B"
+}

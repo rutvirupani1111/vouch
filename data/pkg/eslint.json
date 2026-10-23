@@ -1,0 +1,176 @@
+{
+  "name": "eslint",
+  "version": "10.13.0",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "Worker, cross-spawn, worker_threads",
+      "evidence": [
+        {
+          "file": "bin/eslint.js",
+          "line": 72,
+          "excerpt": "const spawn = require(\"cross-spawn\");"
+        },
+        {
+          "file": "bin/eslint.js",
+          "line": 73,
+          "excerpt": "const result = spawn.sync(command, args, {"
+        },
+        {
+          "file": "lib/cli.js",
+          "line": 269,
+          "excerpt": "const spawn = require(\"cross-spawn\");"
+        },
+        {
+          "file": "lib/cli.js",
+          "line": 274,
+          "excerpt": "spawn.sync("
+        },
+        {
+          "file": "lib/eslint/eslint.js",
+          "line": 489,
+          "excerpt": "const worker = new Worker(workerURL, workerOptions);"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "ESLINT_FLAGS, TIMING",
+      "evidence": [
+        {
+          "file": "lib/eslint/eslint-helpers.js",
+          "line": 1329,
+          "excerpt": "if (!process.env.ESLINT_FLAGS) {"
+        },
+        {
+          "file": "lib/eslint/eslint-helpers.js",
+          "line": 1333,
+          "excerpt": "const envFlags = process.env.ESLINT_FLAGS.trim().split(/\\s*,\\s*/gu);"
+        },
+        {
+          "file": "lib/linter/timing.js",
+          "line": 44,
+          "excerpt": "const enabled = !!process.env.TIMING;"
+        },
+        {
+          "file": "lib/linter/timing.js",
+          "line": 56,
+          "excerpt": "if (typeof process.env.TIMING !== \"string\") {"
+        },
+        {
+          "file": "lib/linter/timing.js",
+          "line": 60,
+          "excerpt": "if (process.env.TIMING.toLowerCase() === \"all\") {"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "import(), require(expression)",
+      "evidence": [
+        {
+          "file": "lib/config/config-loader.js",
+          "line": 185,
+          "excerpt": "const module = await import(fileURL.href);"
+        },
+        {
+          "file": "lib/eslint/eslint-helpers.js",
+          "line": 990,
+          "excerpt": "return (await import(optionsURL)).default;"
+        },
+        {
+          "file": "lib/eslint/eslint.js",
+          "line": 1273,
+          "excerpt": "formatter = (await import(pathToFileURL(formatterPath))).default;"
+        },
+        {
+          "file": "bin/eslint.js",
+          "line": 107,
+          "excerpt": "const template = require(`../messages/${error.messageTemplate}.js`);"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "bin/eslint.js",
+          "line": 12,
+          "excerpt": "const mod = require(\"node:module\");"
+        },
+        {
+          "file": "lib/eslint/worker.js",
+          "line": 13,
+          "excerpt": "require(\"node:module\").enableCompileCache?.();"
+        },
+        {
+          "file": "lib/shared/relative-module-resolver.js",
+          "line": 8,
+          "excerpt": "const Module = require(\"node:module\");"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/cli-engine/lint-result-cache.js",
+          "line": 11,
+          "excerpt": "const fs = require(\"node:fs\");"
+        },
+        {
+          "file": "lib/cli.js",
+          "line": 18,
+          "excerpt": "const fs = require(\"node:fs\"),"
+        },
+        {
+          "file": "lib/cli.js",
+          "line": 19,
+          "excerpt": "{ mkdir, stat, writeFile } = require(\"node:fs/promises\"),"
+        },
+        {
+          "file": "lib/config/config-loader.js",
+          "line": 13,
+          "excerpt": "const fs = require(\"node:fs/promises\");"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "ESLINT_FLAGS",
+    "TIMING"
+  ],
+  "endpoints": [
+    "eslint.style"
+  ],
+  "installScripts": {},
+  "files": 421,
+  "unpackedSize": 2950609,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "cross-spawn"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "unknown",
+      "identical": 0,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "no repository declared; source match skipped"
+    }
+  },
+  "score": 69,
+  "grade": "C"
+}

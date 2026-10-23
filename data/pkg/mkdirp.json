@@ -1,0 +1,149 @@
+{
+  "name": "mkdirp",
+  "version": "3.0.1",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "__TESTING_MKDIRP_NODE_VERSION__, __TESTING_MKDIRP_PLATFORM__",
+      "evidence": [
+        {
+          "file": "dist/cjs/src/use-native.js",
+          "line": 6,
+          "excerpt": "const version = process.env.__TESTING_MKDIRP_NODE_VERSION__ || process.version;"
+        },
+        {
+          "file": "dist/mjs/use-native.js",
+          "line": 3,
+          "excerpt": "const version = process.env.__TESTING_MKDIRP_NODE_VERSION__ || process.version;"
+        },
+        {
+          "file": "dist/cjs/src/path-arg.js",
+          "line": 4,
+          "excerpt": "const platform = process.env.__TESTING_MKDIRP_PLATFORM__ || process.platform;"
+        },
+        {
+          "file": "dist/mjs/path-arg.js",
+          "line": 1,
+          "excerpt": "const platform = process.env.__TESTING_MKDIRP_PLATFORM__ || process.platform;"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/cjs/src/opts-arg.js",
+          "line": 4,
+          "excerpt": "const fs_1 = require(\"fs\");"
+        },
+        {
+          "file": "dist/cjs/src/use-native.js",
+          "line": 4,
+          "excerpt": "const fs_1 = require(\"fs\");"
+        },
+        {
+          "file": "dist/mjs/opts-arg.js",
+          "line": 1,
+          "excerpt": "import { mkdir, mkdirSync, stat, statSync, } from 'fs';"
+        },
+        {
+          "file": "dist/mjs/use-native.js",
+          "line": 1,
+          "excerpt": "import { mkdir, mkdirSync } from 'fs';"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "__TESTING_MKDIRP_NODE_VERSION__",
+    "__TESTING_MKDIRP_PLATFORM__"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 65,
+  "unpackedSize": 106656,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/cjs/package.json",
+        "dist/cjs/src/bin.d.ts",
+        "dist/cjs/src/bin.d.ts.map",
+        "dist/cjs/src/bin.js",
+        "dist/cjs/src/bin.js.map",
+        "dist/cjs/src/find-made.d.ts",
+        "dist/cjs/src/find-made.d.ts.map",
+        "dist/cjs/src/find-made.js",
+        "dist/cjs/src/find-made.js.map",
+        "dist/cjs/src/index.d.ts",
+        "dist/cjs/src/index.d.ts.map",
+        "dist/cjs/src/index.js",
+        "dist/cjs/src/index.js.map",
+        "dist/cjs/src/mkdirp-manual.d.ts",
+        "dist/cjs/src/mkdirp-manual.d.ts.map",
+        "dist/cjs/src/mkdirp-manual.js",
+        "dist/cjs/src/mkdirp-manual.js.map",
+        "dist/cjs/src/mkdirp-native.d.ts",
+        "dist/cjs/src/mkdirp-native.d.ts.map",
+        "dist/cjs/src/mkdirp-native.js",
+        "dist/cjs/src/mkdirp-native.js.map",
+        "dist/cjs/src/opts-arg.d.ts",
+        "dist/cjs/src/opts-arg.d.ts.map",
+        "dist/cjs/src/opts-arg.js",
+        "dist/cjs/src/opts-arg.js.map",
+        "dist/cjs/src/path-arg.d.ts",
+        "dist/cjs/src/path-arg.d.ts.map",
+        "dist/cjs/src/path-arg.js",
+        "dist/cjs/src/path-arg.js.map",
+        "dist/cjs/src/use-native.d.ts",
+        "dist/cjs/src/use-native.d.ts.map",
+        "dist/cjs/src/use-native.js",
+        "dist/cjs/src/use-native.js.map",
+        "dist/mjs/find-made.d.ts",
+        "dist/mjs/find-made.d.ts.map",
+        "dist/mjs/find-made.js",
+        "dist/mjs/find-made.js.map",
+        "dist/mjs/index.d.ts",
+        "dist/mjs/index.d.ts.map",
+        "dist/mjs/index.js",
+        "dist/mjs/index.js.map",
+        "dist/mjs/mkdirp-manual.d.ts",
+        "dist/mjs/mkdirp-manual.d.ts.map",
+        "dist/mjs/mkdirp-manual.js",
+        "dist/mjs/mkdirp-manual.js.map",
+        "dist/mjs/mkdirp-native.d.ts",
+        "dist/mjs/mkdirp-native.d.ts.map",
+        "dist/mjs/mkdirp-native.js",
+        "dist/mjs/mkdirp-native.js.map",
+        "dist/mjs/opts-arg.d.ts",
+        "dist/mjs/opts-arg.d.ts.map",
+        "dist/mjs/opts-arg.js",
+        "dist/mjs/opts-arg.js.map",
+        "dist/mjs/package.json",
+        "dist/mjs/path-arg.d.ts",
+        "dist/mjs/path-arg.d.ts.map",
+        "dist/mjs/path-arg.js",
+        "dist/mjs/path-arg.js.map",
+        "dist/mjs/use-native.d.ts",
+        "dist/mjs/use-native.d.ts.map",
+        "dist/mjs/use-native.js",
+        "dist/mjs/use-native.js.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "isaacs/node-mkdirp",
+      "ref": "6fc29774a008f41d96b34523d6aae543ecb46cd1"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

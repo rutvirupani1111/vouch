@@ -1,0 +1,30 @@
+{
+  "name": "ansi-styles",
+  "version": "7.0.0",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 5,
+  "unpackedSize": 22120,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "chalk/ansi-styles",
+      "ref": "c1c3dd4e017a2938807aaff0d361f46d086aeab7"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

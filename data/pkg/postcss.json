@@ -1,0 +1,84 @@
+{
+  "name": "postcss",
+  "version": "8.5.31",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "LANG, NODE_ENV",
+      "evidence": [
+        {
+          "file": "lib/postcss.js",
+          "line": 41,
+          "excerpt": "if (process.env.LANG && process.env.LANG.startsWith('zh')) {"
+        },
+        {
+          "file": "lib/lazy-result.js",
+          "line": 224,
+          "excerpt": "if (process.env.NODE_ENV !== 'production') {"
+        },
+        {
+          "file": "lib/lazy-result.js",
+          "line": 446,
+          "excerpt": "if (process.env.NODE_ENV !== 'production') {"
+        },
+        {
+          "file": "lib/no-work-result.js",
+          "line": 114,
+          "excerpt": "if (process.env.NODE_ENV !== 'production') {"
+        },
+        {
+          "file": "lib/parse.js",
+          "line": 13,
+          "excerpt": "if (process.env.NODE_ENV !== 'production') {"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/previous-map.js",
+          "line": 3,
+          "excerpt": "let { existsSync, readFileSync, realpathSync } = require('fs')"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "LANG",
+    "NODE_ENV"
+  ],
+  "endpoints": [
+    "evilmartians.com",
+    "w3ctech.com"
+  ],
+  "installScripts": {},
+  "files": 55,
+  "unpackedSize": 220893,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "postcss/postcss",
+      "commit": "d1908579d6af4155ee5f759030184fb4c2b575ec",
+      "workflow": ".github/workflows/release.yml@refs/tags/8.5.31",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "partial",
+      "identical": 54,
+      "differs": [
+        "README.md"
+      ],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "postcss/postcss",
+      "ref": "d1908579d6af4155ee5f759030184fb4c2b575ec"
+    }
+  },
+  "score": 90,
+  "grade": "A"
+}

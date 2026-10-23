@@ -1,0 +1,92 @@
+{
+  "name": "chokidar",
+  "version": "6.0.0",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "CHOKIDAR_INTERVAL, CHOKIDAR_USEPOLLING",
+      "evidence": [
+        {
+          "file": "index.js",
+          "line": 170,
+          "excerpt": "const envInterval = process.env.CHOKIDAR_INTERVAL;"
+        },
+        {
+          "file": "index.js",
+          "line": 157,
+          "excerpt": "const envPoll = process.env.CHOKIDAR_USEPOLLING;"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "backend.js",
+          "line": 1,
+          "excerpt": "import { watch as fsWatch, realpathSync } from 'node:fs';"
+        },
+        {
+          "file": "backend.js",
+          "line": 2,
+          "excerpt": "import { lstat, open, stat } from 'node:fs/promises';"
+        },
+        {
+          "file": "index.js",
+          "line": 3,
+          "excerpt": "import { realpathSync } from 'node:fs';"
+        },
+        {
+          "file": "index.js",
+          "line": 4,
+          "excerpt": "import { readdir } from 'node:fs/promises';"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "CHOKIDAR_INTERVAL",
+    "CHOKIDAR_USEPOLLING"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 15,
+  "unpackedSize": 201589,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "paulmillr/chokidar",
+      "commit": "4130839be8ca2dd05692837cde3145276f58f8bf",
+      "workflow": ".github/workflows/release.yml@refs/tags/6.0.0",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "backend.d.ts",
+        "backend.js",
+        "index.d.ts",
+        "index.js",
+        "policy.d.ts",
+        "policy.js",
+        "reconcile.d.ts",
+        "reconcile.js",
+        "runtime.d.ts",
+        "runtime.js",
+        "tree.d.ts",
+        "tree.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "paulmillr/chokidar",
+      "ref": "4130839be8ca2dd05692837cde3145276f58f8bf"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

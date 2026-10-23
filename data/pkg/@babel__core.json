@@ -1,0 +1,119 @@
+{
+  "name": "@babel/core",
+  "version": "8.0.7",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "BABEL_7_TO_8_DANGEROUSLY_DISABLE_VERSION_CHECK, BABEL_ENV, BABEL_SHOW_CONFIG_FOR, NODE_ENV",
+      "evidence": [
+        {
+          "file": "lib/index-shared.js",
+          "line": 1761,
+          "excerpt": "if (typeof process !== \"undefined\" && process.env.BABEL_7_TO_8_DANGEROUSLY_DISABLE_VERSION_CHECK) {"
+        },
+        {
+          "file": "lib/index-shared.js",
+          "line": 315,
+          "excerpt": "return process.env.BABEL_ENV || process.env.NODE_ENV || defaultValue;"
+        },
+        {
+          "file": "lib/config/files/index.js",
+          "line": 326,
+          "excerpt": "const targetPath = process.env.BABEL_SHOW_CONFIG_FOR;"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "import()",
+      "evidence": [
+        {
+          "file": "lib/config/files/index.js",
+          "line": 96,
+          "excerpt": "return await import(url);"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "lib/config/files/index.js",
+          "line": 10,
+          "excerpt": "import { createRequire } from 'node:module';"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/config/files/index.js",
+          "line": 4,
+          "excerpt": "import fs, { existsSync } from 'node:fs';"
+        },
+        {
+          "file": "lib/fs-shared.js",
+          "line": 1,
+          "excerpt": "import fs from 'node:fs';"
+        },
+        {
+          "file": "lib/transformation/read-input-source-map-file.js",
+          "line": 1,
+          "excerpt": "import fs from 'node:fs';"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "BABEL_7_TO_8_DANGEROUSLY_DISABLE_VERSION_CHECK",
+    "BABEL_ENV",
+    "BABEL_SHOW_CONFIG_FOR",
+    "NODE_ENV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 18,
+  "unpackedSize": 167878,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "babel/babel",
+      "commit": "c2e6b0701a09805b7f084fd01b088840e336dc99",
+      "workflow": ".github/workflows/release.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "lib/caching-shared.js",
+        "lib/config/caching.js",
+        "lib/config/files/index-browser.js",
+        "lib/config/files/index.js",
+        "lib/config/resolve-targets-browser.js",
+        "lib/config/resolve-targets.js",
+        "lib/errors/rewrite-stack-trace.js",
+        "lib/fs-shared.js",
+        "lib/index-shared.js",
+        "lib/index.d.ts",
+        "lib/index.js",
+        "lib/transform-file-browser.js",
+        "lib/transform-file.js",
+        "lib/transformation/read-input-source-map-file-browser.js",
+        "lib/transformation/read-input-source-map-file.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/babel-core/",
+      "repo": "babel/babel",
+      "ref": "c2e6b0701a09805b7f084fd01b088840e336dc99"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

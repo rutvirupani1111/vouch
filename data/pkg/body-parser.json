@@ -1,0 +1,33 @@
+{
+  "name": "body-parser",
+  "version": "2.4.0",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 10,
+  "unpackedSize": 42899,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "expressjs/body-parser",
+      "commit": "b4744d739e1e2e5257f2ddac31eed191aa5152a4",
+      "workflow": ".github/workflows/npm-publish.yml@refs/tags/v2.4.0",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 10,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "expressjs/body-parser",
+      "ref": "b4744d739e1e2e5257f2ddac31eed191aa5152a4"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

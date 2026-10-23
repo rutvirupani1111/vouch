@@ -1,0 +1,188 @@
+{
+  "name": "fastify",
+  "version": "5.12.7",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "dns, fetch, http, http2, https, net (+1 more)",
+      "evidence": [
+        {
+          "file": "lib/server.js",
+          "line": 6,
+          "excerpt": "const dns = require('node:dns')"
+        },
+        {
+          "file": "lib/server.js",
+          "line": 156,
+          "excerpt": "dns.lookup(listenOptions.host, { all: true }, (dnsErr, addresses) => {"
+        },
+        {
+          "file": "test/custom-http-server.test.js",
+          "line": 5,
+          "excerpt": "const dns = require('node:dns').promises"
+        },
+        {
+          "file": "test/helper.js",
+          "line": 3,
+          "excerpt": "const dns = require('node:dns').promises"
+        },
+        {
+          "file": "scripts/validate-ecosystem-links.js",
+          "line": 69,
+          "excerpt": "const response = await fetch(`https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(…"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "CITGM, GITHUB_TOKEN, PREPUBLISH",
+      "evidence": [
+        {
+          "file": "test/logger/instantiation.test.js",
+          "line": 144,
+          "excerpt": "if (process.env.CITGM) { fs.writeFileSync(file, '', { mode: 0o600 }) }"
+        },
+        {
+          "file": "scripts/validate-ecosystem-links.js",
+          "line": 24,
+          "excerpt": "return process.env.GITHUB_TOKEN"
+        },
+        {
+          "file": "test/build/error-serializer.test.js",
+          "line": 27,
+          "excerpt": "const isPrepublish = !!process.env.PREPUBLISH"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "require(expression)",
+      "evidence": [
+        {
+          "file": "test/scripts/validate-ecosystem-links.test.js",
+          "line": 11,
+          "excerpt": "return require(modulePath)"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "require.cache, setTimeout",
+      "evidence": [
+        {
+          "file": "test/scripts/validate-ecosystem-links.test.js",
+          "line": 142,
+          "excerpt": "global.setTimeout = originalSetTimeout"
+        },
+        {
+          "file": "test/scripts/validate-ecosystem-links.test.js",
+          "line": 192,
+          "excerpt": "global.setTimeout = (fn) => { fn(); return 0 }"
+        },
+        {
+          "file": "test/scripts/validate-ecosystem-links.test.js",
+          "line": 269,
+          "excerpt": "global.setTimeout = (fn) => { fn(); return 0 }"
+        },
+        {
+          "file": "test/internals/plugin.test.js",
+          "line": 25,
+          "excerpt": "require.cache[expectedPluginName] = { exports: fn }"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "build/build-error-serializer.js",
+          "line": 6,
+          "excerpt": "const fs = require('node:fs')"
+        },
+        {
+          "file": "build/build-validation.js",
+          "line": 5,
+          "excerpt": "const fs = require('node:fs')"
+        },
+        {
+          "file": "build/sync-version.js",
+          "line": 3,
+          "excerpt": "const fs = require('node:fs')"
+        },
+        {
+          "file": "examples/http2.js",
+          "line": 3,
+          "excerpt": "const fs = require('node:fs')"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "CITGM",
+    "GITHUB_TOKEN",
+    "PREPUBLISH"
+  ],
+  "endpoints": [
+    "1.1.1.1",
+    "1.2.3.4",
+    "2.2.2.2",
+    "203.0.113.7",
+    "bitbucket.org",
+    "example.com).",
+    "fastify",
+    "fastify.dev",
+    "foo",
+    "gitlab.com",
+    "json-ld.org",
+    "mydomain.com"
+  ],
+  "installScripts": {},
+  "files": 363,
+  "unpackedSize": 2970996,
+  "risk": 43,
+  "findings": [
+    {
+      "id": "loader-hook",
+      "severity": "high",
+      "title": "Hooks the module loader",
+      "detail": "require.cache"
+    },
+    {
+      "id": "env-secrets",
+      "severity": "medium",
+      "title": "Reads secret-looking environment variables",
+      "detail": "GITHUB_TOKEN"
+    },
+    {
+      "id": "global-patch",
+      "severity": "medium",
+      "title": "Patches globals",
+      "detail": "setTimeout"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "dns, fetch, http, http2, https, net (+1 more)"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 363,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "fastify/fastify",
+      "ref": "9f400035ebaf572b95989db5040ebb09c01e4e77"
+    }
+  },
+  "score": 64,
+  "grade": "C"
+}

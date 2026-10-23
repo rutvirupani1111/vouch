@@ -1,0 +1,73 @@
+{
+  "name": "chalk",
+  "version": "6.0.1",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "AGENT_NAME, CI, CI_NAME, COLORTERM, FORCE_COLOR, TEAMCITY_VERSION (+4 more)",
+      "evidence": [
+        {
+          "file": "source/vendor/supports-color/index.js",
+          "line": 102,
+          "excerpt": "if ('TF_BUILD' in env && 'AGENT_NAME' in env) {"
+        },
+        {
+          "file": "source/vendor/supports-color/index.js",
+          "line": 130,
+          "excerpt": "if ('CI' in env) {"
+        },
+        {
+          "file": "source/vendor/supports-color/index.js",
+          "line": 135,
+          "excerpt": "…S', 'APPVEYOR', 'GITLAB_CI', 'BUILDKITE', 'DRONE'].some(sign => sign in env) || env.CI_NAME === 'codeship') {"
+        },
+        {
+          "file": "source/vendor/supports-color/index.js",
+          "line": 146,
+          "excerpt": "if (env.COLORTERM === 'truecolor') {"
+        },
+        {
+          "file": "source/vendor/supports-color/index.js",
+          "line": 185,
+          "excerpt": "if ('COLORTERM' in env) {"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "AGENT_NAME",
+    "CI",
+    "CI_NAME",
+    "COLORTERM",
+    "FORCE_COLOR",
+    "TEAMCITY_VERSION",
+    "TERM",
+    "TERM_PROGRAM",
+    "TERM_PROGRAM_VERSION",
+    "TF_BUILD"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 12,
+  "unpackedSize": 56180,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 12,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "chalk/chalk",
+      "ref": "47fc05abd46171b235e24174cd2dba83d25bf037"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

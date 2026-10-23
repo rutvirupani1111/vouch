@@ -1,0 +1,111 @@
+{
+  "name": "commander",
+  "version": "15.0.0",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, spawn",
+      "evidence": [
+        {
+          "file": "lib/command.js",
+          "line": 2,
+          "excerpt": "import childProcess from 'node:child_process';"
+        },
+        {
+          "file": "lib/command.js",
+          "line": 1286,
+          "excerpt": "proc = childProcess.spawn(process.argv[0], args, { stdio: 'inherit' });"
+        },
+        {
+          "file": "lib/command.js",
+          "line": 1288,
+          "excerpt": "proc = childProcess.spawn(executableFile, args, { stdio: 'inherit' });"
+        },
+        {
+          "file": "lib/command.js",
+          "line": 1299,
+          "excerpt": "proc = childProcess.spawn(process.execPath, args, { stdio: 'inherit' });"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed), CLICOLOR_FORCE, FORCE_COLOR, NO_COLOR",
+      "evidence": [
+        {
+          "file": "lib/command.js",
+          "line": 1992,
+          "excerpt": "this.emit(`optionEnv:${option.name()}`, process.env[option.envVar]);"
+        },
+        {
+          "file": "lib/command.js",
+          "line": 2787,
+          "excerpt": "if (process.env.FORCE_COLOR || process.env.CLICOLOR_FORCE !== undefined)"
+        },
+        {
+          "file": "lib/command.js",
+          "line": 2783,
+          "excerpt": "process.env.FORCE_COLOR === '0' ||"
+        },
+        {
+          "file": "lib/command.js",
+          "line": 2784,
+          "excerpt": "process.env.FORCE_COLOR === 'false'"
+        },
+        {
+          "file": "lib/command.js",
+          "line": 2782,
+          "excerpt": "process.env.NO_COLOR ||"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/command.js",
+          "line": 4,
+          "excerpt": "import fs from 'node:fs';"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)",
+    "CLICOLOR_FORCE",
+    "FORCE_COLOR",
+    "NO_COLOR"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 12,
+  "unpackedSize": 207368,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, spawn"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 12,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "tj/commander.js",
+      "ref": "ba6d13ddb4243e5913367734f8c159089ffe7834"
+    }
+  },
+  "score": 84,
+  "grade": "B"
+}

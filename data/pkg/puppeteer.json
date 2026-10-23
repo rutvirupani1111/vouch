@@ -1,0 +1,119 @@
+{
+  "name": "puppeteer",
+  "version": "25.16.0",
+  "capabilities": [
+    {
+      "id": "install_script",
+      "detail": "postinstall (reachable at install time)",
+      "evidence": [
+        {
+          "file": "package.json",
+          "line": 42,
+          "excerpt": "\"postinstall\": \"node install.mjs\","
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed), HTTPS_PROXY, HTTP_PROXY, NO_PROXY, PUPPETEER_BROWSER, PUPPETEER_CACHE_DIR (+9 more) (reachable at install time)",
+      "evidence": [
+        {
+          "file": "install.mjs",
+          "line": 28,
+          "excerpt": "if (process.env['RUNNER_DEBUG']) {"
+        },
+        {
+          "file": "lib/puppeteer/getConfiguration.js",
+          "line": 10,
+          "excerpt": "const env = process.env[name];"
+        },
+        {
+          "file": "lib/puppeteer/getConfiguration.js",
+          "line": 68,
+          "excerpt": "process.env[`PUPPETEER_${browserEnvName}_VERSION`] ??"
+        },
+        {
+          "file": "lib/puppeteer/getConfiguration.js",
+          "line": 72,
+          "excerpt": "process.env[`PUPPETEER_${browserEnvName}_DOWNLOAD_BASE_URL`] ??"
+        },
+        {
+          "file": "src/getConfiguration.ts",
+          "line": 20,
+          "excerpt": "const env = process.env[name];"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)",
+    "HTTPS_PROXY",
+    "HTTP_PROXY",
+    "NO_PROXY",
+    "PUPPETEER_BROWSER",
+    "PUPPETEER_CACHE_DIR",
+    "PUPPETEER_EXECUTABLE_PATH",
+    "PUPPETEER_LOGLEVEL",
+    "PUPPETEER_TMP_DIR",
+    "RUNNER_DEBUG",
+    "npm_config_http_proxy",
+    "npm_config_https_proxy",
+    "npm_config_loglevel",
+    "npm_config_no_proxy",
+    "npm_config_proxy"
+  ],
+  "endpoints": [],
+  "installScripts": {
+    "postinstall": "node install.mjs"
+  },
+  "files": 24,
+  "unpackedSize": 43220,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "install-script",
+      "severity": "medium",
+      "title": "Runs code on install",
+      "detail": "postinstall: node install.mjs"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "puppeteer/puppeteer",
+      "commit": "a207faf527ce4305b33a6c0f9706b090c21c115e",
+      "workflow": ".github/workflows/publish.yml@refs/tags/puppeteer-v25.16.0",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 7,
+      "differs": [],
+      "builtOnly": [
+        "lib/puppeteer/getConfiguration.d.ts",
+        "lib/puppeteer/getConfiguration.d.ts.map",
+        "lib/puppeteer/getConfiguration.js",
+        "lib/puppeteer/getConfiguration.js.map",
+        "lib/puppeteer/node/cli.d.ts",
+        "lib/puppeteer/node/cli.d.ts.map",
+        "lib/puppeteer/node/cli.js",
+        "lib/puppeteer/node/cli.js.map",
+        "lib/puppeteer/node/install.d.ts",
+        "lib/puppeteer/node/install.d.ts.map",
+        "lib/puppeteer/node/install.js",
+        "lib/puppeteer/node/install.js.map",
+        "lib/puppeteer/puppeteer.d.ts",
+        "lib/puppeteer/puppeteer.d.ts.map",
+        "lib/puppeteer/puppeteer.js",
+        "lib/puppeteer/puppeteer.js.map",
+        "lib/types.d.ts"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/puppeteer/",
+      "repo": "puppeteer/puppeteer",
+      "ref": "a207faf527ce4305b33a6c0f9706b090c21c115e"
+    }
+  },
+  "score": 96,
+  "grade": "A"
+}

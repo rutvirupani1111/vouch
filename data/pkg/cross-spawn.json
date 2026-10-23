@@ -1,0 +1,83 @@
+{
+  "name": "cross-spawn",
+  "version": "7.0.6",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, spawn, spawnSync",
+      "evidence": [
+        {
+          "file": "index.js",
+          "line": 3,
+          "excerpt": "const cp = require('child_process');"
+        },
+        {
+          "file": "index.js",
+          "line": 12,
+          "excerpt": "const spawned = cp.spawn(parsed.command, parsed.args, parsed.options);"
+        },
+        {
+          "file": "index.js",
+          "line": 26,
+          "excerpt": "const result = cp.spawnSync(parsed.command, parsed.args, parsed.options);"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "comspec",
+      "evidence": [
+        {
+          "file": "lib/parse.js",
+          "line": 58,
+          "excerpt": "parsed.command = process.env.comspec || 'cmd.exe';"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/util/readShebang.js",
+          "line": 3,
+          "excerpt": "const fs = require('fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "comspec"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 9,
+  "unpackedSize": 16094,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, spawn, spawnSync"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 9,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "moxystudio/node-cross-spawn",
+      "ref": "77cd97f3ca7b62c904a63a698fc4a79bf41977d0"
+    }
+  },
+  "score": 84,
+  "grade": "B"
+}

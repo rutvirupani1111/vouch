@@ -1,0 +1,95 @@
+{
+  "name": "fast-glob",
+  "version": "3.3.3",
+  "capabilities": [
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "out/settings.js",
+          "line": 4,
+          "excerpt": "const fs = require(\"fs\");"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 55,
+  "unpackedSize": 98396,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "out/index.d.ts",
+        "out/index.js",
+        "out/managers/tasks.d.ts",
+        "out/managers/tasks.js",
+        "out/providers/async.d.ts",
+        "out/providers/async.js",
+        "out/providers/filters/deep.d.ts",
+        "out/providers/filters/deep.js",
+        "out/providers/filters/entry.d.ts",
+        "out/providers/filters/entry.js",
+        "out/providers/filters/error.d.ts",
+        "out/providers/filters/error.js",
+        "out/providers/matchers/matcher.d.ts",
+        "out/providers/matchers/matcher.js",
+        "out/providers/matchers/partial.d.ts",
+        "out/providers/matchers/partial.js",
+        "out/providers/provider.d.ts",
+        "out/providers/provider.js",
+        "out/providers/stream.d.ts",
+        "out/providers/stream.js",
+        "out/providers/sync.d.ts",
+        "out/providers/sync.js",
+        "out/providers/transformers/entry.d.ts",
+        "out/providers/transformers/entry.js",
+        "out/readers/async.d.ts",
+        "out/readers/async.js",
+        "out/readers/reader.d.ts",
+        "out/readers/reader.js",
+        "out/readers/stream.d.ts",
+        "out/readers/stream.js",
+        "out/readers/sync.d.ts",
+        "out/readers/sync.js",
+        "out/settings.d.ts",
+        "out/settings.js",
+        "out/types/index.d.ts",
+        "out/types/index.js",
+        "out/utils/array.d.ts",
+        "out/utils/array.js",
+        "out/utils/errno.d.ts",
+        "out/utils/errno.js",
+        "out/utils/fs.d.ts",
+        "out/utils/fs.js",
+        "out/utils/index.d.ts",
+        "out/utils/index.js",
+        "out/utils/path.d.ts",
+        "out/utils/path.js",
+        "out/utils/pattern.d.ts",
+        "out/utils/pattern.js",
+        "out/utils/stream.d.ts",
+        "out/utils/stream.js",
+        "out/utils/string.d.ts",
+        "out/utils/string.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "mrmlnc/fast-glob",
+      "ref": "48687898dd26d4e935a0e5ecf6720e7c5aeac15d"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

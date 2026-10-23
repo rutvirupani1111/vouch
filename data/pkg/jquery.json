@@ -1,0 +1,48 @@
+{
+  "name": "jquery",
+  "version": "4.0.0",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "XMLHttpRequest",
+      "evidence": [
+        {
+          "file": "src/ajax/xhr.js",
+          "line": 6,
+          "excerpt": "return new window.XMLHttpRequest();"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 163,
+  "unpackedSize": 2889460,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "XMLHttpRequest"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "unknown",
+      "identical": 0,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "repo": "jquery/jquery",
+      "note": "commit cfd8e3a885dca7b406791c1eed472af9dd717e8e not found on GitHub"
+    }
+  },
+  "score": 69,
+  "grade": "C"
+}

@@ -1,0 +1,57 @@
+{
+  "name": "fast-xml-parser",
+  "version": "5.11.2",
+  "capabilities": [
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "src/cli/cli.js",
+          "line": 4,
+          "excerpt": "import fs from 'fs';"
+        },
+        {
+          "file": "src/cli/man.js",
+          "line": 1,
+          "excerpt": "import fs from 'fs';"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 53,
+  "unpackedSize": 1315394,
+  "risk": 0,
+  "findings": [
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "5 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "NaturalIntelligence/fast-xml-parser",
+      "commit": "80e88a848b073fd630bc181291a24922c6d1e839",
+      "workflow": ".github/workflows/publish.yml@refs/tags/v5.11.2",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 53,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "NaturalIntelligence/fast-xml-parser",
+      "ref": "80e88a848b073fd630bc181291a24922c6d1e839"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

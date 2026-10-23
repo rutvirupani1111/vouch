@@ -1,0 +1,108 @@
+{
+  "name": "marked",
+  "version": "18.1.1",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, spawn",
+      "evidence": [
+        {
+          "file": "bin/main.js",
+          "line": 27,
+          "excerpt": "const { spawn } = await import('child_process');"
+        },
+        {
+          "file": "bin/main.js",
+          "line": 40,
+          "excerpt": "const manProcess = spawn('man', [resolve(__dirname, '../man/marked.1')], options);"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "import(), require(expression)",
+      "evidence": [
+        {
+          "file": "bin/main.js",
+          "line": 187,
+          "excerpt": "markedConfig = await import(pathToFileURL(configFile).href);"
+        },
+        {
+          "file": "bin/main.js",
+          "line": 181,
+          "excerpt": "markedConfig = require(configFile);"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "bin/main.js",
+          "line": 12,
+          "excerpt": "import { createRequire } from 'node:module';"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "bin/main.js",
+          "line": 9,
+          "excerpt": "import { promises } from 'node:fs';"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 12,
+  "unpackedSize": 518121,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, spawn"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "2 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "markedjs/marked",
+      "commit": "2134976c497fef671d47fc3e2a0d58ea44ac9a53",
+      "workflow": ".github/workflows/tests.yml@refs/heads/master",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 6,
+      "differs": [],
+      "builtOnly": [
+        "lib/marked.d.ts",
+        "lib/marked.esm.js",
+        "lib/marked.esm.js.map",
+        "lib/marked.umd.js",
+        "lib/marked.umd.js.map",
+        "man/marked.1"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "markedjs/marked",
+      "ref": "2134976c497fef671d47fc3e2a0d58ea44ac9a53"
+    }
+  },
+  "score": 99,
+  "grade": "A"
+}

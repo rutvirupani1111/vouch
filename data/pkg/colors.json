@@ -1,0 +1,87 @@
+{
+  "name": "colors",
+  "version": "1.4.0",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "CI, CI_NAME, COLORTERM, FORCE_COLOR, TEAMCITY_VERSION, TERM (+2 more)",
+      "evidence": [
+        {
+          "file": "lib/system/supports-colors.js",
+          "line": 94,
+          "excerpt": "if ('CI' in env) {"
+        },
+        {
+          "file": "lib/system/supports-colors.js",
+          "line": 97,
+          "excerpt": "}) || env.CI_NAME === 'codeship') {"
+        },
+        {
+          "file": "lib/system/supports-colors.js",
+          "line": 131,
+          "excerpt": "if ('COLORTERM' in env) {"
+        },
+        {
+          "file": "lib/system/supports-colors.js",
+          "line": 40,
+          "excerpt": "if ('FORCE_COLOR' in env) {"
+        },
+        {
+          "file": "lib/system/supports-colors.js",
+          "line": 41,
+          "excerpt": "forceColor = env.FORCE_COLOR.length === 0"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "require(expression)",
+      "evidence": [
+        {
+          "file": "examples/normal-usage.js",
+          "line": 67,
+          "excerpt": "colors.setTheme(require(__dirname + '/../themes/generic-logging.js'));"
+        },
+        {
+          "file": "examples/safe-string.js",
+          "line": 66,
+          "excerpt": "colors.setTheme(require(__dirname + '/../themes/generic-logging.js'));"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "CI",
+    "CI_NAME",
+    "COLORTERM",
+    "FORCE_COLOR",
+    "TEAMCITY_VERSION",
+    "TERM",
+    "TERM_PROGRAM",
+    "TERM_PROGRAM_VERSION"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 21,
+  "unpackedSize": 39506,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 21,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "Marak/colors.js",
+      "ref": "baa0e1c7dc50d868354206b9ea71273e3f05f593"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

@@ -1,0 +1,65 @@
+{
+  "name": "morgan",
+  "version": "1.12.1",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NO_COLOR",
+      "evidence": [
+        {
+          "file": "index.js",
+          "line": 50,
+          "excerpt": "var NO_COLOR = Boolean(process.env.NO_COLOR)"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function",
+      "evidence": [
+        {
+          "file": "index.js",
+          "line": 458,
+          "excerpt": "return new Function('tokens, req, res', js)"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NO_COLOR"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 4,
+  "unpackedSize": 27776,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "expressjs/morgan",
+      "commit": "b1272e70812dbc504321eeb5a43d14b0822c150d",
+      "workflow": ".github/workflows/npm-publish.yml@refs/tags/1.12.1",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 4,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "expressjs/morgan",
+      "ref": "b1272e70812dbc504321eeb5a43d14b0822c150d"
+    }
+  },
+  "score": 96,
+  "grade": "A"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "classnames",
+  "version": "2.5.1",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 10,
+  "unpackedSize": 23581,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "JedWatson/classnames",
+      "commit": "2e3683264bab067d13938b5eb03a96391a089cb4",
+      "workflow": ".github/workflows/release.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 10,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "JedWatson/classnames",
+      "ref": "2e3683264bab067d13938b5eb03a96391a089cb4"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}
