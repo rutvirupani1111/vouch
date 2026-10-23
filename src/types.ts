@@ -88,10 +88,25 @@ export interface PackageReport extends PackageAnalysis {
   grade: Grade;
 }
 
+/** Minimal fetch shape Vouch needs; global `fetch` satisfies it. */
+export type FetchLike = (
+  url: string,
+  init?: { headers?: Record<string, string>; signal?: AbortSignal },
+) => Promise<{
+  ok: boolean;
+  status: number;
+  statusText?: string;
+  json(): Promise<unknown>;
+  arrayBuffer(): Promise<ArrayBuffer>;
+}>;
+
 export interface AnalyzeOptions {
+  /** Cache directory. Defaults to the OS cache dir; set VOUCH_CACHE_DIR to override. */
   cacheDir?: string;
   /** Injected fetch, for tests and custom transports. Defaults to global fetch. */
-  fetch?: typeof fetch;
+  fetch?: FetchLike;
+  /** npm registry URL (default registry.npmjs.org). */
+  registry?: string;
 }
 
 export interface VerifyOptions extends AnalyzeOptions {
