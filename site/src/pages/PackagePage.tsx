@@ -47,6 +47,10 @@ function FileList({ files, tone, empty }: { files: string[]; tone: 'bad' | 'warn
   );
 }
 
+const SITE_URL = 'https://rutvirupani1111.github.io/vouch';
+const badgeUrl = (name: string) => `${SITE_URL}/badge/${name.replace(/\//g, '__')}.svg`;
+const pageUrl = (name: string) => `${SITE_URL}/#/pkg/${name}`;
+
 function short(sha?: string) {
   return sha ? sha.slice(0, 12) : undefined;
 }
@@ -265,6 +269,16 @@ export function PackagePage({ name }: { name: string }) {
               <p className="mono text-[12px] text-ink-3">None.</p>
             )}
           </Panel>
+
+          {!data.mock && (
+            <Panel title="Badge" kicker="embed">
+              <img src={badgeUrl(r.name)} alt={`vouch ${r.grade} ${r.score}`} className="mb-3 h-5" />
+              <div className="flex flex-col gap-3">
+                <CodeBlock label="markdown">{`[![vouch](${badgeUrl(r.name)})](${pageUrl(r.name)})`}</CodeBlock>
+                <CodeBlock label="html">{`<a href="${pageUrl(r.name)}"><img src="${badgeUrl(r.name)}" alt="vouch ${r.grade} ${r.score}"></a>`}</CodeBlock>
+              </div>
+            </Panel>
+          )}
 
           <Panel title="Reproduce" kicker="raw data">
             <CodeBlock>{`npx vouchjs report ${r.name}@${r.version}`}</CodeBlock>
