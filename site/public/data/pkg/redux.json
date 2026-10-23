@@ -1,0 +1,80 @@
+{
+  "name": "redux",
+  "version": "5.0.1",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "dist/cjs/redux.cjs",
+          "line": 111,
+          "excerpt": "if (process.env.NODE_ENV !== \"production\") {"
+        },
+        {
+          "file": "dist/cjs/redux.cjs",
+          "line": 120,
+          "excerpt": "throw new Error(process.env.NODE_ENV === \"production\" ? formatProdErrorMessage(2) : `Expected the root reduce…"
+        },
+        {
+          "file": "dist/cjs/redux.cjs",
+          "line": 123,
+          "excerpt": "throw new Error(process.env.NODE_ENV === \"production\" ? formatProdErrorMessage(0) : \"It looks like you are pa…"
+        },
+        {
+          "file": "dist/redux.legacy-esm.js",
+          "line": 77,
+          "excerpt": "if (process.env.NODE_ENV !== \"production\") {"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [
+    "redux.js.org"
+  ],
+  "installScripts": {},
+  "files": 28,
+  "unpackedSize": 289804,
+  "risk": 0,
+  "findings": [
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "1 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "reduxjs/redux",
+      "commit": "50b010210df25c470386f7e39a9389a4a77b3842",
+      "workflow": ".github/workflows/publish.yaml@refs/heads/master",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 20,
+      "differs": [],
+      "builtOnly": [
+        "dist/cjs/redux.cjs",
+        "dist/cjs/redux.cjs.map",
+        "dist/redux.browser.mjs",
+        "dist/redux.browser.mjs.map",
+        "dist/redux.d.ts",
+        "dist/redux.legacy-esm.js",
+        "dist/redux.mjs",
+        "dist/redux.mjs.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "reduxjs/redux",
+      "ref": "50b010210df25c470386f7e39a9389a4a77b3842"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

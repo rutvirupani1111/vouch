@@ -1,0 +1,224 @@
+{
+  "name": "@prisma/client",
+  "version": "7.10.1",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "COMPUTERNAME, FORCE_COLOR, NODE_ENV, NO_COLOR, PRISMA_CLIENT_GET_TIME, PRISMA_DISABLE_WARNINGS (+2 more)",
+      "evidence": [
+        {
+          "file": "runtime/client.js",
+          "line": 11,
+          "excerpt": "…ault.hostname()}catch{return process.env._CLUSTER_NETWORK_NAME_||process.env.COMPUTERNAME||\"hostname\"}}var r…"
+        },
+        {
+          "file": "runtime/client.mjs",
+          "line": 18,
+          "excerpt": "…n kp.hostname()}catch{return process.env._CLUSTER_NETWORK_NAME_||process.env.COMPUTERNAME||\"hostname\"}}var Q…"
+        },
+        {
+          "file": "scripts/colors.js",
+          "line": 13,
+          "excerpt": "if ('FORCE_COLOR' in process.env) {"
+        },
+        {
+          "file": "scripts/colors.js",
+          "line": 14,
+          "excerpt": "colors.enabled = process.env.FORCE_COLOR !== '0'"
+        },
+        {
+          "file": "runtime/client.js",
+          "line": 94,
+          "excerpt": "…?this._errorFormat=\"minimal\":process.env.NO_COLOR?this._errorFormat=\"colorless\":this._errorFormat=\"colorless…"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "string timer",
+      "evidence": [
+        {
+          "file": "runtime/wasm-compiler-edge.js",
+          "line": 6,
+          "excerpt": "…on qu(t,e){return e!==void 0?setTimeout(t,e):void 0}function Em(t,e){let r,n=new Promise(i=>{r=setTimeout(i,…"
+        },
+        {
+          "file": "runtime/wasm-compiler-edge.mjs",
+          "line": 6,
+          "excerpt": "…on Nu(t,e){return e!==void 0?setTimeout(t,e):void 0}function hm(t,e){let r,n=new Promise(i=>{r=setTimeout(i,…"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "module",
+      "evidence": [
+        {
+          "file": "runtime/client.mjs",
+          "line": 1,
+          "excerpt": "import * as __banner_node_module from \"node:module\";"
+        }
+      ]
+    },
+    {
+      "id": "native_binary",
+      "detail": "embedded WebAssembly",
+      "evidence": [
+        {
+          "file": "runtime/query_compiler_fast_bg.cockroachdb.wasm-base64.js",
+          "line": 1,
+          "excerpt": "const wasm = \"AGFzbQEAAAABtgRLYAN/f38Bf2ACf38Bf2ACf38AYAF/AGADf39/AGAEf39/fwBgBX9/f39/AGAGf39/f39/AGABfwF/YAF…"
+        },
+        {
+          "file": "runtime/query_compiler_fast_bg.cockroachdb.wasm-base64.mjs",
+          "line": 1,
+          "excerpt": "const wasm = \"AGFzbQEAAAABtgRLYAN/f38Bf2ACf38Bf2ACf38AYAF/AGADf39/AGAEf39/fwBgBX9/f39/AGAGf39/f39/AGABfwF/YAF…"
+        },
+        {
+          "file": "runtime/query_compiler_fast_bg.mysql.wasm-base64.js",
+          "line": 1,
+          "excerpt": "const wasm = \"AGFzbQEAAAABtgRLYAN/f38Bf2ACf38Bf2ACf38AYAF/AGADf39/AGAEf39/fwBgBX9/f39/AGAGf39/f39/AGABfwF/YAR…"
+        },
+        {
+          "file": "runtime/query_compiler_fast_bg.mysql.wasm-base64.mjs",
+          "line": 1,
+          "excerpt": "const wasm = \"AGFzbQEAAAABtgRLYAN/f38Bf2ACf38Bf2ACf38AYAF/AGADf39/AGAEf39/fwBgBX9/f39/AGAGf39/f39/AGABfwF/YAR…"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "runtime/client.js",
+          "line": 2,
+          "excerpt": "…});var Mo=Pe(So());var Do=Pe(require(\"node:fs\"));var ko={keyword:_e,entity:_e,value:e=>Ee(He(e)),punctuation…"
+        },
+        {
+          "file": "runtime/client.mjs",
+          "line": 9,
+          "excerpt": "…,D))(lt||{});var ko=nt(Eo());import ku from\"node:fs\";var Ro={keyword:Oe,entity:Oe,value:e=>we(Be(e)),punctua…"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "COMPUTERNAME",
+    "FORCE_COLOR",
+    "NODE_ENV",
+    "NO_COLOR",
+    "PRISMA_CLIENT_GET_TIME",
+    "PRISMA_DISABLE_WARNINGS",
+    "TEST_CLIENT_ENGINE_REMOTE_EXECUTOR",
+    "_CLUSTER_NETWORK_NAME_"
+  ],
+  "endpoints": [
+    "pris.ly",
+    "prisma.io"
+  ],
+  "installScripts": {},
+  "files": 75,
+  "unpackedSize": 74458622,
+  "risk": 18,
+  "findings": [
+    {
+      "id": "native-binary",
+      "severity": "medium",
+      "title": "Ships native binaries",
+      "detail": "embedded WebAssembly"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "string timer"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "45 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "prisma/orm",
+      "commit": "97ea359250335c1a174504c9b2b7e5fe030ab937",
+      "workflow": ".github/workflows/publish.yml@refs/heads/v7",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 17,
+      "differs": [],
+      "builtOnly": [
+        "runtime/client.d.mts",
+        "runtime/client.d.ts",
+        "runtime/client.js",
+        "runtime/client.js.map",
+        "runtime/client.mjs",
+        "runtime/client.mjs.map",
+        "runtime/index-browser.d.mts",
+        "runtime/index-browser.d.ts",
+        "runtime/index-browser.js",
+        "runtime/index-browser.js.map",
+        "runtime/index-browser.mjs",
+        "runtime/index-browser.mjs.map",
+        "runtime/query_compiler_fast_bg.cockroachdb.js",
+        "runtime/query_compiler_fast_bg.cockroachdb.mjs",
+        "runtime/query_compiler_fast_bg.cockroachdb.wasm-base64.js",
+        "runtime/query_compiler_fast_bg.cockroachdb.wasm-base64.mjs",
+        "runtime/query_compiler_fast_bg.mysql.js",
+        "runtime/query_compiler_fast_bg.mysql.mjs",
+        "runtime/query_compiler_fast_bg.mysql.wasm-base64.js",
+        "runtime/query_compiler_fast_bg.mysql.wasm-base64.mjs",
+        "runtime/query_compiler_fast_bg.postgresql.js",
+        "runtime/query_compiler_fast_bg.postgresql.mjs",
+        "runtime/query_compiler_fast_bg.postgresql.wasm-base64.js",
+        "runtime/query_compiler_fast_bg.postgresql.wasm-base64.mjs",
+        "runtime/query_compiler_fast_bg.sqlite.js",
+        "runtime/query_compiler_fast_bg.sqlite.mjs",
+        "runtime/query_compiler_fast_bg.sqlite.wasm-base64.js",
+        "runtime/query_compiler_fast_bg.sqlite.wasm-base64.mjs",
+        "runtime/query_compiler_fast_bg.sqlserver.js",
+        "runtime/query_compiler_fast_bg.sqlserver.mjs",
+        "runtime/query_compiler_fast_bg.sqlserver.wasm-base64.js",
+        "runtime/query_compiler_fast_bg.sqlserver.wasm-base64.mjs",
+        "runtime/query_compiler_small_bg.cockroachdb.js",
+        "runtime/query_compiler_small_bg.cockroachdb.mjs",
+        "runtime/query_compiler_small_bg.cockroachdb.wasm-base64.js",
+        "runtime/query_compiler_small_bg.cockroachdb.wasm-base64.mjs",
+        "runtime/query_compiler_small_bg.mysql.js",
+        "runtime/query_compiler_small_bg.mysql.mjs",
+        "runtime/query_compiler_small_bg.mysql.wasm-base64.js",
+        "runtime/query_compiler_small_bg.mysql.wasm-base64.mjs",
+        "runtime/query_compiler_small_bg.postgresql.js",
+        "runtime/query_compiler_small_bg.postgresql.mjs",
+        "runtime/query_compiler_small_bg.postgresql.wasm-base64.js",
+        "runtime/query_compiler_small_bg.postgresql.wasm-base64.mjs",
+        "runtime/query_compiler_small_bg.sqlite.js",
+        "runtime/query_compiler_small_bg.sqlite.mjs",
+        "runtime/query_compiler_small_bg.sqlite.wasm-base64.js",
+        "runtime/query_compiler_small_bg.sqlite.wasm-base64.mjs",
+        "runtime/query_compiler_small_bg.sqlserver.js",
+        "runtime/query_compiler_small_bg.sqlserver.mjs",
+        "runtime/query_compiler_small_bg.sqlserver.wasm-base64.js",
+        "runtime/query_compiler_small_bg.sqlserver.wasm-base64.mjs",
+        "runtime/wasm-compiler-edge.d.ts",
+        "runtime/wasm-compiler-edge.js",
+        "runtime/wasm-compiler-edge.js.map",
+        "runtime/wasm-compiler-edge.mjs",
+        "runtime/wasm-compiler-edge.mjs.map",
+        "scripts/default-index.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/client/",
+      "repo": "prisma/orm",
+      "ref": "97ea359250335c1a174504c9b2b7e5fe030ab937"
+    }
+  },
+  "score": 91,
+  "grade": "A"
+}
