@@ -1,0 +1,30 @@
+{
+  "name": "cors",
+  "version": "2.8.6",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 4,
+  "unpackedSize": 19956,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 4,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "expressjs/cors",
+      "ref": "f00a8c1f0af727ffe5ed35f3b2d0b1a7eb4b65bb"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

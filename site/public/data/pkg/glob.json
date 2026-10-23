@@ -1,0 +1,148 @@
+{
+  "name": "glob",
+  "version": "13.0.6",
+  "capabilities": [
+    {
+      "id": "install_script",
+      "detail": "prepare (reachable at install time)",
+      "evidence": [
+        {
+          "file": "package.json",
+          "line": 60,
+          "excerpt": "\"prepare\": \"tshy && bash scripts/build.sh\","
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "__MINIMATCH_TESTING_PLATFORM__",
+      "evidence": [
+        {
+          "file": "dist/commonjs/index.min.js",
+          "line": 1,
+          "excerpt": "….env==\"object\"&&process.env&&process.env.__MINIMATCH_TESTING_PLATFORM__||process.platform:\"posix\",es={win32:…"
+        },
+        {
+          "file": "dist/esm/index.min.js",
+          "line": 1,
+          "excerpt": "….env==\"object\"&&process.env&&process.env.__MINIMATCH_TESTING_PLATFORM__||process.platform:\"posix\",xe={win32:…"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/commonjs/index.min.js",
+          "line": 3,
+          "excerpt": "…\"),yr=require(\"node:url\"),pt=require(\"fs\"),Sr=br(require(\"node:fs\")),vr=pt.realpathSync.native,Ht=require(\"n…"
+        },
+        {
+          "file": "dist/esm/index.min.js",
+          "line": 3,
+          "excerpt": "…LToPath as gi}from\"node:url\";import{lstatSync as wi,readdir as yi,readdirSync as bi,readlinkSync as Si,realp…"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "__MINIMATCH_TESTING_PLATFORM__"
+  ],
+  "endpoints": [],
+  "installScripts": {
+    "prepare": "tshy && bash scripts/build.sh"
+  },
+  "files": 65,
+  "unpackedSize": 1607230,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "install-script",
+      "severity": "medium",
+      "title": "Runs code on install",
+      "detail": "prepare: tshy && bash scripts/build.sh"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/commonjs/glob.d.ts",
+        "dist/commonjs/glob.d.ts.map",
+        "dist/commonjs/glob.js",
+        "dist/commonjs/glob.js.map",
+        "dist/commonjs/has-magic.d.ts",
+        "dist/commonjs/has-magic.d.ts.map",
+        "dist/commonjs/has-magic.js",
+        "dist/commonjs/has-magic.js.map",
+        "dist/commonjs/ignore.d.ts",
+        "dist/commonjs/ignore.d.ts.map",
+        "dist/commonjs/ignore.js",
+        "dist/commonjs/ignore.js.map",
+        "dist/commonjs/index.d.ts",
+        "dist/commonjs/index.d.ts.map",
+        "dist/commonjs/index.js",
+        "dist/commonjs/index.js.map",
+        "dist/commonjs/index.min.js",
+        "dist/commonjs/index.min.js.map",
+        "dist/commonjs/package.json",
+        "dist/commonjs/pattern.d.ts",
+        "dist/commonjs/pattern.d.ts.map",
+        "dist/commonjs/pattern.js",
+        "dist/commonjs/pattern.js.map",
+        "dist/commonjs/processor.d.ts",
+        "dist/commonjs/processor.d.ts.map",
+        "dist/commonjs/processor.js",
+        "dist/commonjs/processor.js.map",
+        "dist/commonjs/walker.d.ts",
+        "dist/commonjs/walker.d.ts.map",
+        "dist/commonjs/walker.js",
+        "dist/commonjs/walker.js.map",
+        "dist/esm/glob.d.ts",
+        "dist/esm/glob.d.ts.map",
+        "dist/esm/glob.js",
+        "dist/esm/glob.js.map",
+        "dist/esm/has-magic.d.ts",
+        "dist/esm/has-magic.d.ts.map",
+        "dist/esm/has-magic.js",
+        "dist/esm/has-magic.js.map",
+        "dist/esm/ignore.d.ts",
+        "dist/esm/ignore.d.ts.map",
+        "dist/esm/ignore.js",
+        "dist/esm/ignore.js.map",
+        "dist/esm/index.d.ts",
+        "dist/esm/index.d.ts.map",
+        "dist/esm/index.js",
+        "dist/esm/index.js.map",
+        "dist/esm/index.min.js",
+        "dist/esm/index.min.js.map",
+        "dist/esm/package.json",
+        "dist/esm/pattern.d.ts",
+        "dist/esm/pattern.d.ts.map",
+        "dist/esm/pattern.js",
+        "dist/esm/pattern.js.map",
+        "dist/esm/processor.d.ts",
+        "dist/esm/processor.d.ts.map",
+        "dist/esm/processor.js",
+        "dist/esm/processor.js.map",
+        "dist/esm/walker.d.ts",
+        "dist/esm/walker.d.ts.map",
+        "dist/esm/walker.js",
+        "dist/esm/walker.js.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "isaacs/node-glob",
+      "ref": "e80cb38ae60d6cbff9e75f39032a994858994d35"
+    }
+  },
+  "score": 81,
+  "grade": "B"
+}

@@ -1,0 +1,35 @@
+{
+  "name": "yup",
+  "version": "1.7.1",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 6,
+  "unpackedSize": 270432,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "index.d.ts"
+      ],
+      "onlyInPackage": [
+        "index.esm.js",
+        "index.js"
+      ],
+      "note": "compared against commit from gitHead",
+      "repo": "jquense/yup",
+      "ref": "b413bf65ecdbea965a8e22060a16b5caa9b2c39b"
+    }
+  },
+  "score": 50,
+  "grade": "D"
+}

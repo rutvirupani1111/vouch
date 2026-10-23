@@ -1,0 +1,219 @@
+{
+  "name": "rollup",
+  "version": "4.65.0",
+  "capabilities": [
+    {
+      "id": "install_script",
+      "detail": "prepare (reachable at install time)",
+      "evidence": [
+        {
+          "file": "package.json",
+          "line": 74,
+          "excerpt": "\"prepare\": \"husky && npm run prepare:patch && node scripts/check-release.js || npm run build:prepare\","
+        }
+      ]
+    },
+    {
+      "id": "child_process",
+      "detail": "child_process, execSync, spawnSync",
+      "evidence": [
+        {
+          "file": "dist/native.js",
+          "line": 4,
+          "excerpt": "const { spawnSync } = require('node:child_process');"
+        },
+        {
+          "file": "dist/shared/watch-cli.js",
+          "line": 22,
+          "excerpt": "const node_child_process = require('node:child_process');"
+        },
+        {
+          "file": "dist/shared/watch-cli.js",
+          "line": 408,
+          "excerpt": "node_child_process.execSync(cmd, { stdio: command.silent ? 'ignore' : stdio });"
+        },
+        {
+          "file": "dist/native.js",
+          "line": 21,
+          "excerpt": "const child = spawnSync(process.execPath, ['-p', script], {"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "CHOKIDAR_INTERVAL, CHOKIDAR_PRINT_FSEVENTS_REQUIRE_ERROR, CHOKIDAR_USEPOLLING, CI, FORCE_COLOR, NO_COLOR (+3 more)",
+      "evidence": [
+        {
+          "file": "dist/es/shared/watch.js",
+          "line": 8991,
+          "excerpt": "const envInterval = process.env.CHOKIDAR_INTERVAL;"
+        },
+        {
+          "file": "dist/shared/index.js",
+          "line": 8987,
+          "excerpt": "const envInterval = process.env.CHOKIDAR_INTERVAL;"
+        },
+        {
+          "file": "dist/es/shared/watch.js",
+          "line": 8116,
+          "excerpt": "if (process.env.CHOKIDAR_PRINT_FSEVENTS_REQUIRE_ERROR) console.error(error);"
+        },
+        {
+          "file": "dist/shared/index.js",
+          "line": 8112,
+          "excerpt": "if (process.env.CHOKIDAR_PRINT_FSEVENTS_REQUIRE_ERROR) console.error(error);"
+        },
+        {
+          "file": "dist/es/shared/watch.js",
+          "line": 8979,
+          "excerpt": "const envPoll = process.env.CHOKIDAR_USEPOLLING;"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function, import(), require(expression)",
+      "evidence": [
+        {
+          "file": "dist/shared/loadConfigFile.js",
+          "line": 358,
+          "excerpt": "plugin = new Function('return ' + pluginText);"
+        },
+        {
+          "file": "dist/shared/loadConfigFile.js",
+          "line": 366,
+          "excerpt": "pluginArgument = new Function('return ' + match[3])();"
+        },
+        {
+          "file": "dist/shared/loadConfigFile.js",
+          "line": 425,
+          "excerpt": "return import(pluginPath);"
+        },
+        {
+          "file": "dist/shared/loadConfigFile.js",
+          "line": 472,
+          "excerpt": "return (await import(fileUrl.href)).default;"
+        },
+        {
+          "file": "dist/shared/loadConfigFile.js",
+          "line": 552,
+          "excerpt": "return (await import(node_url.pathToFileURL(bundledFileName).href)).default;"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/bin/rollup",
+          "line": 18,
+          "excerpt": "const require$$0$1 = require('fs');"
+        },
+        {
+          "file": "dist/bin/rollup",
+          "line": 22,
+          "excerpt": "const promises = require('node:fs/promises');"
+        },
+        {
+          "file": "dist/es/rollup.js",
+          "line": 17,
+          "excerpt": "import 'node:fs/promises';"
+        },
+        {
+          "file": "dist/es/shared/node-entry.js",
+          "line": 16,
+          "excerpt": "import * as promises from 'node:fs/promises';"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "CHOKIDAR_INTERVAL",
+    "CHOKIDAR_PRINT_FSEVENTS_REQUIRE_ERROR",
+    "CHOKIDAR_USEPOLLING",
+    "CI",
+    "FORCE_COLOR",
+    "NO_COLOR",
+    "ROLLUP_FILTER_LOGS",
+    "TERM",
+    "YARGS_MIN_NODE_VERSION"
+  ],
+  "endpoints": [
+    "aka.ms",
+    "rollupjs.org"
+  ],
+  "installScripts": {
+    "prepare": "husky && npm run prepare:patch && node scripts/check-release.js || npm run build:prepare"
+  },
+  "files": 28,
+  "unpackedSize": 2947428,
+  "risk": 21,
+  "findings": [
+    {
+      "id": "install-script",
+      "severity": "medium",
+      "title": "Runs code on install",
+      "detail": "prepare: husky && npm run prepare:patch && node scripts/check-release.js || npm run build:prepare"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, execSync, spawnSync"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "rollup/rollup",
+      "commit": "9aac09a39dc1fa297a7b06f1ad6907f7bd41b310",
+      "workflow": ".github/workflows/build-and-tests.yml@refs/tags/v4.65.0",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/bin/rollup",
+        "dist/es/getLogFilter.js",
+        "dist/es/package.json",
+        "dist/es/parseAst.js",
+        "dist/es/rollup.js",
+        "dist/es/shared/node-entry.js",
+        "dist/es/shared/parseAst.js",
+        "dist/es/shared/watch.js",
+        "dist/getLogFilter.d.ts",
+        "dist/getLogFilter.js",
+        "dist/loadConfigFile.d.ts",
+        "dist/loadConfigFile.js",
+        "dist/native.js",
+        "dist/parseAst.d.ts",
+        "dist/parseAst.js",
+        "dist/rollup.d.ts",
+        "dist/rollup.js",
+        "dist/shared/fsevents-importer.js",
+        "dist/shared/index.js",
+        "dist/shared/loadConfigFile.js",
+        "dist/shared/node-entry.js",
+        "dist/shared/parseAst.js",
+        "dist/shared/rollup.js",
+        "dist/shared/watch-cli.js",
+        "dist/shared/watch.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "rollup/rollup",
+      "ref": "9aac09a39dc1fa297a7b06f1ad6907f7bd41b310"
+    }
+  },
+  "score": 90,
+  "grade": "A"
+}

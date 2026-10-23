@@ -1,0 +1,197 @@
+{
+  "name": "nunjucks",
+  "version": "3.2.4",
+  "capabilities": [
+    {
+      "id": "install_script",
+      "detail": "prepare (reachable at install time)",
+      "evidence": [
+        {
+          "file": "package.json",
+          "line": 79,
+          "excerpt": "\"prepare\": \"npm run build\","
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "XMLHttpRequest",
+      "evidence": [
+        {
+          "file": "browser/nunjucks.js",
+          "line": 4417,
+          "excerpt": "var ajax = new XMLHttpRequest();"
+        },
+        {
+          "file": "browser/nunjucks.min.js",
+          "line": 2,
+          "excerpt": "…by used in a browser\");var i=new XMLHttpRequest,r=!0;i.onreadystatechange=function(){4===i.readyState&&r&&(r…"
+        },
+        {
+          "file": "src/web-loaders.js",
+          "line": 70,
+          "excerpt": "var ajax = new XMLHttpRequest();"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "BUILD_TYPE",
+      "evidence": [
+        {
+          "file": "src/jinja-compat.js",
+          "line": 60,
+          "excerpt": "if (process.env.BUILD_TYPE !== 'SLIM' && nodes && Compiler && Parser) {"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function, eval, require(expression)",
+      "evidence": [
+        {
+          "file": "browser/nunjucks-slim.js",
+          "line": 1882,
+          "excerpt": "g = g || Function(\"return this\")() || (1,eval)(\"this\");"
+        },
+        {
+          "file": "browser/nunjucks-slim.min.js",
+          "line": 2,
+          "excerpt": "…||Function(\"return this\")()||(0,eval)(\"this\")}catch(t){\"object\"==typeof window&&(r=window)}t.exports=r},func…"
+        },
+        {
+          "file": "browser/nunjucks.js",
+          "line": 4848,
+          "excerpt": "g = g || Function(\"return this\")() || (1,eval)(\"this\");"
+        },
+        {
+          "file": "browser/nunjucks.min.js",
+          "line": 2,
+          "excerpt": "…||Function(\"return this\")()||(0,eval)(\"this\")}catch(t){\"object\"==typeof window&&(i=window)}t.exports=i},func…"
+        },
+        {
+          "file": "browser/nunjucks-slim.js",
+          "line": 1542,
+          "excerpt": "var func = new Function(source); // eslint-disable-line no-new-func"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "Array.prototype.0, Array.prototype.Update, Array.prototype.async, Array.prototype.body, Array.prototype.cause, Array.prototype.colno (+18 more)",
+      "evidence": [
+        {
+          "file": "browser/nunjucks-slim.min.js",
+          "line": 2,
+          "excerpt": "…olved to undefined');(i[f]||(i[f]=[])).push(o)}return i},n.toArray=p,n.without=function(t){var n=[];if(!t)re…"
+        },
+        {
+          "file": "browser/nunjucks.min.js",
+          "line": 2,
+          "excerpt": "…||{},r.useCache=!!i.useCache,r.async=!!i.async,r}i=t,(n=e).prototype=Object.create(i.prototype),n.prototype.…"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "src/node-loaders.js",
+          "line": 7,
+          "excerpt": "var fs = require('fs');"
+        },
+        {
+          "file": "src/precompile.js",
+          "line": 3,
+          "excerpt": "var fs = require('fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "BUILD_TYPE"
+  ],
+  "endpoints": [],
+  "installScripts": {
+    "prepare": "npm run build"
+  },
+  "files": 35,
+  "unpackedSize": 1774549,
+  "risk": 30,
+  "findings": [
+    {
+      "id": "install-script",
+      "severity": "medium",
+      "title": "Runs code on install",
+      "detail": "prepare: npm run build"
+    },
+    {
+      "id": "global-patch",
+      "severity": "medium",
+      "title": "Patches globals",
+      "detail": "Array.prototype.0, Array.prototype.Update, Array.prototype.async, Array.prototype.body, Array.prototype.cause, Array.prototype.colno (+18 more)"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function, eval"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "XMLHttpRequest"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [
+        "browser/nunjucks-slim.js",
+        "browser/nunjucks-slim.js.map",
+        "browser/nunjucks-slim.min.js",
+        "browser/nunjucks-slim.min.js.map",
+        "browser/nunjucks.js",
+        "browser/nunjucks.js.map",
+        "browser/nunjucks.min.js",
+        "browser/nunjucks.min.js.map",
+        "index.js",
+        "src/compiler.js",
+        "src/environment.js",
+        "src/express-app.js",
+        "src/filters.js",
+        "src/globals.js",
+        "src/jinja-compat.js",
+        "src/lexer.js",
+        "src/lib.js",
+        "src/loader.js",
+        "src/loaders.js",
+        "src/node-loaders.js",
+        "src/nodes.js",
+        "src/object.js",
+        "src/parser.js",
+        "src/precompile-global.js",
+        "src/precompile.js",
+        "src/precompiled-loader.js",
+        "src/runtime.js",
+        "src/tests.js",
+        "src/transformer.js",
+        "src/web-loaders.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "mozilla/nunjucks",
+      "ref": "86a77f49da4779d55414d8337e1a4d7ec7582da5"
+    }
+  },
+  "score": 70,
+  "grade": "C"
+}

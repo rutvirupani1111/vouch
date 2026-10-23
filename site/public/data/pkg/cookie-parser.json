@@ -1,0 +1,30 @@
+{
+  "name": "cookie-parser",
+  "version": "1.4.7",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 5,
+  "unpackedSize": 12977,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "expressjs/cookie-parser",
+      "ref": "5d61e1e2f3f18efe8f94e5fad2886b48864d6c78"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

@@ -1,0 +1,38 @@
+{
+  "name": "redis",
+  "version": "6.3.0",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 6,
+  "unpackedSize": 299801,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "redis/node-redis",
+      "commit": "bfdd485b0bb24eab1a99aeb0de96b2285e4b26e1",
+      "workflow": ".github/workflows/release.yml@refs/heads/master",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 2,
+      "differs": [],
+      "builtOnly": [
+        "dist/index.d.ts",
+        "dist/index.d.ts.map",
+        "dist/index.js",
+        "dist/index.js.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/redis/",
+      "repo": "redis/node-redis",
+      "ref": "bfdd485b0bb24eab1a99aeb0de96b2285e4b26e1"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

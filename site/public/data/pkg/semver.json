@@ -1,0 +1,52 @@
+{
+  "name": "semver",
+  "version": "7.8.5",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NODE_DEBUG",
+      "evidence": [
+        {
+          "file": "internal/debug.js",
+          "line": 6,
+          "excerpt": "process.env.NODE_DEBUG &&"
+        },
+        {
+          "file": "internal/debug.js",
+          "line": 7,
+          "excerpt": "/\\bsemver\\b/i.test(process.env.NODE_DEBUG)"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_DEBUG"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 53,
+  "unpackedSize": 101065,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "npm/node-semver",
+      "commit": "6e05b7637396ac66522cff8731f07cfe0ef49a29",
+      "workflow": ".github/workflows/release.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 53,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "npm/node-semver",
+      "ref": "6e05b7637396ac66522cff8731f07cfe0ef49a29"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

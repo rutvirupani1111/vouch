@@ -1,0 +1,313 @@
+{
+  "name": "tsx",
+  "version": "4.23.15",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, worker_threads",
+      "evidence": [
+        {
+          "file": "dist/cli.mjs",
+          "line": 2,
+          "excerpt": "…LToPath as dr}from\"node:url\";import pr from\"child_process\";import ge from\"path\";import ye from\"fs\";import{i …"
+        },
+        {
+          "file": "dist/esm/api/index.cjs",
+          "line": 2,
+          "excerpt": "…,R=require(\"node:module\"),le=require(\"node:worker_threads\"),n=require(\"../../register-B1c7OH6V.cjs\"),p=requi…"
+        },
+        {
+          "file": "dist/esm/api/index.mjs",
+          "line": 2,
+          "excerpt": "…Lp9.mjs\";import\"node:module\";import\"node:worker_threads\";import\"node:url\";import\"node:fs\";import\"node:fs/pro…"
+        },
+        {
+          "file": "dist/esm/index.mjs",
+          "line": 2,
+          "excerpt": "import*as o from\"node:worker_threads\";import{i as t,m as e,a}from\"../temporary-directory-Du7LpLp9.mjs\";import…"
+        },
+        {
+          "file": "dist/loader.mjs",
+          "line": 2,
+          "excerpt": "…e as w}from\"./esm/index.mjs\";import\"node:worker_threads\";import\"./temporary-directory-Du7LpLp9.mjs\";import\"n…"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "net",
+      "evidence": [
+        {
+          "file": "dist/cjs/api/index.cjs",
+          "line": 2,
+          "excerpt": "…\"../../client-XItNFmsq.cjs\"),require(\"node:net\"),require(\"node:util\"),exports.register=r.register,exports.re…"
+        },
+        {
+          "file": "dist/cjs/api/index.mjs",
+          "line": 2,
+          "excerpt": "…u7LpLp9.mjs\";import\"node:os\";import\"node:net\";import\"../../index-Bqjv9TxC.mjs\";import\"node:util\";export{_ as…"
+        },
+        {
+          "file": "dist/cjs/index.cjs",
+          "line": 1,
+          "excerpt": "…),require(\"node:os\"),require(\"../client-XItNFmsq.cjs\"),require(\"node:net\"),require(\"node:util\"),r.register();"
+        },
+        {
+          "file": "dist/cli.mjs",
+          "line": 2,
+          "excerpt": "…r}from\"./index-Bqjv9TxC.mjs\";import br from\"node:net\";var Br=typeof globalThis<\"u\"?globalThis:typeof window<…"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "CHOKIDAR_INTERVAL, CHOKIDAR_PRINT_FSEVENTS_REQUIRE_ERROR, CHOKIDAR_USEPOLLING, CI, COLORTERM, FORCE_COLOR (+12 more)",
+      "evidence": [
+        {
+          "file": "dist/cli.mjs",
+          "line": 53,
+          "excerpt": "…0:F.usePolling=!!oe}const ce=process.env.CHOKIDAR_INTERVAL;ce&&(F.interval=Number.parseInt(ce,10)),ee(F,\"ato…"
+        },
+        {
+          "file": "dist/index-Bqjv9TxC.mjs",
+          "line": 1,
+          "excerpt": "…e===\"3\"?n=!0:t===\"dumb\"?n=!1:\"CI\"in l.process.env&&[\"TRAVIS\",\"CIRCLECI\",\"APPVEYOR\",\"GITLAB_CI\",\"GITHUB_ACTIO…"
+        },
+        {
+          "file": "dist/register-B1c7OH6V.cjs",
+          "line": 21,
+          "excerpt": "…==\"3\"?ae=!0:r===\"dumb\"?ae=!1:\"CI\"in ge.process.env&&[\"TRAVIS\",\"CIRCLECI\",\"APPVEYOR\",\"GITLAB_CI\",\"GITHUB_ACTI…"
+        },
+        {
+          "file": "dist/cli.mjs",
+          "line": 22,
+          "excerpt": "…/s\",\"/c\",`\"${$}\"`],f.command=process.env.comspec||\"cmd.exe\",f.options.windowsVerbatimArguments=!0}return f}i…"
+        },
+        {
+          "file": "dist/esm/api/index.cjs",
+          "line": 2,
+          "excerpt": "…rtSpecifiers\"),Je=i(()=>[...(process.env.NODE_OPTIONS??\"\").matchAll(/(?:^|\\s)--import(?:=|\\s+)(\\S+)/g)].map(…"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "eval, import(), require(expression), string timer",
+      "evidence": [
+        {
+          "file": "dist/lexer-CanA6ArK.mjs",
+          "line": 3,
+          "excerpt": "…:K})}function N(C){try{return(0,eval)(C)}catch{}}return k(N,\"k\"),[U,t,!!Q.f(),!!Q.ms()]}k(F,\"parse\");functio…"
+        },
+        {
+          "file": "dist/lexer-CGfpMDSb.cjs",
+          "line": 3,
+          "excerpt": "…:K})}function N(C){try{return(0,eval)(C)}catch{}}return k(N,\"k\"),[a,t,!!Q.f(),!!Q.ms()]}k(U,\"parse\");functio…"
+        },
+        {
+          "file": "dist/cli.mjs",
+          "line": 53,
+          "excerpt": "…meoutObject),pe},\"clear\");ie=setTimeout(se,Z);const oe={timeoutObject:ie,clear:se,count:0};return X.set(F,oe…"
+        },
+        {
+          "file": "dist/esm/api/index.cjs",
+          "line": 2,
+          "excerpt": "…FileURL(t).toString();return import(`tsx://${JSON.stringify({specifier:r,parentURL:s,namespace:e})}`)},\"crea…"
+        },
+        {
+          "file": "dist/register-nyXW-TH3.mjs",
+          "line": 2,
+          "excerpt": "…(y)?e:S(e).toString();return import(`tsx://${JSON.stringify({specifier:r,parentURL:s,namespace:t})}`)},\"crea…"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "Module._resolveFilename, module",
+      "evidence": [
+        {
+          "file": "dist/esm/api/index.cjs",
+          "line": 2,
+          "excerpt": "…{const{_resolveFilename:c}=R;R._resolveFilename=(m,...f)=>c(n.interopCjsExports(m),...f),re=!0}const{sourceM…"
+        },
+        {
+          "file": "dist/register-B1c7OH6V.cjs",
+          "line": 23,
+          "excerpt": "…ame,a=Ho(n,o,r,t?.namespace);K._resolveFilename=a;const c=Uo(n,K._extensions,r,t?.namespace),p=t?.namespace?…"
+        },
+        {
+          "file": "dist/register-nyXW-TH3.mjs",
+          "line": 2,
+          "excerpt": "…{const{_resolveFilename:a}=j;j._resolveFilename=(l,...f)=>a(ne(l),...f),xt=!0}const{sourceMapsEnabled:r}=pro…"
+        },
+        {
+          "file": "dist/require-CBjy4Foe.mjs",
+          "line": 10,
+          "excerpt": "…ame,o=hr(r,s,n,e?.namespace);P._resolveFilename=o;const a=sr(r,P._extensions,n,e?.namespace),i=e?.namespace?…"
+        },
+        {
+          "file": "dist/cjs/api/index.cjs",
+          "line": 2,
+          "excerpt": "…../../require-CVaYn9z3.cjs\");require(\"node:module\"),require(\"node:path\"),require(\"node:url\"),require(\"node:f…"
+        }
+      ]
+    },
+    {
+      "id": "native_binary",
+      "detail": "embedded WebAssembly",
+      "evidence": [
+        {
+          "file": "dist/lexer-CanA6ArK.mjs",
+          "line": 3,
+          "excerpt": "…nst G=WebAssembly.compile((a=\"AGFzbQEAAAABKwhgAX8Bf2AEf39/fwBgAAF/YAAAYAF/AGADf39/AX9gAn9/AX9gA39/fwADMTAAAQ…"
+        },
+        {
+          "file": "dist/lexer-CGfpMDSb.cjs",
+          "line": 3,
+          "excerpt": "…nst F=WebAssembly.compile((L=\"AGFzbQEAAAABKwhgAX8Bf2AEf39/fwBgAAF/YAAAYAF/AGADf39/AX9gAn9/AX9gA39/fwADMTAAAQ…"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/cjs/api/index.cjs",
+          "line": 2,
+          "excerpt": "…e:path\"),require(\"node:url\"),require(\"node:fs\"),require(\"fs\"),require(\"os\"),require(\"path\"),require(\"esbuild…"
+        },
+        {
+          "file": "dist/cjs/api/index.mjs",
+          "line": 2,
+          "excerpt": "…\"node:path\";import\"node:url\";import\"node:fs\";import\"fs\";import\"os\";import\"path\";import\"../../index-DE3OBZuV.…"
+        },
+        {
+          "file": "dist/cjs/index.cjs",
+          "line": 1,
+          "excerpt": "…e:path\"),require(\"node:url\"),require(\"node:fs\"),require(\"fs\"),require(\"os\"),require(\"path\"),require(\"esbuild…"
+        },
+        {
+          "file": "dist/cli.mjs",
+          "line": 2,
+          "excerpt": "…rocess\";import ge from\"path\";import ye from\"fs\";import{i as Wt,a as Er,t as Cr,d as Fr}from\"./temporary-dire…"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "CHOKIDAR_INTERVAL",
+    "CHOKIDAR_PRINT_FSEVENTS_REQUIRE_ERROR",
+    "CHOKIDAR_USEPOLLING",
+    "CI",
+    "COLORTERM",
+    "FORCE_COLOR",
+    "NODE_DISABLE_COLORS",
+    "NODE_OPTIONS",
+    "NODE_V8_COVERAGE",
+    "NO_COLOR",
+    "OSTYPE",
+    "PATH",
+    "PATHEXT",
+    "TERM",
+    "TSX_DEBUG",
+    "TSX_DISABLE_CACHE",
+    "TSX_TSCONFIG_PATH",
+    "comspec"
+  ],
+  "endpoints": [
+    "foo.com",
+    "foo.com0"
+  ],
+  "installScripts": {},
+  "files": 30,
+  "unpackedSize": 396881,
+  "risk": 46,
+  "findings": [
+    {
+      "id": "loader-hook",
+      "severity": "high",
+      "title": "Hooks the module loader",
+      "detail": "Module._resolveFilename"
+    },
+    {
+      "id": "native-binary",
+      "severity": "medium",
+      "title": "Ships native binaries",
+      "detail": "embedded WebAssembly"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "eval, string timer"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "net"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "8 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "privatenumber/tsx",
+      "commit": "ca66105a17a2a4c6503fe3a12b5b9ec408286011",
+      "workflow": ".github/workflows/release.yml@refs/heads/master",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/cjs/api/index.cjs",
+        "dist/cjs/api/index.d.cts",
+        "dist/cjs/api/index.d.mts",
+        "dist/cjs/api/index.mjs",
+        "dist/cjs/index.cjs",
+        "dist/cli.mjs",
+        "dist/client-XItNFmsq.cjs",
+        "dist/esm/api/index.cjs",
+        "dist/esm/api/index.d.cts",
+        "dist/esm/api/index.d.mts",
+        "dist/esm/api/index.mjs",
+        "dist/esm/index.mjs",
+        "dist/index-Bqjv9TxC.mjs",
+        "dist/index-DE3OBZuV.mjs",
+        "dist/lexer-CGfpMDSb.cjs",
+        "dist/lexer-CanA6ArK.mjs",
+        "dist/loader.mjs",
+        "dist/package-Dj0mHsMt.mjs",
+        "dist/patch-repl.cjs",
+        "dist/preflight.cjs",
+        "dist/register-B1c7OH6V.cjs",
+        "dist/register-nyXW-TH3.mjs",
+        "dist/repl.mjs",
+        "dist/require-CBjy4Foe.mjs",
+        "dist/require-CVaYn9z3.cjs",
+        "dist/suppress-warnings.cjs",
+        "dist/temporary-directory-Du7LpLp9.mjs"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "privatenumber/tsx",
+      "ref": "ca66105a17a2a4c6503fe3a12b5b9ec408286011"
+    }
+  },
+  "score": 77,
+  "grade": "B"
+}

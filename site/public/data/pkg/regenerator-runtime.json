@@ -1,0 +1,49 @@
+{
+  "name": "regenerator-runtime",
+  "version": "0.14.1",
+  "capabilities": [
+    {
+      "id": "eval",
+      "detail": "Function",
+      "evidence": [
+        {
+          "file": "runtime.js",
+          "line": 759,
+          "excerpt": "Function(\"r\", \"regeneratorRuntime = r\")(runtime);"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 5,
+  "unpackedSize": 27863,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead; package found in repo directory packages/runtime/",
+      "repo": "facebook/regenerator",
+      "ref": "6be1e6295ce1577142c44863175d5180d91f8f00"
+    }
+  },
+  "score": 81,
+  "grade": "B"
+}

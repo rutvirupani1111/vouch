@@ -1,0 +1,107 @@
+{
+  "name": "express",
+  "version": "5.3.0",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "http, net",
+      "evidence": [
+        {
+          "file": "lib/application.js",
+          "line": 19,
+          "excerpt": "var http = require('node:http');"
+        },
+        {
+          "file": "lib/application.js",
+          "line": 599,
+          "excerpt": "var server = http.createServer(this)"
+        },
+        {
+          "file": "lib/request.js",
+          "line": 19,
+          "excerpt": "var http = require('node:http');"
+        },
+        {
+          "file": "lib/response.js",
+          "line": 20,
+          "excerpt": "var http = require('node:http');"
+        },
+        {
+          "file": "lib/request.js",
+          "line": 17,
+          "excerpt": "var isIP = require('node:net').isIP;"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "lib/application.js",
+          "line": 91,
+          "excerpt": "var env = process.env.NODE_ENV || 'development';"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "require(expression)",
+      "evidence": [
+        {
+          "file": "lib/view.js",
+          "line": 81,
+          "excerpt": "var fn = require(mod).__express"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "lib/view.js",
+          "line": 18,
+          "excerpt": "var fs = require('node:fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 10,
+  "unpackedSize": 76638,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "http, net"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "expressjs/express",
+      "commit": "cf6722bf89a86905281d9160b6482e08166b5ef0",
+      "workflow": ".github/workflows/npm-publish.yml@refs/tags/v5.3.0",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 10,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "expressjs/express",
+      "ref": "cf6722bf89a86905281d9160b6482e08166b5ef0"
+    }
+  },
+  "score": 99,
+  "grade": "A"
+}

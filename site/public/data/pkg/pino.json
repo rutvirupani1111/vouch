@@ -1,0 +1,250 @@
+{
+  "name": "pino",
+  "version": "10.4.0",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, execSync, execa, fork, spawn, worker_threads",
+      "evidence": [
+        {
+          "file": "benchmarks/utils/generate-benchmark-doc.js",
+          "line": 3,
+          "excerpt": "const { execSync } = require('node:child_process')"
+        },
+        {
+          "file": "benchmarks/utils/runbench.js",
+          "line": 5,
+          "excerpt": "const spawn = require('node:child_process').spawn"
+        },
+        {
+          "file": "test/broken-pipe.test.js",
+          "line": 6,
+          "excerpt": "const { fork } = require('node:child_process')"
+        },
+        {
+          "file": "test/smoke.js",
+          "line": 3,
+          "excerpt": "const { execSync } = require('node:child_process')"
+        },
+        {
+          "file": "test/exit.test.js",
+          "line": 7,
+          "excerpt": "const execa = require('execa')"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "http, net",
+      "evidence": [
+        {
+          "file": "test/http.test.js",
+          "line": 4,
+          "excerpt": "const http = require('node:http')"
+        },
+        {
+          "file": "test/http.test.js",
+          "line": 35,
+          "excerpt": "const server = http.createServer((req, res) => {"
+        },
+        {
+          "file": "test/http.test.js",
+          "line": 44,
+          "excerpt": "const res = await once(http.get('http://localhost:' + server.address().port), 'response')"
+        },
+        {
+          "file": "test/types/pino.tst.ts",
+          "line": 3,
+          "excerpt": "import { IncomingMessage, ServerResponse } from 'node:http'"
+        },
+        {
+          "file": "test/types/pino.tst.ts",
+          "line": 4,
+          "excerpt": "import { Socket } from 'node:net'"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "CI, CITGM, MAX_TEST_LOOP_ITERATION, NODE_OPTIONS, PINO_TEST_WAIT_WATCHFILE_TIMEOUT, PINO_TEST_WAIT_WRITE_TIMEOUT (+1 more)",
+      "evidence": [
+        {
+          "file": "test/transport/big.test.js",
+          "line": 18,
+          "excerpt": "const skip = process.env.CI || process.env.CITGM"
+        },
+        {
+          "file": "test/broken-pipe.test.js",
+          "line": 16,
+          "excerpt": "if (process.env.CITGM) {"
+        },
+        {
+          "file": "test/transport/sync-true.test.js",
+          "line": 37,
+          "excerpt": "while (!interrupt && loopCounter < (process.env.MAX_TEST_LOOP_ITERATION || 20000)) {"
+        },
+        {
+          "file": "lib/transport.js",
+          "line": 124,
+          "excerpt": "if (!workerOpts.env && process.env.NODE_OPTIONS) {"
+        },
+        {
+          "file": "lib/transport.js",
+          "line": 125,
+          "excerpt": "const nodeOptions = sanitizeNodeOptions(process.env.NODE_OPTIONS)"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function, Script, eval, require(expression), vm",
+      "evidence": [
+        {
+          "file": "test/fixtures/eval/index.js",
+          "line": 3,
+          "excerpt": "eval(`"
+        },
+        {
+          "file": "test/esm/index.test.js",
+          "line": 7,
+          "excerpt": "new Function('module', 'return import(module)')('./esm.mjs').catch((err) => {"
+        },
+        {
+          "file": "test/esm/index.test.js",
+          "line": 17,
+          "excerpt": "new Function('module', 'return import(module)')('./named-exports.mjs').catch((err) => {"
+        },
+        {
+          "file": "benchmarks/utils/wrap-log-level.js",
+          "line": 18,
+          "excerpt": "const script = new vm.Script(code)"
+        },
+        {
+          "file": "benchmarks/utils/wrap-log-level.js",
+          "line": 4,
+          "excerpt": "const vm = require('vm')"
+        }
+      ]
+    },
+    {
+      "id": "global_hook",
+      "detail": "Object.prototype.__bundlerPathsOverrides, Object.prototype.globalThis, module, process",
+      "evidence": [
+        {
+          "file": "test/fixtures/broken-pipe/basic.js",
+          "line": 3,
+          "excerpt": "global.process = { __proto__: process, pid: 123456 }"
+        },
+        {
+          "file": "test/fixtures/broken-pipe/destination.js",
+          "line": 3,
+          "excerpt": "global.process = { __proto__: process, pid: 123456 }"
+        },
+        {
+          "file": "test/fixtures/broken-pipe/syncfalse.js",
+          "line": 3,
+          "excerpt": "global.process = { __proto__: process, pid: 123456 }"
+        },
+        {
+          "file": "test/fixtures/default-exit.js",
+          "line": 1,
+          "excerpt": "global.process = { __proto__: process, pid: 123456 }"
+        },
+        {
+          "file": "test/transport/core.test.js",
+          "line": 743,
+          "excerpt": "Object.prototype.__bundlerPathsOverrides = { 'pino/file': '/malicious/path' }"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "benchmarks/basic.bench.js",
+          "line": 8,
+          "excerpt": "const fs = require('node:fs')"
+        },
+        {
+          "file": "benchmarks/child-child.bench.js",
+          "line": 6,
+          "excerpt": "const fs = require('node:fs')"
+        },
+        {
+          "file": "benchmarks/child-creation.bench.js",
+          "line": 7,
+          "excerpt": "const fs = require('node:fs')"
+        },
+        {
+          "file": "benchmarks/child.bench.js",
+          "line": 7,
+          "excerpt": "const fs = require('node:fs')"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "CI",
+    "CITGM",
+    "MAX_TEST_LOOP_ITERATION",
+    "NODE_OPTIONS",
+    "PINO_TEST_WAIT_WATCHFILE_TIMEOUT",
+    "PINO_TEST_WAIT_WRITE_TIMEOUT",
+    "TS_NODE_DEV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 203,
+  "unpackedSize": 705711,
+  "risk": 24,
+  "findings": [
+    {
+      "id": "global-patch",
+      "severity": "medium",
+      "title": "Patches globals",
+      "detail": "process, Object.prototype.__bundlerPathsOverrides, Object.prototype.globalThis"
+    },
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function, eval, Script, vm"
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, execSync, execa, fork, spawn"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "http, net"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "pinojs/pino",
+      "commit": "6ba157b1a6727399f9dc01a584d2e08d5094ea57",
+      "workflow": ".github/workflows/publish-release.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 202,
+      "differs": [
+        "lib/meta.js"
+      ],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "pinojs/pino",
+      "ref": "6ba157b1a6727399f9dc01a584d2e08d5094ea57"
+    }
+  },
+  "score": 53,
+  "grade": "D"
+}

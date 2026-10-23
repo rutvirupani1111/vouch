@@ -1,0 +1,51 @@
+{
+  "name": "mongoose",
+  "version": "9.11.3",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "SUPPRESS_JEST_WARNINGS",
+      "evidence": [
+        {
+          "file": "lib/helpers/printJestWarning.js",
+          "line": 5,
+          "excerpt": "if (typeof jest !== 'undefined' && !process.env.SUPPRESS_JEST_WARNINGS) {"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "SUPPRESS_JEST_WARNINGS"
+  ],
+  "endpoints": [
+    "bit.ly",
+    "mongodb.com",
+    "mongoosejs.com"
+  ],
+  "installScripts": {},
+  "files": 304,
+  "unpackedSize": 2189314,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "Automattic/mongoose",
+      "commit": "2fb34de8f6da12855f61b941ec155c0f69eb0880",
+      "workflow": ".github/workflows/publish.yml@refs/tags/9.11.3",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 304,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "Automattic/mongoose",
+      "ref": "2fb34de8f6da12855f61b941ec155c0f69eb0880"
+    }
+  },
+  "score": 100,
+  "grade": "A"
+}

@@ -1,0 +1,139 @@
+{
+  "name": "got",
+  "version": "16.1.0",
+  "capabilities": [
+    {
+      "id": "install_script",
+      "detail": "prepare (reachable at install time)",
+      "evidence": [
+        {
+          "file": "package.json",
+          "line": 22,
+          "excerpt": "\"prepare\": \"npm run build\""
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "dns, http, http2, https, net, tls",
+      "evidence": [
+        {
+          "file": "dist/source/core/utils/dns-cache.js",
+          "line": 1,
+          "excerpt": "import { ADDRCONFIG, ALL, V4MAPPED, getDefaultResultOrder, lookup as dnsLookup, promises as dnsPromises, } fr…"
+        },
+        {
+          "file": "dist/source/core/utils/dns-cache.js",
+          "line": 86,
+          "excerpt": "return getDefaultResultOrder();"
+        },
+        {
+          "file": "dist/source/core/index.js",
+          "line": 5,
+          "excerpt": "import http, { ServerResponse } from 'node:http';"
+        },
+        {
+          "file": "dist/source/core/options.js",
+          "line": 5,
+          "excerpt": "import http from 'node:http';"
+        },
+        {
+          "file": "dist/source/core/utils/http2-client.js",
+          "line": 5,
+          "excerpt": "import http, { validateHeaderName, validateHeaderValue, } from 'node:http';"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [
+    "unix"
+  ],
+  "installScripts": {
+    "prepare": "npm run build"
+  },
+  "files": 51,
+  "unpackedSize": 487805,
+  "risk": 12,
+  "findings": [
+    {
+      "id": "install-script",
+      "severity": "medium",
+      "title": "Runs code on install",
+      "detail": "prepare: npm run build"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "dns, http, http2, https, net, tls"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/source/as-promise/index.d.ts",
+        "dist/source/as-promise/index.js",
+        "dist/source/as-promise/types.d.ts",
+        "dist/source/as-promise/types.js",
+        "dist/source/core/calculate-retry-delay.d.ts",
+        "dist/source/core/calculate-retry-delay.js",
+        "dist/source/core/diagnostics-channel.d.ts",
+        "dist/source/core/diagnostics-channel.js",
+        "dist/source/core/errors.d.ts",
+        "dist/source/core/errors.js",
+        "dist/source/core/index.d.ts",
+        "dist/source/core/index.js",
+        "dist/source/core/options.d.ts",
+        "dist/source/core/options.js",
+        "dist/source/core/parse-link-header.d.ts",
+        "dist/source/core/parse-link-header.js",
+        "dist/source/core/response.d.ts",
+        "dist/source/core/response.js",
+        "dist/source/core/timed-out.d.ts",
+        "dist/source/core/timed-out.js",
+        "dist/source/core/utils/decompress-response.d.ts",
+        "dist/source/core/utils/decompress-response.js",
+        "dist/source/core/utils/dns-cache.d.ts",
+        "dist/source/core/utils/dns-cache.js",
+        "dist/source/core/utils/get-body-size.d.ts",
+        "dist/source/core/utils/get-body-size.js",
+        "dist/source/core/utils/http2-client.d.ts",
+        "dist/source/core/utils/http2-client.js",
+        "dist/source/core/utils/is-client-request.d.ts",
+        "dist/source/core/utils/is-client-request.js",
+        "dist/source/core/utils/is-non-replayable-body.d.ts",
+        "dist/source/core/utils/is-non-replayable-body.js",
+        "dist/source/core/utils/is-unix-socket-url.d.ts",
+        "dist/source/core/utils/is-unix-socket-url.js",
+        "dist/source/core/utils/proxy-events.d.ts",
+        "dist/source/core/utils/proxy-events.js",
+        "dist/source/core/utils/strip-url-auth.d.ts",
+        "dist/source/core/utils/strip-url-auth.js",
+        "dist/source/core/utils/timer.d.ts",
+        "dist/source/core/utils/timer.js",
+        "dist/source/core/utils/weakable-map.d.ts",
+        "dist/source/core/utils/weakable-map.js",
+        "dist/source/create.d.ts",
+        "dist/source/create.js",
+        "dist/source/index.d.ts",
+        "dist/source/index.js",
+        "dist/source/types.d.ts",
+        "dist/source/types.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "sindresorhus/got",
+      "ref": "05b4476913da39a47dd8e20d29e250f28b0a6dca"
+    }
+  },
+  "score": 79,
+  "grade": "B"
+}

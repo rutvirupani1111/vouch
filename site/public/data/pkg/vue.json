@@ -1,0 +1,121 @@
+{
+  "name": "vue",
+  "version": "3.5.44",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "dist/vue.esm-bundler.js",
+          "line": 18,
+          "excerpt": "if (!!(process.env.NODE_ENV !== \"production\")) {"
+        },
+        {
+          "file": "dist/vue.esm-bundler.js",
+          "line": 27,
+          "excerpt": "!!(process.env.NODE_ENV !== \"production\") && warn(`invalid template option: `, template);"
+        },
+        {
+          "file": "dist/vue.esm-bundler.js",
+          "line": 38,
+          "excerpt": "if (!!(process.env.NODE_ENV !== \"production\") && !el) {"
+        },
+        {
+          "file": "dist/vue.runtime.esm-bundler.js",
+          "line": 15,
+          "excerpt": "if (!!(process.env.NODE_ENV !== \"production\")) {"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "Function, string timer",
+      "evidence": [
+        {
+          "file": "dist/vue.cjs.js",
+          "line": 71,
+          "excerpt": "const render = new Function(\"Vue\", code)(runtimeDom__namespace);"
+        },
+        {
+          "file": "dist/vue.cjs.prod.js",
+          "line": 57,
+          "excerpt": "const render = new Function(\"Vue\", code)(runtimeDom__namespace);"
+        },
+        {
+          "file": "dist/vue.esm-browser.js",
+          "line": 16809,
+          "excerpt": "new Function("
+        },
+        {
+          "file": "dist/vue.esm-browser.js",
+          "line": 19243,
+          "excerpt": "const render = new Function(\"Vue\", code)(runtimeDom);"
+        },
+        {
+          "file": "dist/vue.esm-browser.prod.js",
+          "line": 7,
+          "excerpt": "…ndId&&r()};if(null!=n)return setTimeout(l,n);let{type:s,timeout:o,propCount:a}=sh(e,t);if(!s)return r();let …"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 37,
+  "unpackedSize": 2581780,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function, string timer"
+    },
+    {
+      "id": "minified",
+      "severity": "info",
+      "title": "Minified code",
+      "detail": "4 minified file(s); harder to review."
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "vuejs/core",
+      "commit": "bf5f0dd877dd3c23ce85c2cbc1dd771567e84c8c",
+      "workflow": ".github/workflows/release.yml@refs/tags/v3.5.44",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 23,
+      "differs": [],
+      "builtOnly": [
+        "dist/vue.cjs.js",
+        "dist/vue.cjs.prod.js",
+        "dist/vue.d.mts",
+        "dist/vue.d.ts",
+        "dist/vue.esm-browser.js",
+        "dist/vue.esm-browser.prod.js",
+        "dist/vue.esm-bundler.js",
+        "dist/vue.global.js",
+        "dist/vue.global.prod.js",
+        "dist/vue.runtime.esm-browser.js",
+        "dist/vue.runtime.esm-browser.prod.js",
+        "dist/vue.runtime.esm-bundler.js",
+        "dist/vue.runtime.global.js",
+        "dist/vue.runtime.global.prod.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/vue/",
+      "repo": "vuejs/core",
+      "ref": "bf5f0dd877dd3c23ce85c2cbc1dd771567e84c8c"
+    }
+  },
+  "score": 96,
+  "grade": "A"
+}

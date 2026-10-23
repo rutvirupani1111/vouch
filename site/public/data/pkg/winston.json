@@ -1,0 +1,108 @@
+{
+  "name": "winston",
+  "version": "3.19.0",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "http, https",
+      "evidence": [
+        {
+          "file": "dist/winston/transports/http.js",
+          "line": 27,
+          "excerpt": "var http = require('http');"
+        },
+        {
+          "file": "lib/winston/transports/http.js",
+          "line": 10,
+          "excerpt": "const http = require('http');"
+        },
+        {
+          "file": "dist/winston/transports/http.js",
+          "line": 28,
+          "excerpt": "var https = require('https');"
+        },
+        {
+          "file": "lib/winston/transports/http.js",
+          "line": 11,
+          "excerpt": "const https = require('https');"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/winston/tail-file.js",
+          "line": 10,
+          "excerpt": "var fs = require('fs');"
+        },
+        {
+          "file": "dist/winston/transports/file.js",
+          "line": 25,
+          "excerpt": "var fs = require('fs');"
+        },
+        {
+          "file": "lib/winston/tail-file.js",
+          "line": 10,
+          "excerpt": "const fs = require('fs');"
+        },
+        {
+          "file": "lib/winston/transports/file.js",
+          "line": 11,
+          "excerpt": "const fs = require('fs');"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 40,
+  "unpackedSize": 274893,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "http, https"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 23,
+      "differs": [],
+      "builtOnly": [
+        "dist/winston.js",
+        "dist/winston/common.js",
+        "dist/winston/config/index.js",
+        "dist/winston/container.js",
+        "dist/winston/create-logger.js",
+        "dist/winston/exception-handler.js",
+        "dist/winston/exception-stream.js",
+        "dist/winston/logger.js",
+        "dist/winston/profiler.js",
+        "dist/winston/rejection-handler.js",
+        "dist/winston/rejection-stream.js",
+        "dist/winston/tail-file.js",
+        "dist/winston/transports/console.js",
+        "dist/winston/transports/file.js",
+        "dist/winston/transports/http.js",
+        "dist/winston/transports/index.js",
+        "dist/winston/transports/stream.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "winstonjs/winston",
+      "ref": "ed45345f01b8ceb1d436e4791d95469c5213a0cf"
+    }
+  },
+  "score": 84,
+  "grade": "B"
+}

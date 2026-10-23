@@ -1,0 +1,120 @@
+{
+  "name": "minimatch",
+  "version": "10.2.6",
+  "capabilities": [
+    {
+      "id": "install_script",
+      "detail": "prepare (reachable at install time)",
+      "evidence": [
+        {
+          "file": "package.json",
+          "line": 32,
+          "excerpt": "\"prepare\": \"tshy\","
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "__MINIMATCH_TESTING_PLATFORM__",
+      "evidence": [
+        {
+          "file": "dist/commonjs/index.js",
+          "line": 73,
+          "excerpt": "process.env.__MINIMATCH_TESTING_PLATFORM__) ||"
+        },
+        {
+          "file": "dist/esm/index.js",
+          "line": 69,
+          "excerpt": "process.env.__MINIMATCH_TESTING_PLATFORM__) ||"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "__MINIMATCH_TESTING_PLATFORM__"
+  ],
+  "endpoints": [],
+  "installScripts": {
+    "prepare": "tshy"
+  },
+  "files": 53,
+  "unpackedSize": 536122,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "install-script",
+      "severity": "medium",
+      "title": "Runs code on install",
+      "detail": "prepare: tshy"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/commonjs/assert-valid-pattern.d.ts",
+        "dist/commonjs/assert-valid-pattern.d.ts.map",
+        "dist/commonjs/assert-valid-pattern.js",
+        "dist/commonjs/assert-valid-pattern.js.map",
+        "dist/commonjs/ast.d.ts",
+        "dist/commonjs/ast.d.ts.map",
+        "dist/commonjs/ast.js",
+        "dist/commonjs/ast.js.map",
+        "dist/commonjs/brace-expressions.d.ts",
+        "dist/commonjs/brace-expressions.d.ts.map",
+        "dist/commonjs/brace-expressions.js",
+        "dist/commonjs/brace-expressions.js.map",
+        "dist/commonjs/escape.d.ts",
+        "dist/commonjs/escape.d.ts.map",
+        "dist/commonjs/escape.js",
+        "dist/commonjs/escape.js.map",
+        "dist/commonjs/index.d.ts",
+        "dist/commonjs/index.d.ts.map",
+        "dist/commonjs/index.js",
+        "dist/commonjs/index.js.map",
+        "dist/commonjs/package.json",
+        "dist/commonjs/unescape.d.ts",
+        "dist/commonjs/unescape.d.ts.map",
+        "dist/commonjs/unescape.js",
+        "dist/commonjs/unescape.js.map",
+        "dist/esm/assert-valid-pattern.d.ts",
+        "dist/esm/assert-valid-pattern.d.ts.map",
+        "dist/esm/assert-valid-pattern.js",
+        "dist/esm/assert-valid-pattern.js.map",
+        "dist/esm/ast.d.ts",
+        "dist/esm/ast.d.ts.map",
+        "dist/esm/ast.js",
+        "dist/esm/ast.js.map",
+        "dist/esm/brace-expressions.d.ts",
+        "dist/esm/brace-expressions.d.ts.map",
+        "dist/esm/brace-expressions.js",
+        "dist/esm/brace-expressions.js.map",
+        "dist/esm/escape.d.ts",
+        "dist/esm/escape.d.ts.map",
+        "dist/esm/escape.js",
+        "dist/esm/escape.js.map",
+        "dist/esm/index.d.ts",
+        "dist/esm/index.d.ts.map",
+        "dist/esm/index.js",
+        "dist/esm/index.js.map",
+        "dist/esm/package.json",
+        "dist/esm/unescape.d.ts",
+        "dist/esm/unescape.d.ts.map",
+        "dist/esm/unescape.js",
+        "dist/esm/unescape.js.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "isaacs/minimatch",
+      "ref": "ded1bbd01beca62a5978bc1650ed0a1ccf9039d5"
+    }
+  },
+  "score": 81,
+  "grade": "B"
+}

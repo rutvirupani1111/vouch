@@ -1,0 +1,36 @@
+{
+  "name": "helmet",
+  "version": "8.3.0",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 9,
+  "unpackedSize": 105555,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 5,
+      "differs": [],
+      "builtOnly": [
+        "index.d.cts",
+        "index.d.mts"
+      ],
+      "onlyInPackage": [
+        "index.cjs",
+        "index.mjs"
+      ],
+      "note": "compared against tag v8.3.0 (no commit recorded; tags can move)",
+      "repo": "helmetjs/helmet",
+      "ref": "v8.3.0"
+    }
+  },
+  "score": 50,
+  "grade": "D"
+}

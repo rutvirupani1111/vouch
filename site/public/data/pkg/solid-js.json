@@ -1,0 +1,53 @@
+{
+  "name": "solid-js",
+  "version": "1.9.17",
+  "capabilities": [
+    {
+      "id": "eval",
+      "detail": "Function",
+      "evidence": [
+        {
+          "file": "html/dist/html.cjs",
+          "line": 194,
+          "excerpt": "functionBuilder = (...args) => new Function(...args)"
+        },
+        {
+          "file": "html/dist/html.js",
+          "line": 192,
+          "excerpt": "functionBuilder = (...args) => new Function(...args)"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 76,
+  "unpackedSize": 1076199,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "Function"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "unknown",
+      "identical": 0,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "repo": "solidjs/solid",
+      "note": "no commit recorded and no matching tag found"
+    }
+  },
+  "score": 66,
+  "grade": "C"
+}

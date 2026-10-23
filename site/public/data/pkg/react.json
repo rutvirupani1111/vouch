@@ -1,0 +1,88 @@
+{
+  "name": "react",
+  "version": "19.3.1",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "cjs/react-compiler-runtime.development.js",
+          "line": 12,
+          "excerpt": "\"production\" !== process.env.NODE_ENV &&"
+        },
+        {
+          "file": "cjs/react-jsx-dev-runtime.development.js",
+          "line": 12,
+          "excerpt": "\"production\" !== process.env.NODE_ENV &&"
+        },
+        {
+          "file": "cjs/react-jsx-dev-runtime.react-server.development.js",
+          "line": 12,
+          "excerpt": "\"production\" !== process.env.NODE_ENV &&"
+        },
+        {
+          "file": "cjs/react-jsx-runtime.development.js",
+          "line": 12,
+          "excerpt": "\"production\" !== process.env.NODE_ENV &&"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 27,
+  "unpackedSize": 178663,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "react/react",
+      "commit": "61aa00df822d0eb76d0362eb8b6fdd3527693efe",
+      "workflow": ".github/workflows/runtime_release_from_ci.yml@refs/heads/releases/19.3.x",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 3,
+      "differs": [
+        "compiler-runtime.js",
+        "index.js",
+        "jsx-dev-runtime.js",
+        "jsx-dev-runtime.react-server.js",
+        "jsx-runtime.js",
+        "jsx-runtime.react-server.js",
+        "react.react-server.js"
+      ],
+      "builtOnly": [
+        "cjs/react-compiler-runtime.development.js",
+        "cjs/react-compiler-runtime.production.js",
+        "cjs/react-compiler-runtime.profiling.js",
+        "cjs/react-jsx-dev-runtime.development.js",
+        "cjs/react-jsx-dev-runtime.production.js",
+        "cjs/react-jsx-dev-runtime.profiling.js",
+        "cjs/react-jsx-dev-runtime.react-server.development.js",
+        "cjs/react-jsx-dev-runtime.react-server.production.js",
+        "cjs/react-jsx-runtime.development.js",
+        "cjs/react-jsx-runtime.production.js",
+        "cjs/react-jsx-runtime.profiling.js",
+        "cjs/react-jsx-runtime.react-server.development.js",
+        "cjs/react-jsx-runtime.react-server.production.js",
+        "cjs/react.development.js",
+        "cjs/react.production.js",
+        "cjs/react.react-server.development.js",
+        "cjs/react.react-server.production.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/react/",
+      "repo": "react/react",
+      "ref": "61aa00df822d0eb76d0362eb8b6fdd3527693efe"
+    }
+  },
+  "score": 65,
+  "grade": "C"
+}

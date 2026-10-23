@@ -1,0 +1,88 @@
+{
+  "name": "ws",
+  "version": "8.22.0",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "http, https, net, tls",
+      "evidence": [
+        {
+          "file": "lib/websocket-server.js",
+          "line": 6,
+          "excerpt": "const http = require('http');"
+        },
+        {
+          "file": "lib/websocket-server.js",
+          "line": 103,
+          "excerpt": "this._server = http.createServer((req, res) => {"
+        },
+        {
+          "file": "lib/websocket.js",
+          "line": 7,
+          "excerpt": "const http = require('http');"
+        },
+        {
+          "file": "lib/websocket.js",
+          "line": 6,
+          "excerpt": "const https = require('https');"
+        },
+        {
+          "file": "lib/websocket.js",
+          "line": 8,
+          "excerpt": "const net = require('net');"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "WS_NO_BUFFER_UTIL, WS_NO_UTF_8_VALIDATE",
+      "evidence": [
+        {
+          "file": "lib/buffer-util.js",
+          "line": 115,
+          "excerpt": "if (!process.env.WS_NO_BUFFER_UTIL) {"
+        },
+        {
+          "file": "lib/validation.js",
+          "line": 142,
+          "excerpt": "} /* istanbul ignore else  */ else if (!process.env.WS_NO_UTF_8_VALIDATE) {"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "WS_NO_BUFFER_UTIL",
+    "WS_NO_UTF_8_VALIDATE"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 19,
+  "unpackedSize": 151410,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "http, https, net, tls"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 19,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "websockets/ws",
+      "ref": "297202cdae9b0590629821373b3b679c407f3431"
+    }
+  },
+  "score": 84,
+  "grade": "B"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "kleur",
+  "version": "4.1.5",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 9,
+  "unpackedSize": 20250,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 7,
+      "differs": [],
+      "builtOnly": [
+        "colors.js",
+        "index.js"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "lukeed/kleur",
+      "ref": "fa3454483899ddab550d08c18c028e6db1aab0e5"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}

@@ -1,0 +1,126 @@
+{
+  "name": "node-cron",
+  "version": "4.6.0",
+  "capabilities": [
+    {
+      "id": "child_process",
+      "detail": "child_process, fork",
+      "evidence": [
+        {
+          "file": "dist/node-cron.cjs",
+          "line": 8,
+          "excerpt": "var child_process = require('child_process');"
+        },
+        {
+          "file": "dist/node-cron.js",
+          "line": 4,
+          "excerpt": "import { fork } from 'child_process';"
+        },
+        {
+          "file": "dist/node-cron.cjs",
+          "line": 383,
+          "excerpt": "this.forkProcess = child_process.fork(daemonPath);"
+        },
+        {
+          "file": "dist/node-cron.js",
+          "line": 379,
+          "excerpt": "this.forkProcess = fork(daemonPath);"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "(computed)",
+      "evidence": [
+        {
+          "file": "dist/_shared.cjs",
+          "line": 1009,
+          "excerpt": "const value = process.env[this.envName];"
+        },
+        {
+          "file": "dist/_shared.js",
+          "line": 1007,
+          "excerpt": "const value = process.env[this.envName];"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "import()",
+      "evidence": [
+        {
+          "file": "dist/daemon.cjs",
+          "line": 73,
+          "excerpt": "return await import(path);"
+        },
+        {
+          "file": "dist/daemon.cjs",
+          "line": 77,
+          "excerpt": "return await import(url.fileURLToPath(path));"
+        },
+        {
+          "file": "dist/daemon.js",
+          "line": 71,
+          "excerpt": "return await import(path);"
+        },
+        {
+          "file": "dist/daemon.js",
+          "line": 75,
+          "excerpt": "return await import(fileURLToPath(path));"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "(computed)"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 17,
+  "unpackedSize": 327912,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, fork"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "node-cron/node-cron",
+      "commit": "0be2ca03ffebc79fa823081b8a44bff6f731a583",
+      "workflow": ".github/workflows/publish.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "dist/_shared.cjs",
+        "dist/_shared.cjs.map",
+        "dist/_shared.js",
+        "dist/_shared.js.map",
+        "dist/daemon.cjs",
+        "dist/daemon.cjs.map",
+        "dist/daemon.js",
+        "dist/daemon.js.map",
+        "dist/node-cron.cjs",
+        "dist/node-cron.cjs.map",
+        "dist/node-cron.d.cts",
+        "dist/node-cron.d.ts",
+        "dist/node-cron.js",
+        "dist/node-cron.js.map"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance",
+      "repo": "node-cron/node-cron",
+      "ref": "0be2ca03ffebc79fa823081b8a44bff6f731a583"
+    }
+  },
+  "score": 99,
+  "grade": "A"
+}

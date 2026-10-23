@@ -1,0 +1,30 @@
+{
+  "name": "jsonwebtoken",
+  "version": "9.0.3",
+  "capabilities": [],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 15,
+  "unpackedSize": 43403,
+  "risk": 0,
+  "findings": [],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 15,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "auth0/node-jsonwebtoken",
+      "ref": "ed59e76ea37a80f54b833668c02a5271984dcba3"
+    }
+  },
+  "score": 85,
+  "grade": "B"
+}
