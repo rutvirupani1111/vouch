@@ -3,17 +3,6 @@
   "version": "16.1.0",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 22,
-          "excerpt": "\"prepare\": \"npm run build\""
-        }
-      ]
-    },
-    {
       "id": "network",
       "detail": "dns, http, http2, https, net, tls",
       "evidence": [
@@ -49,19 +38,11 @@
   "endpoints": [
     "unix"
   ],
-  "installScripts": {
-    "prepare": "npm run build"
-  },
+  "installScripts": {},
   "files": 51,
   "unpackedSize": 487805,
-  "risk": 12,
+  "risk": 3,
   "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: npm run build"
-    },
     {
       "id": "network",
       "severity": "low",
@@ -134,6 +115,6 @@
       "ref": "05b4476913da39a47dd8e20d29e250f28b0a6dca"
     }
   },
-  "score": 79,
+  "score": 84,
   "grade": "B"
 }

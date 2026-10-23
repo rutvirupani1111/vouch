@@ -3,17 +3,6 @@
   "version": "10.4.1",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 129,
-          "excerpt": "\"prepare\": \"husky\""
-        }
-      ]
-    },
-    {
       "id": "network",
       "detail": "XMLHttpRequest, http, http2, https, net, tls",
       "evidence": [
@@ -93,19 +82,11 @@
     "NODE_TLS_REJECT_UNAUTHORIZED"
   ],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "husky"
-  },
+  "installScripts": {},
   "files": 21,
   "unpackedSize": 606369,
-  "risk": 21,
+  "risk": 12,
   "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: husky"
-    },
     {
       "id": "eval",
       "severity": "medium",
@@ -160,6 +141,6 @@
       "ref": "d73b68f942c96cb8f61fe1d53600ceadc6d381b6"
     }
   },
-  "score": 75,
+  "score": 79,
   "grade": "B"
 }

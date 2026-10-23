@@ -1,35 +1,14 @@
 {
   "name": "swr",
   "version": "2.5.1",
-  "capabilities": [
-    {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 99,
-          "excerpt": "\"prepare\": \"husky install\","
-        }
-      ]
-    }
-  ],
+  "capabilities": [],
   "envVars": [],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "husky install"
-  },
+  "installScripts": {},
   "files": 64,
   "unpackedSize": 320306,
-  "risk": 9,
-  "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: husky install"
-    }
-  ],
+  "risk": 0,
+  "findings": [],
   "verify": {
     "provenance": {
       "status": "present",
@@ -106,6 +85,6 @@
       "ref": "7173e55b2a175dee455612c5fa067383345c392f"
     }
   },
-  "score": 96,
+  "score": 100,
   "grade": "A"
 }

@@ -3,17 +3,6 @@
   "version": "10.2.6",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 32,
-          "excerpt": "\"prepare\": \"tshy\","
-        }
-      ]
-    },
-    {
       "id": "env",
       "detail": "__MINIMATCH_TESTING_PLATFORM__",
       "evidence": [
@@ -34,20 +23,11 @@
     "__MINIMATCH_TESTING_PLATFORM__"
   ],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "tshy"
-  },
+  "installScripts": {},
   "files": 53,
   "unpackedSize": 536122,
-  "risk": 9,
-  "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: tshy"
-    }
-  ],
+  "risk": 0,
+  "findings": [],
   "verify": {
     "provenance": {
       "status": "absent",
@@ -115,6 +95,6 @@
       "ref": "ded1bbd01beca62a5978bc1650ed0a1ccf9039d5"
     }
   },
-  "score": 81,
+  "score": 85,
   "grade": "B"
 }

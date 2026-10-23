@@ -1,35 +1,14 @@
 {
   "name": "uuid",
   "version": "14.0.3",
-  "capabilities": [
-    {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 87,
-          "excerpt": "\"prepare\": \"if [ -d .git ]; then npx lefthook install; fi\","
-        }
-      ]
-    }
-  ],
+  "capabilities": [],
   "envVars": [],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "if [ -d .git ]; then npx lefthook install; fi"
-  },
+  "installScripts": {},
   "files": 70,
   "unpackedSize": 65739,
-  "risk": 9,
-  "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: if [ -d .git ]; then npx lefthook install; fi"
-    }
-  ],
+  "risk": 0,
+  "findings": [],
   "verify": {
     "provenance": {
       "status": "present",
@@ -117,6 +96,6 @@
       "ref": "993ff7b64a289ef7f921ccafc8bb98ef9461d214"
     }
   },
-  "score": 96,
+  "score": 100,
   "grade": "A"
 }

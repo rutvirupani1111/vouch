@@ -3,17 +3,6 @@
   "version": "18.2.0",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 76,
-          "excerpt": "\"prepare\": \"npm run compile\","
-        }
-      ]
-    },
-    {
       "id": "env",
       "detail": "(computed)",
       "evidence": [
@@ -53,20 +42,11 @@
   "endpoints": [
     "yargs.js.org"
   ],
-  "installScripts": {
-    "prepare": "npm run compile"
-  },
+  "installScripts": {},
   "files": 59,
   "unpackedSize": 236734,
-  "risk": 9,
-  "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: npm run compile"
-    }
-  ],
+  "risk": 0,
+  "findings": [],
   "verify": {
     "provenance": {
       "status": "present",
@@ -107,6 +87,6 @@
       "ref": "e49b60aa1ab2bfe061a9ecd5d61f4c5130fe3e14"
     }
   },
-  "score": 96,
+  "score": 100,
   "grade": "A"
 }

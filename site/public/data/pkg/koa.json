@@ -3,17 +3,6 @@
   "version": "3.2.1",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 25,
-          "excerpt": "\"prepare\": \"npm run build\""
-        }
-      ]
-    },
-    {
       "id": "network",
       "detail": "http, net",
       "evidence": [
@@ -55,19 +44,11 @@
     "NODE_ENV"
   ],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "npm run build"
-  },
+  "installScripts": {},
   "files": 11,
   "unpackedSize": 65032,
-  "risk": 12,
+  "risk": 3,
   "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: npm run build"
-    },
     {
       "id": "network",
       "severity": "low",
@@ -96,6 +77,6 @@
       "ref": "0885f138793445dd3a0f1dee0404932a45eab27f"
     }
   },
-  "score": 94,
+  "score": 99,
   "grade": "A"
 }

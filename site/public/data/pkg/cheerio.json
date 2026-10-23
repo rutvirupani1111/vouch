@@ -3,17 +3,6 @@
   "version": "1.2.0",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 97,
-          "excerpt": "\"prepare\": \"husky\","
-        }
-      ]
-    },
-    {
       "id": "network",
       "detail": "undici",
       "evidence": [
@@ -42,19 +31,11 @@
   ],
   "envVars": [],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "husky"
-  },
+  "installScripts": {},
   "files": 228,
   "unpackedSize": 1011246,
-  "risk": 12,
+  "risk": 3,
   "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: husky"
-    },
     {
       "id": "network",
       "severity": "low",
@@ -286,6 +267,6 @@
       "ref": "e3c7aaf9ed64fe3cb9a181e58a41c0fdd6dbfbfc"
     }
   },
-  "score": 79,
+  "score": 84,
   "grade": "B"
 }

@@ -1,0 +1,158 @@
+{
+  "name": "mobx",
+  "version": "7.1.0",
+  "capabilities": [
+    {
+      "id": "env",
+      "detail": "NODE_ENV",
+      "evidence": [
+        {
+          "file": "dist/index.js",
+          "line": 4,
+          "excerpt": "if (process.env.NODE_ENV === 'production') {"
+        },
+        {
+          "file": "dist/mobx.esm.js",
+          "line": 1,
+          "excerpt": "const __MOBX_DEV__ = process.env.NODE_ENV !== \"production\";"
+        },
+        {
+          "file": "dist/mobx.mjs",
+          "line": 1,
+          "excerpt": "const __MOBX_DEV__ = process.env.NODE_ENV !== \"production\";"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "string timer",
+      "evidence": [
+        {
+          "file": "dist/mobx.cjs.production.min.js",
+          "line": 1,
+          "excerpt": "…duler?t.scheduler:t.delay?n=>setTimeout(n,t.delay):xe}function xt(t,n,i,r){const s=\"function\"==typeof r?nn(n…"
+        },
+        {
+          "file": "dist/mobx.esm.production.min.js",
+          "line": 1,
+          "excerpt": "…duler?t.scheduler:t.delay?n=>setTimeout(n,t.delay):Ze}function Et(t,n,e=Jn){function i(){if(b=!1,p.isDispose…"
+        },
+        {
+          "file": "dist/mobx.umd.production.min.js",
+          "line": 1,
+          "excerpt": "…duler?t.scheduler:t.delay?n=>setTimeout(n,t.delay):je}function jt(t,n,e,r){const s=\"function\"==typeof r?en(n…"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "NODE_ENV"
+  ],
+  "endpoints": [],
+  "installScripts": {},
+  "files": 132,
+  "unpackedSize": 4883399,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "eval",
+      "severity": "medium",
+      "title": "Evaluates code at runtime",
+      "detail": "string timer"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "mobxjs/mobx",
+      "commit": "bd8f02d28ef5dba37db799f9c2375c961000fd7e",
+      "workflow": ".github/workflows/release.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "match",
+      "identical": 60,
+      "differs": [],
+      "builtOnly": [
+        "dist/api/action.d.ts",
+        "dist/api/annotation.d.ts",
+        "dist/api/autorun.d.ts",
+        "dist/api/become-observed.d.ts",
+        "dist/api/computed.d.ts",
+        "dist/api/configure.d.ts",
+        "dist/api/decoratorannotation.d.ts",
+        "dist/api/decorators.d.ts",
+        "dist/api/extendobservable.d.ts",
+        "dist/api/extras.d.ts",
+        "dist/api/flow.d.ts",
+        "dist/api/intercept-read.d.ts",
+        "dist/api/intercept.d.ts",
+        "dist/api/iscomputed.d.ts",
+        "dist/api/isobservable.d.ts",
+        "dist/api/makeObservable.d.ts",
+        "dist/api/object-api.d.ts",
+        "dist/api/observable.d.ts",
+        "dist/api/observe.d.ts",
+        "dist/api/tojs.d.ts",
+        "dist/api/transaction.d.ts",
+        "dist/api/when.d.ts",
+        "dist/core/action.d.ts",
+        "dist/core/atom.d.ts",
+        "dist/core/computedvalue.d.ts",
+        "dist/core/derivation.d.ts",
+        "dist/core/globalstate.d.ts",
+        "dist/core/observable.d.ts",
+        "dist/core/reaction.d.ts",
+        "dist/core/spy.d.ts",
+        "dist/errors.d.ts",
+        "dist/index.js",
+        "dist/internal.d.ts",
+        "dist/mobx.cjs.development.js",
+        "dist/mobx.cjs.development.js.map",
+        "dist/mobx.cjs.production.min.js",
+        "dist/mobx.cjs.production.min.js.map",
+        "dist/mobx.d.ts",
+        "dist/mobx.esm.development.js",
+        "dist/mobx.esm.development.js.map",
+        "dist/mobx.esm.js",
+        "dist/mobx.esm.js.map",
+        "dist/mobx.esm.production.min.js",
+        "dist/mobx.esm.production.min.js.map",
+        "dist/mobx.mjs",
+        "dist/mobx.mjs.map",
+        "dist/mobx.umd.development.js",
+        "dist/mobx.umd.development.js.map",
+        "dist/mobx.umd.production.min.js",
+        "dist/mobx.umd.production.min.js.map",
+        "dist/types/actionannotation.d.ts",
+        "dist/types/autoannotation.d.ts",
+        "dist/types/computedannotation.d.ts",
+        "dist/types/decorator_fills.d.ts",
+        "dist/types/dynamicobject.d.ts",
+        "dist/types/flowannotation.d.ts",
+        "dist/types/generic-abort-signal.d.ts",
+        "dist/types/intercept-utils.d.ts",
+        "dist/types/listen-utils.d.ts",
+        "dist/types/modifiers.d.ts",
+        "dist/types/observableannotation.d.ts",
+        "dist/types/observablearray.d.ts",
+        "dist/types/observablemap.d.ts",
+        "dist/types/observableobject.d.ts",
+        "dist/types/observableset.d.ts",
+        "dist/types/observablevalue.d.ts",
+        "dist/types/overrideannotation.d.ts",
+        "dist/types/type-utils.d.ts",
+        "dist/utils/comparer.d.ts",
+        "dist/utils/eq.d.ts",
+        "dist/utils/iterable.d.ts",
+        "dist/utils/utils.d.ts"
+      ],
+      "onlyInPackage": [],
+      "note": "compared against commit from provenance; package found in repo directory packages/mobx/",
+      "repo": "mobxjs/mobx",
+      "ref": "bd8f02d28ef5dba37db799f9c2375c961000fd7e"
+    }
+  },
+  "score": 96,
+  "grade": "A"
+}

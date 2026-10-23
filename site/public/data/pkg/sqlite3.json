@@ -1,0 +1,62 @@
+{
+  "name": "sqlite3",
+  "version": "6.0.1",
+  "capabilities": [
+    {
+      "id": "install_script",
+      "detail": "install (reachable at install time)",
+      "evidence": [
+        {
+          "file": "package.json",
+          "line": 72,
+          "excerpt": "\"install\": \"prebuild-install -r napi || node-gyp rebuild\","
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "deps/extract.js",
+          "line": 2,
+          "excerpt": "const fs = require(\"fs\");"
+        }
+      ]
+    }
+  ],
+  "envVars": [],
+  "endpoints": [],
+  "installScripts": {
+    "install": "prebuild-install -r napi || node-gyp rebuild"
+  },
+  "files": 23,
+  "unpackedSize": 3399835,
+  "risk": 9,
+  "findings": [
+    {
+      "id": "install-script",
+      "severity": "medium",
+      "title": "Runs code on install",
+      "detail": "install: prebuild-install -r napi || node-gyp rebuild"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "absent",
+      "note": "No npm provenance attestation was published for this version."
+    },
+    "source": {
+      "status": "match",
+      "identical": 23,
+      "differs": [],
+      "builtOnly": [],
+      "onlyInPackage": [],
+      "note": "compared against commit from gitHead",
+      "repo": "TryGhost/node-sqlite3",
+      "ref": "a7badced76a78ccd191dd740e287f8ace025003b"
+    }
+  },
+  "score": 81,
+  "grade": "B"
+}

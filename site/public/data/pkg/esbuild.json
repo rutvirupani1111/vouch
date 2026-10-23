@@ -1,0 +1,192 @@
+{
+  "name": "esbuild",
+  "version": "0.28.2",
+  "capabilities": [
+    {
+      "id": "install_script",
+      "detail": "postinstall (reachable at install time)",
+      "evidence": [
+        {
+          "file": "package.json",
+          "line": 10,
+          "excerpt": "\"postinstall\": \"node install.js\""
+        }
+      ]
+    },
+    {
+      "id": "child_process",
+      "detail": "child_process, execFileSync, execSync, spawn, worker_threads (reachable at install time)",
+      "evidence": [
+        {
+          "file": "install.js",
+          "line": 95,
+          "excerpt": "var child_process = require(\"child_process\");"
+        },
+        {
+          "file": "bin/esbuild",
+          "line": 220,
+          "excerpt": "require(\"child_process\").execFileSync(\"node\", [binPath].concat(process.argv.slice(2)), { stdio: \"inherit\" });"
+        },
+        {
+          "file": "bin/esbuild",
+          "line": 222,
+          "excerpt": "require(\"child_process\").execFileSync(binPath, process.argv.slice(2), { stdio: \"inherit\" });"
+        },
+        {
+          "file": "lib/main.js",
+          "line": 2081,
+          "excerpt": "var child_process = require(\"child_process\");"
+        },
+        {
+          "file": "install.js",
+          "line": 103,
+          "excerpt": "stdout = child_process.execFileSync(command.shift(), command, {"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "detail": "https (reachable at install time)",
+      "evidence": [
+        {
+          "file": "install.js",
+          "line": 93,
+          "excerpt": "var https = require(\"https\");"
+        },
+        {
+          "file": "install.js",
+          "line": 149,
+          "excerpt": "https.get(url, (res) => {"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "ESBUILD_BINARY_PATH, ESBUILD_MAX_BUFFER, ESBUILD_WORKER_THREADS, npm_config_user_agent (reachable at install time)",
+      "evidence": [
+        {
+          "file": "install.js",
+          "line": 29,
+          "excerpt": "var ESBUILD_BINARY_PATH = process.env.ESBUILD_BINARY_PATH || ESBUILD_BINARY_PATH;"
+        },
+        {
+          "file": "bin/esbuild",
+          "line": 30,
+          "excerpt": "var ESBUILD_BINARY_PATH = process.env.ESBUILD_BINARY_PATH || ESBUILD_BINARY_PATH;"
+        },
+        {
+          "file": "lib/main.js",
+          "line": 1893,
+          "excerpt": "var ESBUILD_BINARY_PATH = process.env.ESBUILD_BINARY_PATH || ESBUILD_BINARY_PATH;"
+        },
+        {
+          "file": "install.js",
+          "line": 141,
+          "excerpt": "const { npm_config_user_agent } = process.env;"
+        },
+        {
+          "file": "lib/main.js",
+          "line": 2384,
+          "excerpt": "maxBuffer: +process.env.ESBUILD_MAX_BUFFER || 16 * 1024 * 1024"
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "detail": "require(expression) (reachable at install time)",
+      "evidence": [
+        {
+          "file": "install.js",
+          "line": 96,
+          "excerpt": "var packageJSON = require(path2.join(__dirname, \"package.json\"));"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs (reachable at install time)",
+      "evidence": [
+        {
+          "file": "install.js",
+          "line": 26,
+          "excerpt": "var fs = require(\"fs\");"
+        },
+        {
+          "file": "install.js",
+          "line": 89,
+          "excerpt": "var fs2 = require(\"fs\");"
+        },
+        {
+          "file": "bin/esbuild",
+          "line": 27,
+          "excerpt": "var fs = require(\"fs\");"
+        },
+        {
+          "file": "lib/main.js",
+          "line": 1890,
+          "excerpt": "var fs = require(\"fs\");"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "ESBUILD_BINARY_PATH",
+    "ESBUILD_MAX_BUFFER",
+    "ESBUILD_WORKER_THREADS",
+    "npm_config_user_agent"
+  ],
+  "endpoints": [],
+  "installScripts": {
+    "postinstall": "node install.js"
+  },
+  "files": 7,
+  "unpackedSize": 147361,
+  "risk": 51,
+  "findings": [
+    {
+      "id": "install-script-dangerous",
+      "severity": "critical",
+      "title": "Install script does dangerous things",
+      "detail": "postinstall runs on `npm install` and reaches: network, child_process."
+    },
+    {
+      "id": "child-process",
+      "severity": "low",
+      "title": "Runs other programs",
+      "detail": "child_process, execFileSync, execSync, spawn"
+    },
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "https"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "evanw/esbuild",
+      "commit": "609683d892977362a0f99026cb74b96263d728a9",
+      "workflow": ".github/workflows/publish.yml@refs/heads/main",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 3,
+      "differs": [],
+      "builtOnly": [
+        "bin/esbuild",
+        "lib/main.d.ts",
+        "lib/main.js"
+      ],
+      "onlyInPackage": [
+        "install.js"
+      ],
+      "note": "compared against commit from provenance; package found in repo directory npm/esbuild/",
+      "repo": "evanw/esbuild",
+      "ref": "609683d892977362a0f99026cb74b96263d728a9"
+    }
+  },
+  "score": 39,
+  "grade": "F"
+}

@@ -1,0 +1,135 @@
+{
+  "name": "socket.io",
+  "version": "4.8.4",
+  "capabilities": [
+    {
+      "id": "network",
+      "detail": "XMLHttpRequest, fetch, http",
+      "evidence": [
+        {
+          "file": "client-dist/socket.io.esm.min.js",
+          "line": 6,
+          "excerpt": "…id 0===s||s.appendCookies(e),fetch(this.uri(),{method:i?\"POST\":\"GET\",body:i?t:null,headers:e,credentials:thi…"
+        },
+        {
+          "file": "dist/index.js",
+          "line": 40,
+          "excerpt": "const http_1 = require(\"http\"); // 'node:' prefix was added in Node.js 16"
+        },
+        {
+          "file": "client-dist/socket.io.js",
+          "line": 1072,
+          "excerpt": "value = typeof XMLHttpRequest !== 'undefined' && 'withCredentials' in new XMLHttpRequest();"
+        },
+        {
+          "file": "client-dist/socket.io.js",
+          "line": 1344,
+          "excerpt": "return new XMLHttpRequest();"
+        },
+        {
+          "file": "client-dist/socket.io.min.js",
+          "line": 6,
+          "excerpt": "…Request&&\"withCredentials\"in new XMLHttpRequest}catch(t){}var K=J;function Y(){}var G=function(t){function n…"
+        }
+      ]
+    },
+    {
+      "id": "env",
+      "detail": "DEBUG",
+      "evidence": [
+        {
+          "file": "client-dist/socket.io.js",
+          "line": 2880,
+          "excerpt": "r = process.env.DEBUG;"
+        }
+      ]
+    },
+    {
+      "id": "filesystem",
+      "detail": "fs",
+      "evidence": [
+        {
+          "file": "dist/index.js",
+          "line": 41,
+          "excerpt": "const fs_1 = require(\"fs\");"
+        },
+        {
+          "file": "dist/uws.js",
+          "line": 10,
+          "excerpt": "const fs_1 = require(\"fs\");"
+        }
+      ]
+    }
+  ],
+  "envVars": [
+    "DEBUG"
+  ],
+  "endpoints": [
+    "socket.io"
+  ],
+  "installScripts": {},
+  "files": 32,
+  "unpackedSize": 1412281,
+  "risk": 3,
+  "findings": [
+    {
+      "id": "network",
+      "severity": "low",
+      "title": "Network access",
+      "detail": "XMLHttpRequest, fetch, http"
+    }
+  ],
+  "verify": {
+    "provenance": {
+      "status": "present",
+      "repo": "socketio/socket.io",
+      "commit": "c239eb5d8945cee40a696a26e4aca00016f9565f",
+      "workflow": ".github/workflows/publish.yml@refs/tags/socket.io@4.8.4",
+      "note": "Provenance statement decoded from the npm attestation bundle; the cryptographic Sigstore signature check is planned, not done. The attested subject digest matches the tarball."
+    },
+    "source": {
+      "status": "mismatch",
+      "identical": 2,
+      "differs": [],
+      "builtOnly": [
+        "client-dist/socket.io.esm.min.js",
+        "client-dist/socket.io.esm.min.js.map",
+        "client-dist/socket.io.js.map",
+        "client-dist/socket.io.min.js",
+        "client-dist/socket.io.min.js.map",
+        "client-dist/socket.io.msgpack.min.js",
+        "client-dist/socket.io.msgpack.min.js.map",
+        "dist/broadcast-operator.d.ts",
+        "dist/broadcast-operator.js",
+        "dist/client.d.ts",
+        "dist/client.js",
+        "dist/contrib/base64id.d.ts",
+        "dist/contrib/base64id.js",
+        "dist/index.d.ts",
+        "dist/index.js",
+        "dist/namespace.d.ts",
+        "dist/namespace.js",
+        "dist/parent-namespace.d.ts",
+        "dist/parent-namespace.js",
+        "dist/socket-types.d.ts",
+        "dist/socket-types.js",
+        "dist/socket.d.ts",
+        "dist/socket.js",
+        "dist/typed-events.d.ts",
+        "dist/typed-events.js",
+        "dist/uws.d.ts",
+        "dist/uws.js"
+      ],
+      "onlyInPackage": [
+        "Readme.md",
+        "client-dist/socket.io.js",
+        "wrapper.mjs"
+      ],
+      "note": "compared against commit from provenance",
+      "repo": "socketio/socket.io",
+      "ref": "c239eb5d8945cee40a696a26e4aca00016f9565f"
+    }
+  },
+  "score": 64,
+  "grade": "C"
+}

@@ -3,17 +3,6 @@
   "version": "6.37.8",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 305,
-          "excerpt": "\"prepare\": \"npm run build && husky install\","
-        }
-      ]
-    },
-    {
       "id": "eval",
       "detail": "require(expression)",
       "evidence": [
@@ -53,20 +42,11 @@
     "sequelize.org",
     "sqlite.org"
   ],
-  "installScripts": {
-    "prepare": "npm run build && husky install"
-  },
+  "installScripts": {},
   "files": 300,
   "unpackedSize": 2909753,
-  "risk": 9,
-  "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: npm run build && husky install"
-    }
-  ],
+  "risk": 0,
+  "findings": [],
   "verify": {
     "provenance": {
       "status": "absent",
@@ -380,6 +360,6 @@
       "ref": "cb7f99ad05de56137672ab95586359ff6ceba004"
     }
   },
-  "score": 81,
+  "score": 85,
   "grade": "B"
 }

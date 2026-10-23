@@ -3,17 +3,6 @@
   "version": "6.1.3",
   "capabilities": [
     {
-      "id": "install_script",
-      "detail": "prepare (reachable at install time)",
-      "evidence": [
-        {
-          "file": "package.json",
-          "line": 39,
-          "excerpt": "\"prepare\": \"tshy\","
-        }
-      ]
-    },
-    {
       "id": "filesystem",
       "detail": "fs",
       "evidence": [
@@ -42,20 +31,11 @@
   ],
   "envVars": [],
   "endpoints": [],
-  "installScripts": {
-    "prepare": "tshy"
-  },
+  "installScripts": {},
   "files": 137,
   "unpackedSize": 261819,
-  "risk": 9,
-  "findings": [
-    {
-      "id": "install-script",
-      "severity": "medium",
-      "title": "Runs code on install",
-      "detail": "prepare: tshy"
-    }
-  ],
+  "risk": 0,
+  "findings": [],
   "verify": {
     "provenance": {
       "status": "absent",
@@ -207,6 +187,6 @@
       "ref": "f738c781d14fa7bc06f8e39e062d78f701fde3f1"
     }
   },
-  "score": 81,
+  "score": 85,
   "grade": "B"
 }
