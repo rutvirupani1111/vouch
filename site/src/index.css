@@ -1,0 +1,175 @@
+@import "tailwindcss";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+/* Dark is the default. Light only when the visitor picks it. */
+:root {
+  --bg: #0a0d0b;
+  --bg-2: #0f1411;
+  --panel: #121914;
+  --panel-2: #18211b;
+  --line: #233027;
+  --line-2: #2f3f33;
+  --ink: #e6ede7;
+  --ink-2: #a9b6ad;
+  --ink-3: #6f7f74;
+  --accent: #b6f36a;
+  --accent-ink: #0a0d0b;
+  --warn: #f5b942;
+  --danger: #ff5d5d;
+  --g-a: #b6f36a;
+  --g-b: #5fd9c4;
+  --g-c: #f5d142;
+  --g-d: #ff9a3d;
+  --g-f: #ff5d5d;
+  --grid: rgba(182, 243, 106, 0.045);
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #f4f3ee;
+  --bg-2: #ecebe4;
+  --panel: #ffffff;
+  --panel-2: #f7f6f1;
+  --line: #d9d7cc;
+  --line-2: #c6c3b5;
+  --ink: #121512;
+  --ink-2: #444b45;
+  --ink-3: #6c736d;
+  --accent: #2f6b00;
+  --accent-ink: #ffffff;
+  --warn: #8a5a00;
+  --danger: #b3161b;
+  --g-a: #2f7d0f;
+  --g-b: #0a7a6b;
+  --g-c: #8f7300;
+  --g-d: #b24f00;
+  --g-f: #b3161b;
+  --grid: rgba(18, 21, 18, 0.045);
+  color-scheme: light;
+}
+
+@theme inline {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-g-a: var(--g-a);
+  --color-g-b: var(--g-b);
+  --color-g-c: var(--g-c);
+  --color-g-d: var(--g-d);
+  --color-g-f: var(--g-f);
+}
+
+html {
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+a {
+  color: inherit;
+}
+.mono {
+  font-family: var(--font-mono);
+}
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.prose-lab p {
+  color: var(--ink-2);
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+.prose-lab h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 2.5rem 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+.prose-lab h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 1.75rem 0 0.5rem;
+}
+.prose-lab ul {
+  color: var(--ink-2);
+  line-height: 1.7;
+  padding-left: 1.1rem;
+  margin: 0 0 1rem;
+  list-style: square;
+}
+.prose-lab code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  padding: 0.05em 0.35em;
+  border-radius: 3px;
+  color: var(--ink);
+}
+.scanline {
+  position: relative;
+}
+.scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(0, 0, 0, 0.06) 2px 3px);
+}
+:root[data-theme="light"] .scanline::after {
+  display: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .blink {
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}

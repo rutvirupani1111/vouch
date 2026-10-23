@@ -1,0 +1,18 @@
+[
+  "react", "react-dom", "express", "lodash", "chalk", "debug", "axios", "typescript", "next", "vite",
+  "vue", "svelte", "@angular/core", "webpack", "rollup", "esbuild", "@babel/core", "eslint", "prettier", "jest",
+  "vitest", "mocha", "chai", "ts-node", "tsx", "nodemon", "dotenv", "commander", "yargs", "inquirer",
+  "ora", "semver", "minimist", "glob", "rimraf", "mkdirp", "fs-extra", "uuid", "nanoid", "moment",
+  "dayjs", "date-fns", "luxon", "zod", "yup", "joi", "ajv", "classnames", "clsx", "tailwindcss",
+  "postcss", "autoprefixer", "sass", "styled-components", "@emotion/react", "redux", "@reduxjs/toolkit", "zustand", "mobx", "rxjs",
+  "jquery", "underscore", "ramda", "immer", "body-parser", "cors", "helmet", "morgan", "cookie-parser", "jsonwebtoken",
+  "bcrypt", "bcryptjs", "passport", "mongoose", "mongodb", "pg", "mysql2", "sqlite3", "redis", "ioredis",
+  "prisma", "@prisma/client", "sequelize", "typeorm", "knex", "graphql", "@apollo/server", "socket.io", "ws", "node-fetch",
+  "got", "superagent", "cheerio", "puppeteer", "playwright", "sharp", "jimp", "multer", "busboy", "formidable",
+  "koa", "fastify", "@hapi/hapi", "nan", "@nestjs/core", "lit", "preact", "solid-js", "react-router", "react-router-dom",
+  "@tanstack/react-query", "swr", "framer-motion", "three", "d3", "chart.js", "lodash-es", "core-js", "regenerator-runtime", "tslib",
+  "ansi-styles", "strip-ansi", "supports-color", "color-convert", "wrap-ansi", "string-width", "ms", "kleur", "picocolors", "colors",
+  "qs", "cross-env", "concurrently", "husky", "lint-staged", "chokidar", "micromatch", "minimatch", "fast-glob", "execa",
+  "cross-spawn", "which", "js-yaml", "yaml", "marked", "markdown-it", "highlight.js", "prismjs", "handlebars", "ejs",
+  "pug", "nunjucks", "winston", "pino", "bunyan", "log4js", "validator", "xml2js", "fast-xml-parser", "node-cron"
+]
