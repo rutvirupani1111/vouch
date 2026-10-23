@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+test/.tmp/
+*.tgz
+.DS_Store
+.cache/
