@@ -121,6 +121,39 @@ Illustrative output, the shape of what a hijack like `debug@4.4.2` produces:
 `--format markdown` renders a PR-comment table; `--format json` is for tooling.
 npm, pnpm and yarn (classic and berry) lockfiles are supported.
 
+## `vouch run` (preview)
+
+`vouch check` guards what you install; `vouch run` guards what installed code
+does when it runs. It starts Node with a preload (`--require` for CommonJS,
+`--import` with `module.register` for ESM, passed through `NODE_OPTIONS`) that
+reads `vouch.lock.json` and checks every `require`/`import` of a sensitive
+builtin against the approved capabilities of the package asking for it:
+
+| Builtin | Capability |
+| --- | --- |
+| `net`, `http`, `https`, `http2`, `dns`, `tls`, `dgram` | `network` |
+| `child_process`, `worker_threads` | `child_process` |
+| `fs` (and `fs/promises`) | `filesystem` |
+| `vm` | `eval` |
+
+```bash
+vouch run -- node app.js                 # warn: print [vouch warn] once per package and builtin
+vouch run --mode block -- node app.js    # block: throw VouchPermissionError (code ERR_VOUCH_PERMISSION)
+vouch run --mode block -- npm start      # NODE_OPTIONS reaches child Node processes too
+```
+
+The calling package is taken from the importer's path under `node_modules`
+(scoped names included); your own code outside `node_modules` is always
+allowed, and a package missing from the manifest has no approved capabilities.
+`globalThis.fetch` is also wrapped: the caller is found from the stack trace,
+best effort, and only ever warned about.
+
+Limits of the preview: it checks module loading, not individual calls, so a
+package can still reach a builtin through an object another package hands it;
+builtins loaded before the preload, `process.binding`, native addons and
+non-Node runtimes are not covered; the fetch check is warn-only. Treat it as a
+tripwire, not a sandbox.
+
 ## Trust score
 
 ```
