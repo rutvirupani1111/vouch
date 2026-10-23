@@ -104,7 +104,14 @@ export function IndexPage() {
             The Vouch Trust Index reads the published tarball of popular npm packages and answers three questions: what can it do, does it match its source on GitHub, and how much evidence is there that you should trust it.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <a href="#table" className="mono bg-accent px-4 py-2.5 text-[13px] font-semibold uppercase tracking-wider text-accent-ink no-underline hover:opacity-90">
+            <a
+              href="#/"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('table')?.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('pkg-search')?.focus({ preventScroll: true });
+              }}
+              className="mono bg-accent px-4 py-2.5 text-[13px] font-semibold uppercase tracking-wider text-accent-ink no-underline hover:opacity-90">
               Browse the index
             </a>
             <Link to="/use" className="mono border border-line-2 px-4 py-2.5 text-[13px] uppercase tracking-wider text-ink no-underline hover:border-accent">
@@ -179,6 +186,12 @@ export function IndexPage() {
                 <>
                   {rows.length} of {data.count} packages
                   {data.source === 'live' && <> · scanned {new Date(data.generatedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</>}
+                  {!!data.skipped?.length && (
+                    <span className="block text-[12px]" title={data.skipped.map((s) => `${s.name}: ${s.reason}`).join('\n')}>
+                      {data.skipped.length} more could not be scored in this run (timeout, or tarball over 15 MB): {data.skipped.slice(0, 8).map((s) => s.name).join(', ')}
+                      {data.skipped.length > 8 ? ', ...' : ''}
+                    </span>
+                  )}
                 </>
               ) : (
                 'Loading'
@@ -195,6 +208,7 @@ export function IndexPage() {
               <path d="M21 21l-4.3-4.3" />
             </svg>
             <input
+              id="pkg-search"
               type="search"
               value={q}
               onChange={(e) => setQ(e.target.value)}

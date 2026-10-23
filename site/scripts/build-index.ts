@@ -58,9 +58,12 @@ async function tarballSize(url?: string): Promise<number | undefined> {
   }
 }
 
-function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
+function withTimeout<T>(p: Promise<T>, ms: number, label: string, onTimeout?: () => void): Promise<T> {
   return new Promise((resolve, reject) => {
-    const t = setTimeout(() => reject(new Error(`timeout after ${ms / 1000}s (${label})`)), ms);
+    const t = setTimeout(() => {
+      onTimeout?.();
+      reject(new Error(`timeout after ${ms / 1000}s (${label})`));
+    }, ms);
     p.then(
       (v) => {
         clearTimeout(t);
@@ -107,7 +110,10 @@ async function main() {
         const meta = await latest(name);
         const size = await tarballSize(meta.tarball);
         if (size && size > MAX_TARBALL) throw new Error(`tarball ${(size / 1048576).toFixed(1)} MB exceeds 15 MB`);
-        const report: PackageReport = await withTimeout(reportPackage({ name, version: meta.version }, opts), timeoutMs, name);
+        // Abortable fetch so a timed-out package stops downloading instead of hogging bandwidth.
+        const ac = new AbortController();
+        const f: typeof fetch = (input, init) => fetch(input, { ...init, signal: ac.signal });
+        const report: PackageReport = await withTimeout(reportPackage({ name, version: meta.version }, { ...opts, fetch: f }), timeoutMs, name, () => ac.abort());
         await writeFile(join(outDir, 'pkg', `${slug(name)}.json`), JSON.stringify(report, null, 2));
         entries.push(summarize(report));
         done++;
