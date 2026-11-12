@@ -100,8 +100,11 @@ body {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
-a {
-  color: inherit;
+/* Layered so Tailwind text-* utilities on links (e.g. the accent CTA) still win. */
+@layer base {
+  a {
+    color: inherit;
+  }
 }
 .mono {
   font-family: var(--font-mono);
